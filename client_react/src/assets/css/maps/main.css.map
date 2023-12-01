@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA;EACI","file":"../main.css","sourcesContent":["body{\n    background-color: rgb(202, 202, 202);\n}"]}
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAAA;EACI;;;AAEJ;EAEI","file":"../main.css","sourcesContent":["body{\n    background-color: rgb(202, 202, 202);\n}\nheader{\n\n    background-color: rgb(22, 64, 233);\n}"]}

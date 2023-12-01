@@ -2,14 +2,14 @@
 
 function Header() {
     return (
-        <header>
-            <h1>Header</h1>
-            <div className="logo">
+        <header className="d-flex">
+
+            <div className="logo w-100">
                 LOGO
             </div>
 
             <nav>
-                <ul>
+                <ul className="d-flex flex-row">
                     <li>
                         <a href="#">Home</a>
                     </li>

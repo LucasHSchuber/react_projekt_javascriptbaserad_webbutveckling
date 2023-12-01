@@ -25,10 +25,10 @@ const files = {
 }
 
 //html-task, kopiera html
-function copyHTML() {
-    return src(files.htmlPath)
-        .pipe(dest('pub'));
-}
+// function copyHTML() {
+//     return src(files.htmlPath)
+//         .pipe(dest('pub'));
+// }
 
 // //css-task, kopiera css
 // function CSStask() {
@@ -50,26 +50,26 @@ function SASStask() {
 }
 
 //js-task, kopiera js
-function JStask() {
-    return src(files.jsPath)
-        .pipe(concat('main.js'))
-        // .pipe(babel({//ADDED
-        //     presets: ["@babel/preset-env"]//ADDED
-        // }))//ADDED
-        .pipe(terser())
-        .pipe(dest('pub/js'));
-}
+// function JStask() {
+//     return src(files.jsPath)
+//         .pipe(concat('main.js'))
+//         // .pipe(babel({//ADDED
+//         //     presets: ["@babel/preset-env"]//ADDED
+//         // }))//ADDED
+//         .pipe(terser())
+//         .pipe(dest('pub/js'));
+// }
 
 //TStask, transpilerar typescript 
-function TStask() {
-    return src(files.tsPath) 
-        .pipe(sourcemaps.init())
-        .pipe(ts({
-            noImplicitAny: true,
-            outFile: 'output.js'
-        }))
-        .pipe(dest('pub/js'));
-}
+// function TStask() {
+//     return src(files.tsPath) 
+//         .pipe(sourcemaps.init())
+//         .pipe(ts({
+//             noImplicitAny: true,
+//             outFile: 'output.js'
+//         }))
+//         .pipe(dest('pub/js'));
+// }
 
 //img-task, kopiera img
 function IMGtask() {
@@ -83,18 +83,24 @@ function PNGtask() {
     return src(files.pngPath)
         .pipe(dest('pub/images'));
 }
+
+
+
 //watch task, live update from src to pub
 function watchTask() {
-    browserSync.init({
-        server: "./pub"
-    });
-
-    watch([files.htmlPath, files.jsPath, files.imagePath, files.pngPath, files.sassPath, files.tsPath], parallel(copyHTML, JStask, IMGtask, PNGtask, SASStask, TStask)).on('change', browserSync.reload);
+    // browserSync.init({
+    //     server: "./pub"
+    // });
+    
+    watch(files.sassPath, SASStask);  // Watch Sass files specifically
+    // watch([ files.jsPath, files.imagePath, files.pngPath, files.sassPath], parallel(IMGtask, PNGtask, SASStask)).on('change', browserSync.reload);
 }
 
+
+exports.watch = watchTask;
 exports.SASStask = SASStask;
 
 exports.default = series(
-    parallel(copyHTML, JStask, PNGtask, SASStask, TStask),
+    parallel( PNGtask, SASStask),
     watchTask
 );
