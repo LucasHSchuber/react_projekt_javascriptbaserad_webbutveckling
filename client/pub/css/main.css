@@ -1,0 +1,16 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(135, 135, 146);
+}
+
+main {
+  background-color: #3498db;
+  color: white;
+}
+main h1 {
+  font-size: 5em;
+}
+main p {
+  margin-top: 10px;
+}
+/*# sourceMappingURL=maps/main.css.map */
