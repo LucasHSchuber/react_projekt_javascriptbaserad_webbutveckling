@@ -1,7 +1,46 @@
-body{
-    background-color: rgb(202, 202, 202);
-}
-header{
+// main.scss
 
-    background-color: rgb(22, 64, 233);
+// Import base styles
+@import 'components';
+@import 'layout';
+
+
+body {
+    background-color: rgb(236, 236, 236);
+}
+
+header {
+
+    background-color: $primary-color;
+
+    .header {
+        padding: 1em 7em;
+    }
+
+    .logo {
+        font-size: 2em;
+        font-weight: 700;
+        color: white;
+    }
+
+    li {
+        padding: 0 2em;
+        margin-top: 1em;
+        list-style-type: none;
+        font-size: 1em;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+        opacity: 1;
+        transition: 0.3s;
+
+        &:hover {
+            color: rgb(158, 158, 158);
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+    }
+
 }

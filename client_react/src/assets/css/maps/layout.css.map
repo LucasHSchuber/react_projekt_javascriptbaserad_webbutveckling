@@ -1,0 +1,1 @@
+{"version":3,"sources":["layout.scss"],"names":[],"mappings":"AAMA;EACI;EACA","file":"../layout.css","sourcesContent":["\n//colors\n$primary-color: #7a1ada;\n$secondary-color: #d1bae2;\n\n// MESSAGES\n.error{\n    font-weight: 600;\n    color: red;\n}"]}

@@ -26,25 +26,25 @@ router.get('/', async (req, res) => {
 
 
 
-// //----------------------
-// //CREATING POST
-// //---------------------_
+//----------------------
+//CREATING POST
+//---------------------_
 
-// router.post('/', async (req, res) => {
-//     const course = new Course({
-//         courseId: req.body.courseId,
-//         courseName: req.body.courseName,
-//         coursePeriod: req.body.coursePeriod
-//     })
-//     try {
-//         const newCourse = await course.save()
-//         res.status(201).json(newCourse)
+router.post('/', async (req, res) => {
+    const course = new Course({
+        courseId: req.body.courseId,
+        courseName: req.body.courseName,
+        coursePeriod: req.body.coursePeriod
+    })
+    try {
+        const newCourse = await course.save()
+        res.status(201).json(newCourse)
 
-//     } catch (err) {
-//         res.status(400).json({ message: err.message })
-//     }
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
 
-// })
+})
 
 
 

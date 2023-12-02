@@ -72,11 +72,11 @@ function SASStask() {
 // }
 
 //img-task, kopiera img
-function IMGtask() {
-    return src(files.imagePath)
-        .pipe(imagemin())
-        .pipe(dest('pub/images'));
-}
+// function IMGtask() {
+//     return src(files.imagePath)
+//         .pipe(imagemin())
+//         .pipe(dest('pub/images'));
+// }
 
 //png-task som kopierar png-filer till pub
 function PNGtask() {
