@@ -7,7 +7,7 @@
 
 .gradient-container {
     background: linear-gradient(to bottom, $lightblue2, $darkblue);
-    height: 200vh;
+    height: fit-content;
     margin: 0;
     padding: 0;
 }
@@ -92,6 +92,8 @@ header {
 //-------------
 
 .homepage {
+
+    padding-bottom: 15em;
     h1 {
         font-size: 4em;
         color: $lightblue;
@@ -154,7 +156,6 @@ header {
         font-weight: 600;
         cursor: pointer;
         transition: color 0.4s ease;
-        margin-left: -4em;
 
 
         &:hover {
@@ -174,6 +175,7 @@ header {
 .createplanwrapper {
     max-width: 40em;
     margin: 0 auto;
+    padding-bottom: 1.5em;
 
     .plans {
         display: grid;
@@ -231,7 +233,7 @@ header {
 .signinuserwrapper {
     max-width: 30em;
     margin: 0 auto;
-    padding: 4em 0 0 0;
+    padding: 4em 0 3em 0;
 
     .input {
         height: 3.4em;
@@ -297,4 +299,15 @@ header {
 
         }
     }
+}
+
+
+
+//-------------
+//FOOTER
+//-------------
+footer{
+    height:50vh;
+    margin-top:3em;
+    border-top: solid 0.5px white;
 }

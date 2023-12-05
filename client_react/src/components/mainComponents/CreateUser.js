@@ -77,7 +77,7 @@ function CreateUser() {
 
 
     return (
-        <header className="">
+        <div className="">
 
             <div className="createuserwrapper">
                 <h2>Create User</h2>
@@ -186,13 +186,13 @@ function CreateUser() {
                     >
                         Create
                     </Button>
-                    <li className=''>Already have an account? Sign in here!</li>
+                    <li className='py-5'>Already have an account? Sign in here!</li>
 
                 </div>
             </div>
 
 
-        </header>
+        </div>
     );
 }
 

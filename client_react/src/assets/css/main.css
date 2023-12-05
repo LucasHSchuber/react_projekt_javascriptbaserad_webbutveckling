@@ -5,7 +5,7 @@
 
 .gradient-container {
   background: linear-gradient(to bottom, #035787, #01172C);
-  height: 200vh;
+  height: fit-content;
   margin: 0;
   padding: 0;
 }
@@ -52,6 +52,9 @@ header a:hover {
   opacity: 0.9;
 }
 
+.homepage {
+  padding-bottom: 15em;
+}
 .homepage h1 {
   font-size: 4em;
   color: #78BEFF;
@@ -77,7 +80,7 @@ header a:hover {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 600;
   padding: 0.45em 1.5em;
   text-decoration: none;
@@ -112,7 +115,7 @@ header a:hover {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 600;
   padding: 0.45em 1.5em;
   text-decoration: none;
@@ -155,7 +158,6 @@ header a:hover {
   font-weight: 600;
   cursor: pointer;
   transition: color 0.4s ease;
-  margin-left: -4em;
 }
 .createuserwrapper li:hover {
   color: #EDEDED;
@@ -169,6 +171,7 @@ header a:hover {
 .createplanwrapper {
   max-width: 40em;
   margin: 0 auto;
+  padding-bottom: 1.5em;
 }
 .createplanwrapper .plans {
   display: grid;
@@ -207,7 +210,7 @@ header a:hover {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 600;
   padding: 0.45em 1.5em;
   text-decoration: none;
@@ -237,7 +240,7 @@ header a:hover {
 .signinuserwrapper {
   max-width: 30em;
   margin: 0 auto;
-  padding: 4em 0 0 0;
+  padding: 4em 0 3em 0;
 }
 .signinuserwrapper .input {
   height: 3.4em;
@@ -288,5 +291,11 @@ header a:hover {
 .createplanwrapper .plans article p span {
   font-style: italic;
   font-weight: 600;
+}
+
+footer {
+  height: 50vh;
+  margin-top: 3em;
+  border-top: solid 0.5px white;
 }
 /*# sourceMappingURL=maps/main.css.map */
