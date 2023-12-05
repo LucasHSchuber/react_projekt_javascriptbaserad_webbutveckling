@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Course = require('../models/model')
+const Accounting = require('../models/accountingModel')
 
 //----------------------
 //GETTING ALL POSTS
@@ -8,8 +8,8 @@ const Course = require('../models/model')
 router.get('/', async (req, res) => {
 
     try {
-        const course = await Course.find()
-        res.json(course)
+        const accounting = await Accounting.find()
+        res.json(accounting)
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
@@ -31,14 +31,17 @@ router.get('/', async (req, res) => {
 //---------------------_
 
 router.post('/', async (req, res) => {
-    const course = new Course({
-        courseId: req.body.courseId,
-        courseName: req.body.courseName,
-        coursePeriod: req.body.coursePeriod
+    const accounting = new Accounting({
+        id: req.body.id,
+        userId: req.body.userId,
+        date: req.body.date,
+        companyName: req.body.companyName,
+        comment: req.body.comment,
+        entries: req.body.entries
     })
     try {
-        const newCourse = await course.save()
-        res.status(201).json(newCourse)
+        const newAccounting = await accounting.save()
+        res.status(201).json(newAccounting)
 
     } catch (err) {
         res.status(400).json({ message: err.message })

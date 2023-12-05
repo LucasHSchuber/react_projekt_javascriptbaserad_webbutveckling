@@ -1,4 +1,6 @@
 
+
+
 // typically use the useEffect hook. The useEffect hook is used for side effects in functional components, such as data fetching, subscriptions, or manually changing the DOM.
 import React, { useEffect, useState } from 'react';
 
@@ -10,15 +12,16 @@ function Home() {
     //----------
 
     // State to store the fetched data
-    const [courses, setCourses] = useState([]);
+    const [accountings, setAccountings] = useState([]);
 
     const fetchData = async () => {
         try {
-            const response = await fetch("http://localhost:5000/courses");
+            const response = await fetch("http://localhost:5000/accountings");
 
             if (response.ok) {
                 const data = await response.json();
-                setCourses(data);
+                console.log(data);
+                setAccountings(data);
             } else {
                 console.error('Failed to fetch data');
             }
@@ -99,9 +102,33 @@ function Home() {
             <section>
                 <h1>Courses</h1>
                 <ul id="courseslist">
-                    {courses.map(course => (
-                        <li key={course._id}>{course.courseName}</li>
-                    ))}
+                    {accountings.map(accounting => {
+
+                        // Calculate the sum of debit and credit for each entry
+                        // Calculate the sum of debit and credit for each entry
+                        const totalCredit = accounting.entries.reduce((acc, entry) => acc + (isNaN(entry.credit) ? 0 : entry.credit), 0);
+                        const totalDebit = accounting.entries.reduce((acc, entry) => acc + (isNaN(entry.debit) ? 0 : entry.debit), 0);
+
+
+
+                        return (
+                            <div key={accounting.id}>
+                                <li>{accounting.companyName}</li>
+                                <ul>
+                                    <li>{accounting.comment}</li>
+                                    <li>{accounting.date}</li>
+
+                                    {accounting.entries.map((entry, index) => (
+                                        <li key={index}>
+                                            Plan: {entry.plan}, Credit: {entry.credit}, Debit: {entry.debit}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <h6>Total Credit: {totalCredit}</h6>
+                                <h6>Total Debit: {totalDebit}</h6>
+                            </div>
+                        );
+                    })}
                 </ul>
             </section>
             <section>
