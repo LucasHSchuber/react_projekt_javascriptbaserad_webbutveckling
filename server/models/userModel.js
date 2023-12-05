@@ -14,18 +14,18 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    birthdate: {
-        type: Date,
+    hashed_password: {
+        type: String,
         required: true
     },
-    hashed_password: {
+    company: {
         type: String,
         required: true
     },
     regdate: {
         type: Date,
         required: true
-    },
+    }
 });
 
 module.exports = mongoose.model('User', userSchema)

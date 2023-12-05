@@ -1,0 +1,39 @@
+// components
+
+
+// buttons 
+@mixin button-style {
+    background-color: $lightblue;
+    color: $lightwhite;
+    border-radius: 50%;
+    font-size: 2em;
+    font-weight: 600;
+    padding: 0.45em 1.5em;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.4s ease;
+
+
+    &:hover {
+        background-color: #468ED2;
+        border: none;
+    }
+
+    &:active {
+        background-color: #468ED2;
+        border: none;
+        outline: #468ED2;
+    }
+
+    &:focus {
+        background-color: #468ED2;
+        border: none;
+    }
+
+    &:disabled {
+        background-color: #468ED2;
+        border: none;
+    }
+}

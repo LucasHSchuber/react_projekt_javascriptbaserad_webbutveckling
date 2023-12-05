@@ -1,33 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import mImage from '../../assets/images/menubtn.png';
 
 function Header() {
-    return (
-        <header className="">
-            <div className="header d-flex">
+  const [isMenuVisible, setMenuVisible] = useState(false);
 
-                <div className="logo w-100">
-                <Link to="/">LOGO</Link>
-                </div>
+  const handleMouseOver = () => {
+    console.log("Being hovered");
+    setMenuVisible(true);
+  };
 
-                <nav>
-                    <ul className="d-flex flex-row">
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/test">Test</Link>
-                        </li>
-                        <li>
-                            <Link to="/test">Test</Link>
-                        </li>
-                    </ul>
-                </nav>
+ 
+  return (
+    <header>
+      <div className="header d-flex">
+        <div className="logo">
+          <Link to="/" onMouseOver={handleMouseOver}>
+            <img src={mImage} alt='Menu Button' />
+          </Link>
+        </div>
 
-            </div>
-        </header>
-    );
+        <nav>
+          <ul className={`d-flex flex-row menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/createuser">New user</Link>
+            </li>
+            <li>
+              <Link to="/login">Log in</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
 }
 
 export default Header;

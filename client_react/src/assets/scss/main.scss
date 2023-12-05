@@ -5,30 +5,69 @@
 @import 'layout';
 
 
+.gradient-container {
+    background: linear-gradient(to bottom, $lightblue2, $darkblue);
+    height: 200vh;
+    margin: 0;
+    padding: 0;
+}
+
+
+
 body {
     background-color: rgb(236, 236, 236);
 }
 
+
+//-------------
+//HEADER
+//-------------
+
 header {
 
-    background-color: $primary-color;
+    // background-color: $primary-color;
 
     .header {
-        padding: 1em 7em;
+        padding: 2em 7em;
     }
 
+    // .logo {
+    //     font-size: 2em;
+    //     font-weight: 700;
+    //     color: white;
+    // }
     .logo {
-        font-size: 2em;
-        font-weight: 700;
-        color: white;
+        img {
+            width: 3.5em;
+            height: 3.5em;
+            margin-top: 0.5em;
+            margin-right: 2em;
+        }
+
     }
 
     li {
-        padding: 0 2em;
-        margin-top: 1em;
+        padding: 0 4em;
+        margin-top: 2.3em;
         list-style-type: none;
-        font-size: 1em;
+        font-size: 1.2em;
+        font-weight: 700;
+
     }
+
+    .menulinks {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.9s ease;
+        /* Adjust the duration and timing of the links the display*/
+    }
+
+    .menu-visible {
+        display: block;
+        opacity: 1;
+    }
+
+
 
     a {
         color: white;
@@ -38,9 +77,224 @@ header {
 
         &:hover {
             color: rgb(158, 158, 158);
-            text-decoration: underline;
+            text-decoration: none;
             opacity: 0.9;
         }
     }
 
+}
+
+
+
+
+//-------------
+//HOME PAGE
+//-------------
+
+.homepage {
+    h1 {
+        font-size: 4em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+
+    span {
+        color: $lightwhite;
+        font-weight: 700;
+
+    }
+
+    li {
+        color: $lightblue;
+        text-decoration: underline;
+        list-style-type: none;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.4s ease;
+
+        &:hover {
+            color: $lightwhite;
+        }
+    }
+
+    button {
+        @include button-style;
+    }
+}
+
+
+//-------------
+//CREATE USER
+//-------------
+.createuserform {
+    & * {
+        margin: 1em 0;
+    }
+}
+
+.button {
+    @include button-style;
+}
+
+.createuserwrapper {
+    max-width: 30em;
+    margin: 0 auto;
+    padding: 4em 0 0 0;
+
+    .input {
+        height: 3.4em;
+    }
+
+    li {
+        color: $lightblue;
+        text-decoration: underline;
+        list-style-type: none;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.4s ease;
+        margin-left: -4em;
+
+
+        &:hover {
+            color: $lightwhite;
+        }
+    }
+
+    h2 {
+        font-size: 2em;
+        color: $lightblue;
+        font-weight: 700;
+
+    }
+
+}
+
+.createplanwrapper {
+    max-width: 40em;
+    margin: 0 auto;
+
+    .plans {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 0.2em;
+
+        .disabled-plan{
+            opacity: 0.5 !important;
+            cursor: not-allowed;
+        }
+
+        article {
+            max-height: 20em;
+            height: 20em;
+            max-width: 17em;
+            background-color: white;
+            font-size: 1em;
+            padding: 1.2em;
+
+            h3 {
+                font-size: 1.8em;
+                font-weight: 900;
+
+            }
+
+            p {
+                font-size: 0.8em;
+
+                span {
+                    font-style: italic;
+                    font-weight: 600;
+                }
+
+            }
+
+        }
+    }
+}
+
+
+
+//-------------
+//SIGN IN USER
+//-------------
+.signinuserform {
+    & * {
+        margin: 1em 0;
+    }
+}
+
+.button {
+    @include button-style;
+}
+
+.signinuserwrapper {
+    max-width: 30em;
+    margin: 0 auto;
+    padding: 4em 0 0 0;
+
+    .input {
+        height: 3.4em;
+    }
+
+    li {
+        color: $lightblue;
+        text-decoration: underline;
+        list-style-type: none;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.4s ease;
+        margin-left: -4em;
+
+
+        &:hover {
+            color: $lightwhite;
+        }
+    }
+
+    h2 {
+        font-size: 2em;
+        color: $lightblue;
+        font-weight: 700;
+
+    }
+
+}
+
+.createplanwrapper {
+    max-width: 40em;
+    margin: 0 auto;
+
+    .plans {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 0.2em;
+
+        article {
+            max-height: 20em;
+            height: 20em;
+            max-width: 17em;
+            background-color: white;
+            font-size: 1em;
+            padding: 1.2em;
+
+            h3 {
+                font-size: 1.8em;
+                font-weight: 900;
+
+            }
+
+            p {
+                font-size: 0.8em;
+
+                span {
+                    font-style: italic;
+                    font-weight: 600;
+                }
+
+            }
+
+        }
+    }
 }

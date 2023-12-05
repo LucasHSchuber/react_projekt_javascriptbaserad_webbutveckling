@@ -3,26 +3,42 @@
   color: red;
 }
 
+.gradient-container {
+  background: linear-gradient(to bottom, #035787, #01172C);
+  height: 200vh;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: rgb(236, 236, 236);
 }
 
-header {
-  background-color: #7a1ada;
-}
 header .header {
-  padding: 1em 7em;
+  padding: 2em 7em;
 }
-header .logo {
-  font-size: 2em;
-  font-weight: 700;
-  color: white;
+header .logo img {
+  width: 3.5em;
+  height: 3.5em;
+  margin-top: 0.5em;
+  margin-right: 2em;
 }
 header li {
-  padding: 0 2em;
-  margin-top: 1em;
+  padding: 0 4em;
+  margin-top: 2.3em;
   list-style-type: none;
-  font-size: 1em;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+header .menulinks {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  /* Adjust the duration and timing of the links the display*/
+}
+header .menu-visible {
+  display: block;
+  opacity: 1;
 }
 header a {
   color: white;
@@ -32,7 +48,245 @@ header a {
 }
 header a:hover {
   color: rgb(158, 158, 158);
-  text-decoration: underline;
+  text-decoration: none;
   opacity: 0.9;
+}
+
+.homepage h1 {
+  font-size: 4em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+.homepage span {
+  color: #EDEDED;
+  font-weight: 700;
+}
+.homepage li {
+  color: #78BEFF;
+  text-decoration: underline;
+  list-style-type: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.homepage li:hover {
+  color: #EDEDED;
+}
+.homepage button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 2em;
+  font-weight: 600;
+  padding: 0.45em 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.homepage button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.homepage button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.homepage button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.homepage button:disabled {
+  background-color: #468ED2;
+  border: none;
+}
+
+.createuserform * {
+  margin: 1em 0;
+}
+
+.button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 2em;
+  font-weight: 600;
+  padding: 0.45em 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.button:disabled {
+  background-color: #468ED2;
+  border: none;
+}
+
+.createuserwrapper {
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 4em 0 0 0;
+}
+.createuserwrapper .input {
+  height: 3.4em;
+}
+.createuserwrapper li {
+  color: #78BEFF;
+  text-decoration: underline;
+  list-style-type: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s ease;
+  margin-left: -4em;
+}
+.createuserwrapper li:hover {
+  color: #EDEDED;
+}
+.createuserwrapper h2 {
+  font-size: 2em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+
+.createplanwrapper {
+  max-width: 40em;
+  margin: 0 auto;
+}
+.createplanwrapper .plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.2em;
+}
+.createplanwrapper .plans .disabled-plan {
+  opacity: 0.5 !important;
+  cursor: not-allowed;
+}
+.createplanwrapper .plans article {
+  max-height: 20em;
+  height: 20em;
+  max-width: 17em;
+  background-color: white;
+  font-size: 1em;
+  padding: 1.2em;
+}
+.createplanwrapper .plans article h3 {
+  font-size: 1.8em;
+  font-weight: 900;
+}
+.createplanwrapper .plans article p {
+  font-size: 0.8em;
+}
+.createplanwrapper .plans article p span {
+  font-style: italic;
+  font-weight: 600;
+}
+
+.signinuserform * {
+  margin: 1em 0;
+}
+
+.button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 2em;
+  font-weight: 600;
+  padding: 0.45em 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.button:disabled {
+  background-color: #468ED2;
+  border: none;
+}
+
+.signinuserwrapper {
+  max-width: 30em;
+  margin: 0 auto;
+  padding: 4em 0 0 0;
+}
+.signinuserwrapper .input {
+  height: 3.4em;
+}
+.signinuserwrapper li {
+  color: #78BEFF;
+  text-decoration: underline;
+  list-style-type: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s ease;
+  margin-left: -4em;
+}
+.signinuserwrapper li:hover {
+  color: #EDEDED;
+}
+.signinuserwrapper h2 {
+  font-size: 2em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+
+.createplanwrapper {
+  max-width: 40em;
+  margin: 0 auto;
+}
+.createplanwrapper .plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.2em;
+}
+.createplanwrapper .plans article {
+  max-height: 20em;
+  height: 20em;
+  max-width: 17em;
+  background-color: white;
+  font-size: 1em;
+  padding: 1.2em;
+}
+.createplanwrapper .plans article h3 {
+  font-size: 1.8em;
+  font-weight: 900;
+}
+.createplanwrapper .plans article p {
+  font-size: 0.8em;
+}
+.createplanwrapper .plans article p span {
+  font-style: italic;
+  font-weight: 600;
 }
 /*# sourceMappingURL=maps/main.css.map */

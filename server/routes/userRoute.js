@@ -35,9 +35,9 @@ router.post('/', async (req, res) => {
         id: req.body.id,
         name: req.body.name,
         email: req.body.email,
-        birthdate: req.body.birthdate,
         hashed_password: req.body.hashed_password,
-        regdate: req.body.regdate,
+        company: req.body.company,
+        regdate: req.body.regdate
     })
     try {
         const newUser = await user.save()
