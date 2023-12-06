@@ -9,6 +9,7 @@ import CreateUser from "./components/mainComponents/CreateUser";
 import LogIn from "./components/mainComponents/LogIn";
 import HomePage from "./components/mainComponents/HomePage";
 import NewAccounting from "./components/mainComponents/NewAccounting";
+import AllAccountings from "./components/mainComponents/AllAccountings";
 
 
 // css imports
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<LogIn />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/newaccounting" element={<NewAccounting />} />
+            <Route path="/allaccountings" element={<AllAccountings />} />
           </Routes>
         </div>
         <Footer />

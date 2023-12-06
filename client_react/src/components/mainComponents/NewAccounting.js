@@ -1,7 +1,7 @@
 // typically use the useEffect hook. The useEffect hook is used for side effects in functional components, such as data fetching, subscriptions, or manually changing the DOM.
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import fetchUser from '../../assets/js/fetchUser';
 
 
@@ -9,6 +9,7 @@ import fetchUser from '../../assets/js/fetchUser';
 function NewAccounting() {
 
     const [accountingsCount, setAccountingsCount] = useState(1);
+    const [id, setId] = useState(0);
     const [userId, setUserId] = useState("");
     const [date, setDate] = useState("");
     const [companyName, setCompanyName] = useState("");
@@ -18,13 +19,10 @@ function NewAccounting() {
 
     const handleAddAccounting = () => {
         setAccountingsCount(accountingsCount + 1);
-
         // Initialize a new entry with default values
         const newEntry = { plan: "", debit: 0, credit: 0 };
-
         // Add the new entry to the entries array
         setEntries([...entries, newEntry]);
-
     };
 
     const handleRemoveAccounting = () => {
@@ -58,9 +56,12 @@ function NewAccounting() {
 
         const token = sessionStorage.getItem("token");
         const date = new Date().toISOString();
-        fetchData();
+
+        await fetchData();
+        await getLastId();
+
         const userId = 1;
-        const id = 4;
+
 
         const data = {
             id: id,
@@ -98,6 +99,75 @@ function NewAccounting() {
             console.error('Error adding user:', error.message);
         }
     }
+
+    //gettign the last id from users collection in mongodb and adding 1 to new user
+    const getLastId = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/accountings');
+            const accountings = response.data;
+
+            if (accountings && accountings.length > 0) {
+                const lastId = accountings[accountings.length - 1].id;
+                const newId = lastId + 1;
+                console.log('Next available ID:', newId);
+                setId(newId);
+            } else {
+                console.log('No existing accountings. Setting ID to 1.');
+                setId(1);
+            }
+        } catch (error) {
+            console.error('Error getting accountings:', error.message);
+            // Handle error more gracefully, e.g., display an error message to the user
+        }
+    };
+
+
+    const getAllAccountings = async () => {
+
+        const token = sessionStorage.getItem('token');
+
+        try {
+            const response = await fetch("http://localhost:5000/accountings", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log("Accounting data:", responseData);
+
+            } else {
+                const responseData = await response.json();
+                console.log("Error:", responseData.message);
+                console.log("Error:", response.status, response.statusText, response.message);
+
+            }
+
+        } catch (error) {
+            console.log("Error fetching accountings: ", error.message);
+            throw error;
+
+        }
+    }
+
+
+    // // useEffect hook to run fetchUser when the component mounts
+    // useEffect(() => {
+    //     const fetchDataAndSetCompanyName = async () => {
+    //         try {
+    //             const userData = await getAllAccountings();
+    //             setCompanyNamePrint(userData.companyName);
+
+    //         } catch (error) {
+    //             console.error("Error in fetchData:", error.message);
+    //             // Handle error as needed
+    //         }
+    //     };
+
+    //     fetchDataAndSetCompanyName();
+    // }, []); // The empty dependency array [] ensures that this effect runs only once when the component mounts
 
 
 
@@ -235,6 +305,8 @@ function NewAccounting() {
                 >
                     Account
                 </Button>
+
+                
             </div>
         </main>
     );
