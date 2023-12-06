@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // components includes
 import Header from "./components/headerComponents/header";
 import Footer from "./components/footerComponents/footer";
-import HomePage from "./components/mainComponents/HomePage";
+import StartPage from "./components/mainComponents/StartPage";
 import CreateUser from "./components/mainComponents/CreateUser";
 import LogIn from "./components/mainComponents/LogIn";
+import HomePage from "./components/mainComponents/HomePage";
 
 
 // css imports
@@ -21,9 +22,10 @@ function App() {
         <Header />
         <div className="container">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<StartPage />} />
             <Route path="/createuser" element={<CreateUser />} />
             <Route path="/login" element={<LogIn />} />
+            <Route path="/home" element={<HomePage />} />
           </Routes>
         </div>
         <Footer />

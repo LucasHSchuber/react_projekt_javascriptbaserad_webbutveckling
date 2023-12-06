@@ -1,6 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/userModel')
+const bcrypt = require("bcrypt");
+const crypto = require('crypto');
+
+
+function generateRandomToken(length) {
+    return crypto.randomBytes(length).toString('hex');
+}
 
 //----------------------
 //GETTING ALL POSTS
@@ -29,25 +36,81 @@ router.get('/', async (req, res) => {
 //----------------------
 //CREATING POST
 //---------------------_
+router.post('/register', async (req, res) => {
+    // const { id, name, email, password, company, regdate, verifypassword } = req.body;
 
-router.post('/', async (req, res) => {
+    //if passwords not match
+    if (req.body.password !== req.body.verifypassword) {
+        return res.status(400).json({ message: "Passwords do not match" });
+    }
+    //if password is less than 5 in length
+    if (req.body.password.length <= 4) {
+        return res.status(401).json({ message: "Password must be at least four characters" });
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(req.body.email)) {
+        return res.status(401).json({ message: "Invalid email address" });
+    }
+
+    // Hash the password before saving to mongodb
+    const hashed_password = await bcrypt.hash(req.body.password, 10);
+
     const user = new User({
         id: req.body.id,
         name: req.body.name,
         email: req.body.email,
-        hashed_password: req.body.hashed_password,
+        hashed_password: hashed_password,
         company: req.body.company,
         regdate: req.body.regdate
-    })
+    });
+
     try {
         const newUser = await user.save()
         res.status(201).json(newUser)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
+
+
+
+//----------------------
+//LOGIN USER
+//---------------------_
+router.post('/login', async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+
+        if (!user) {
+            return res.status(401).json({ message: "Invalid email or password" })
+        }
+
+        const passwordValidate = await bcrypt.compare(req.body.password, user.hashed_password)
+
+        if (!passwordValidate) {
+            return res.status(401).json({ message: "Invalid email or password" })
+        }
+        // if (req.body.password !== user.hashed_password) {
+        //     return res.status(401).json({ message: "Invalid email or password" })
+        // }
+
+        const token = generateRandomToken(10);
+        console.log(token);
+        res.json({ token: token });
 
     } catch (err) {
         res.status(400).json({ message: err.message })
     }
-
 })
+
+
+
+
+
+module.exports = router;
+
 
 
 

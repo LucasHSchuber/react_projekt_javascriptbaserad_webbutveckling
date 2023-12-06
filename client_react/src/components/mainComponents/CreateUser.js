@@ -7,28 +7,33 @@ function CreateUser() {
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [company, setCompany] = useState('');
     const [regdate, setRegdate] = useState('');
+    const [password, setPassword] = useState('');
+    const [verifypassword, setVerifyPassword] = useState('');
+
 
     const createUser = async (e) => {
-        e.preventDefault(); // Prevents the default form submission
+        // e.preventDefault(); // Prevents the default form submission
+       
+        const regdate = new Date().toISOString();
+        setRegdate(regdate);
 
         getLastId();
-        getRegdate();
+
 
         const data = {
             id: id,
             name: name,
             email: email,
-            hashed_password: password,
+            password: password,
+            verifypassword: verifypassword,
             company: company,
             regdate: regdate
         }
 
-
         try {
-            const response = await fetch("http://localhost:5000/users", {
+            const response = await fetch("http://localhost:5000/users/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -39,10 +44,12 @@ function CreateUser() {
             if (response.ok) {
                 console.log("Data stored in mongodb");
 
-
-
             } else {
-                console.log("Error when storing data in mongodb:", response.status, response.statusText);
+                const responseData = await response.json();
+                console.log("Error when storing data in mongodb:", responseData.message);
+                console.log("Error when storing data in mongodb:", response.status, response.statusText, response.message);
+                // Handle error message on the front end, for example:
+                // setError(responseData.message);
             }
 
         } catch (error) {
@@ -57,7 +64,6 @@ function CreateUser() {
         try {
             const response = await axios.get('http://localhost:5000/users');
             const users = response.data;
-            console.log(users);
             // Find the last ID
             const lastId = users.length > 0 ? users[users.length - 1].id : 0;
             const newId = lastId + 1;
@@ -69,11 +75,10 @@ function CreateUser() {
     }
 
     //setting regdate on stored user
-    const getRegdate = (e) => {
-
-        const regdate = new Date();
-        setRegdate(regdate);
-    }
+    // const getRegdate = (e) => {
+    //     const regdate = new Date().toISOString();
+    //     setRegdate(regdate);
+    // }
 
 
     return (
@@ -108,6 +113,19 @@ function CreateUser() {
                         />
                     </Form.Group>
 
+                    {/* Company Name */}
+                    <Form.Group controlId="formCompany">
+                        <Form.Control
+                            className='input'
+                            type="text"
+                            placeholder="Company name"
+                            name="companyName"
+                            value={company}
+                            onChange={(e) => setCompany(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+
                     {/* Password */}
                     <Form.Group controlId="formPassword">
                         <Form.Control
@@ -121,15 +139,15 @@ function CreateUser() {
                         />
                     </Form.Group>
 
-                    {/* Company Name */}
-                    <Form.Group controlId="formCompany">
+                    {/* Verify password */}
+                    <Form.Group controlId="formVerifyPassword">
                         <Form.Control
                             className='input'
-                            type="text"
-                            placeholder="Company name"
-                            name="companyName"
-                            value={company}
-                            onChange={(e) => setCompany(e.target.value)}
+                            type="password"
+                            placeholder="Verify password"
+                            name="verifypassword"
+                            value={verifypassword}
+                            onChange={(e) => setVerifyPassword(e.target.value)}
                             required
                         />
                     </Form.Group>

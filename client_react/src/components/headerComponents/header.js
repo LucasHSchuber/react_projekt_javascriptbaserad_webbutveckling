@@ -6,7 +6,6 @@ function Header() {
   const [isMenuVisible, setMenuVisible] = useState(false);
 
   const handleMouseOver = () => {
-    console.log("Being hovered");
     setMenuVisible(true);
   };
 
@@ -30,6 +29,9 @@ function Header() {
             </li>
             <li>
               <Link to="/login">Log in</Link>
+            </li>
+            <li>
+              <Link to="/home">home</Link>
             </li>
           </ul>
         </nav>
