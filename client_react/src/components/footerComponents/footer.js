@@ -1,12 +1,32 @@
 
+import { Form, Button } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useState } from 'react';
 
 function Footer() {
+
+    const logoutUser = () => {
+        // Remove the token from sessionStorage
+        const token = sessionStorage.getItem('token');
+        console.log(token + " has been removed from session storage"); 
+        sessionStorage.removeItem('token');
+        
+    }
     return (
         <footer className="d-flex">
 
             <div>
 
                 Footer
+
+                <button
+                    className=" mt-4"
+                    variant="primary"
+                    type="button"
+                    onClick={logoutUser}
+                >
+                    Logout
+                </button>
             </div>
 
         </footer>

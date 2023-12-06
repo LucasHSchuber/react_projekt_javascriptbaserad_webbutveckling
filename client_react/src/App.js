@@ -8,6 +8,7 @@ import StartPage from "./components/mainComponents/StartPage";
 import CreateUser from "./components/mainComponents/CreateUser";
 import LogIn from "./components/mainComponents/LogIn";
 import HomePage from "./components/mainComponents/HomePage";
+import NewAccounting from "./components/mainComponents/NewAccounting";
 
 
 // css imports
@@ -26,6 +27,7 @@ function App() {
             <Route path="/createuser" element={<CreateUser />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/home" element={<HomePage />} />
+            <Route path="/newaccounting" element={<NewAccounting />} />
           </Routes>
         </div>
         <Footer />

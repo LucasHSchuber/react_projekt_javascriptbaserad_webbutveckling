@@ -52,19 +52,19 @@ header a:hover {
   opacity: 0.9;
 }
 
-.homepage {
+.startpage {
   padding-bottom: 15em;
 }
-.homepage h1 {
+.startpage h1 {
   font-size: 4em;
   color: #78BEFF;
   font-weight: 700;
 }
-.homepage span {
+.startpage span {
   color: #EDEDED;
   font-weight: 700;
 }
-.homepage li {
+.startpage li {
   color: #78BEFF;
   text-decoration: underline;
   list-style-type: none;
@@ -73,10 +73,10 @@ header a:hover {
   cursor: pointer;
   transition: color 0.4s ease;
 }
-.homepage li:hover {
+.startpage li:hover {
   color: #EDEDED;
 }
-.homepage button {
+.startpage button {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
@@ -89,20 +89,20 @@ header a:hover {
   border-radius: 50px;
   transition: background-color 0.4s ease;
 }
-.homepage button:hover {
+.startpage button:hover {
   background-color: #468ED2;
   border: none;
 }
-.homepage button:active {
+.startpage button:active {
   background-color: #468ED2;
   border: none;
   outline: #468ED2;
 }
-.homepage button:focus {
+.startpage button:focus {
   background-color: #468ED2;
   border: none;
 }
-.homepage button:disabled {
+.startpage button:disabled {
   background-color: #468ED2;
   border: none;
 }
@@ -297,5 +297,107 @@ footer {
   height: 50vh;
   margin-top: 3em;
   border-top: solid 0.5px white;
+}
+
+.homepage {
+  padding-bottom: 15em;
+}
+.homepage h1 {
+  font-size: 4em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+.homepage h6 {
+  font-size: 1.6em;
+  color: #EDEDED;
+  font-weight: 600;
+}
+.homepage span {
+  font-size: 0.8em;
+  color: #EDEDED;
+  font-weight: 700;
+}
+.homepage li {
+  color: #78BEFF;
+  text-decoration: underline;
+  list-style-type: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.homepage li:hover {
+  color: #EDEDED;
+}
+.homepage button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 1.8em;
+  font-weight: 600;
+  padding: 0.45em 1.5em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.homepage button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.homepage button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.homepage button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.homepage button:disabled {
+  background-color: #468ED2;
+  border: none;
+}
+
+.newaccountingwrapper h2 {
+  font-size: 2.5em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+.newaccountingwrapper h5 {
+  font-size: 1.5em;
+  color: #EDEDED;
+  font-weight: 700;
+}
+.newaccountingwrapper h6 {
+  font-size: 1em;
+  color: #EDEDED;
+  font-weight: 700;
+}
+
+.newaccountingform {
+  padding: 1em 0 3em 0;
+}
+.newaccountingform .input {
+  height: 3.4em !important;
+}
+.newaccountingform .short {
+  max-width: 30em;
+}
+.newaccountingform li {
+  color: #78BEFF;
+  text-decoration: underline;
+  list-style-type: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.newaccountingform li:hover {
+  color: #EDEDED;
+}
+.newaccountingform .accountings {
+  display: flex;
 }
 /*# sourceMappingURL=maps/main.css.map */

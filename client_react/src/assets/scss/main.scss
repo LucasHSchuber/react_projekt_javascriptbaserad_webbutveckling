@@ -88,12 +88,13 @@ header {
 
 
 //-------------
-//HOME PAGE
+//START PAGE
 //-------------
 
-.homepage {
+.startpage {
 
     padding-bottom: 15em;
+
     h1 {
         font-size: 4em;
         color: $lightblue;
@@ -182,7 +183,7 @@ header {
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 0.2em;
 
-        .disabled-plan{
+        .disabled-plan {
             opacity: 0.5 !important;
             cursor: not-allowed;
         }
@@ -249,7 +250,6 @@ header {
         transition: color 0.4s ease;
         margin-left: -4em;
 
-
         &:hover {
             color: $lightwhite;
         }
@@ -306,8 +306,121 @@ header {
 //-------------
 //FOOTER
 //-------------
-footer{
-    height:50vh;
-    margin-top:3em;
+footer {
+    height: 50vh;
+    margin-top: 3em;
     border-top: solid 0.5px white;
+}
+
+
+
+
+//-------------
+//HOME PAGE
+//-------------
+
+.homepage {
+
+    padding-bottom: 15em;
+
+    h1 {
+        font-size: 4em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+
+    h6 {
+        font-size: 1.6em;
+        color: $lightwhite;
+        font-weight: 600;
+    }
+
+    span {
+        font-size: 0.8em;
+        color: $lightwhite;
+        font-weight: 700;
+
+    }
+
+    li {
+        color: $lightblue;
+        text-decoration: underline;
+        list-style-type: none;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.4s ease;
+
+        &:hover {
+            color: $lightwhite;
+        }
+    }
+
+    button {
+        @include button-style;
+    }
+}
+
+
+//-------------
+//NEW ACCOUNTING
+//-------------
+
+.newaccountingwrapper {
+    h2 {
+        font-size: 2.5em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+
+    h5 {
+        font-size: 1.5em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
+
+    h6 {
+        font-size: 1em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
+
+}
+
+.newaccountingform {
+
+    // max-width: 30em;
+    padding: 1em 0 3em 0;
+
+
+    .input {
+        height: 3.4em !important;
+    }
+
+
+    .short {
+        max-width: 30em;
+    }
+   
+    li {
+        color: $lightblue;
+        text-decoration: underline;
+        list-style-type: none;
+        font-size: 1.2em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.4s ease;
+
+
+        &:hover {
+            color: $lightwhite;
+        }
+    }
+    // button {
+    //     @include button-style;
+    // }
+
+    .accountings {
+        display: flex;
+    }
 }

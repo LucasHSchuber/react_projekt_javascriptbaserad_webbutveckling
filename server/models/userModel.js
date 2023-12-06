@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
     regdate: {
         type: Date,
         required: true
+    },
+    token: {
+        type: String,
+        required: false
     }
 });
 

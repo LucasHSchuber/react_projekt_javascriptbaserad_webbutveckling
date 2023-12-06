@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 //CREATING POST
 //---------------------_
 
-router.post('/', async (req, res) => {
+router.post('/newaccounting', async (req, res) => {
     const accounting = new Accounting({
         id: req.body.id,
         userId: req.body.userId,

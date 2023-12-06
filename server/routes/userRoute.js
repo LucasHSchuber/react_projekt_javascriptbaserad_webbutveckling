@@ -56,6 +56,7 @@ router.post('/register', async (req, res) => {
 
     // Hash the password before saving to mongodb
     const hashed_password = await bcrypt.hash(req.body.password, 10);
+    const token = "NoToken";
 
     const user = new User({
         id: req.body.id,
@@ -63,7 +64,8 @@ router.post('/register', async (req, res) => {
         email: req.body.email,
         hashed_password: hashed_password,
         company: req.body.company,
-        regdate: req.body.regdate
+        regdate: req.body.regdate,
+        token: token
     });
 
     try {
@@ -92,12 +94,20 @@ router.post('/login', async (req, res) => {
         if (!passwordValidate) {
             return res.status(401).json({ message: "Invalid email or password" })
         }
-        // if (req.body.password !== user.hashed_password) {
-        //     return res.status(401).json({ message: "Invalid email or password" })
-        // }
 
         const token = generateRandomToken(10);
         console.log(token);
+        //update token in mongodb
+        const filter = { id: user.id }; // Replace with the actual filter criteria
+        const update = {
+            $set: {
+                token: token // Replace with the key-value pairs you want to update
+            }
+        };
+
+        const result = await User.updateOne(filter, update);
+
+        //send token to client
         res.json({ token: token });
 
     } catch (err) {
@@ -105,6 +115,28 @@ router.post('/login', async (req, res) => {
     }
 })
 
+
+
+//----------------------
+// GET SIGNED IN USER
+//---------------------
+
+// Assuming you're using Express.js
+router.get('/logedinuser', async (req, res) => {
+    try {
+        const token = req.headers.authorization.replace('Bearer ', ''); // Extract the token from the Authorization header
+        const user = await User.findOne({ token: token });
+
+        if (!user) {
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+
+        res.json(user);
+
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
 
 
 

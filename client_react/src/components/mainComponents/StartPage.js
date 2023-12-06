@@ -8,7 +8,7 @@ function StartPage() {
 
     return (
         <main className='py-5'>
-            <div className='homepage'>
+            <div className='startpage'>
 
                 <h1>Artificial Intellegence <br></br><span>Accounting System</span></h1>
 
