@@ -32,8 +32,11 @@ function LogIn() {
 
                 // Store the token in sessionStorage
                 const token = responseData.token;
+                const id = responseData.id;
                 console.log(responseData.token);
+                console.log(responseData.id);
                 sessionStorage.setItem('token', token);
+                sessionStorage.setItem('userid', id);
 
                 //send user to main page
 

@@ -80,9 +80,9 @@ header a:hover {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: 600;
-  padding: 0.45em 1.5em;
+  padding: 0.4em 1.4em;
   text-decoration: none;
   cursor: pointer;
   border: none;
@@ -115,9 +115,9 @@ header a:hover {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: 600;
-  padding: 0.45em 1.5em;
+  padding: 0.4em 1.4em;
   text-decoration: none;
   cursor: pointer;
   border: none;
@@ -210,9 +210,9 @@ header a:hover {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: 600;
-  padding: 0.45em 1.5em;
+  padding: 0.4em 1.4em;
   text-decoration: none;
   cursor: pointer;
   border: none;
@@ -333,9 +333,9 @@ footer {
   background-color: #78BEFF;
   color: #EDEDED;
   border-radius: 50%;
-  font-size: 1.8em;
+  font-size: 1.5em;
   font-weight: 600;
-  padding: 0.45em 1.5em;
+  padding: 0.4em 1.4em;
   text-decoration: none;
   cursor: pointer;
   border: none;
@@ -375,9 +375,13 @@ footer {
   color: #EDEDED;
   font-weight: 700;
 }
+.newaccountingwrapper #check {
+  margin: 0.9em 0 0 0.8em;
+  color: rgb(22, 214, 22) !important;
+}
 
 .newaccountingform {
-  padding: 1em 0 3em 0;
+  padding: 1em 0 2em 0;
 }
 .newaccountingform .input {
   height: 3.4em !important;
@@ -399,5 +403,60 @@ footer {
 }
 .newaccountingform .accountings {
   display: flex;
+}
+
+.allaccountingswrapper h2 {
+  font-size: 2.5em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+.allaccountingswrapper h5 {
+  font-size: 1.5em;
+  color: #EDEDED;
+  font-weight: 700;
+}
+.allaccountingswrapper h6 {
+  font-size: 1em;
+  color: #EDEDED;
+  font-weight: 700;
+}
+
+.allaccountingstable {
+  color: #EDEDED;
+}
+.allaccountingstable .input {
+  height: 3.4em !important;
+  width: 25em !important;
+}
+.allaccountingstable .filter {
+  height: 3.4em !important;
+  width: 8em !important;
+}
+.allaccountingstable th {
+  padding: 1em 1em 1em 0.5em;
+  border-bottom: 0.5px white solid;
+}
+.allaccountingstable td {
+  padding: 1em 1em 1em 0.5em;
+}
+
+.sheetswrapper {
+  color: #EDEDED;
+}
+.sheetswrapper h2 {
+  font-size: 2.5em;
+  color: #78BEFF;
+  font-weight: 700;
+}
+.sheetswrapper h5 {
+  font-size: 1.5em;
+  color: #EDEDED;
+  font-weight: 700;
+}
+.sheetswrapper h6 {
+  font-style: italic;
+  font-size: 1.2em;
+  color: #78BEFF;
+  font-weight: 700;
 }
 /*# sourceMappingURL=maps/main.css.map */

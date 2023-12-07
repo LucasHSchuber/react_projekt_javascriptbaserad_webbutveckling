@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import fetchUser from '../../assets/js/fetchUser';
+import planOptions from '../../assets/js/planOptions';
 
 
 
@@ -16,6 +17,8 @@ function NewAccounting() {
     const [comment, setComment] = useState("");
     const [entries, setEntries] = useState([{ plan: "", debit: 0, credit: 0 }]);
 
+    const [sumDebit, setSumDebit] = useState(0);
+    const [sumCredit, setSumCredit] = useState(0);
 
     const handleAddAccounting = () => {
         setAccountingsCount(accountingsCount + 1);
@@ -37,10 +40,19 @@ function NewAccounting() {
 
     const handleEntryChange = (index, field, value) => {
         const updatedEntries = [...entries];
-        // updatedEntries[index][field] = value;
-        updatedEntries[index][field] = field !== 'plan' ? parseFloat(value) : value;
+        const numericValue = parseFloat(value);
+
+        if (!isNaN(numericValue)) {
+            // If the input value is a valid number, update the entry
+            updatedEntries[index][field] = field !== 'plan' ? numericValue : value;
+        } else {
+            // If the input value is NaN, set the entry value to 0
+            updatedEntries[index][field] = "";
+        }
+
         setEntries(updatedEntries);
     };
+
 
     const fetchData = async () => {
         try {
@@ -55,12 +67,13 @@ function NewAccounting() {
     const createAccounting = async () => {
 
         const token = sessionStorage.getItem("token");
-        const date = new Date().toISOString();
+        // const date = new Date().toISOString();
 
         await fetchData();
-        await getLastId();
+        // await getLastId();
 
         const userId = 1;
+        const id = 4;
 
 
         const data = {
@@ -122,53 +135,26 @@ function NewAccounting() {
     };
 
 
-    const getAllAccountings = async () => {
+    useEffect(() => {
+        // In the reduce function used in the useEffect hook, acc stands for accumulator, and entry represents each element in the entries array.
+        const calculatedSumDebit = entries.reduce((acc, entry) => acc + entry.debit, 0);
+        const calculatedSumCredit = entries.reduce((acc, entry) => acc + entry.credit, 0);
 
-        const token = sessionStorage.getItem('token');
+        // Update state with the calculated sums
+        setSumDebit(calculatedSumDebit);
+        setSumCredit(calculatedSumCredit);
 
-        try {
-            const response = await fetch("http://localhost:5000/accountings", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            })
-            if (response.ok) {
-                const responseData = await response.json();
-                console.log("Accounting data:", responseData);
-
-            } else {
-                const responseData = await response.json();
-                console.log("Error:", responseData.message);
-                console.log("Error:", response.status, response.statusText, response.message);
-
-            }
-
-        } catch (error) {
-            console.log("Error fetching accountings: ", error.message);
-            throw error;
+        if (calculatedSumDebit - calculatedSumCredit === 0 && entries.length > 0) {
+            console.log("Calculation correct!")
+            document.getElementById("check").style.display = "block";
+            document.getElementById("red").style.color = "";
+        } else {
+            document.getElementById("check").style.display = "none";
+            document.getElementById("red").style.color = "#ff8585";
 
         }
-    }
 
-
-    // // useEffect hook to run fetchUser when the component mounts
-    // useEffect(() => {
-    //     const fetchDataAndSetCompanyName = async () => {
-    //         try {
-    //             const userData = await getAllAccountings();
-    //             setCompanyNamePrint(userData.companyName);
-
-    //         } catch (error) {
-    //             console.error("Error in fetchData:", error.message);
-    //             // Handle error as needed
-    //         }
-    //     };
-
-    //     fetchDataAndSetCompanyName();
-    // }, []); // The empty dependency array [] ensures that this effect runs only once when the component mounts
-
+    }, [entries]);
 
 
 
@@ -236,12 +222,16 @@ function NewAccounting() {
                                         value={entries[index] ? entries[index].plan : ""}
                                         onChange={(e) => handleEntryChange(index, "plan", e.target.value)}
                                         required
-
                                     >
-                                        <option selected value="">Plan</option>
-                                        <option value="1930">1930 - bank</option>
-                                        <option value="2640">2640 ingående moms</option>
-                                        <option value="3010">3010 - försäljning</option>
+                                        {planOptions.map((option) => (
+                                            <option key={option.value} value={option.value}>
+                                            {option.label}
+                                          </option>
+                                        ))}
+                                        {/* <option selected value="">Plan</option>
+                                        <option value="1930 - bank">1930 - bank</option>
+                                        <option value="2640 - ingående moms">2640 ingående moms</option>
+                                        <option value="3010 - försäljning">3010 - försäljning</option> */}
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group controlId={`formCompany${index}`}>
@@ -290,9 +280,12 @@ function NewAccounting() {
                 </div>
 
                 <div className='calcAccouting'>
-                    <h6>Sum debet:<span></span></h6>
-                    <h6>Sum kredit:<span></span></h6>
-                    <h6 className='py-3'>Difference: <span></span></h6>
+                    <h6>Sum debit: {sumDebit}</h6>
+                    <h6>Sum kredit: {sumCredit}</h6>
+                    <div style={{ display: "flex" }}>
+                        <h6 id="red" className='py-3'>Difference: {sumDebit - sumCredit} </h6>
+                        <span id="check"><i class="fa-solid fa-check" ></i></span>
+                    </div>
                 </div>
 
 
@@ -306,7 +299,7 @@ function NewAccounting() {
                     Account
                 </Button>
 
-                
+
             </div>
         </main>
     );

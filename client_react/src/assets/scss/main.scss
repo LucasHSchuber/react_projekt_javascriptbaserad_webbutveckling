@@ -380,9 +380,15 @@ footer {
     }
 
     h6 {
+
         font-size: 1em;
         color: $lightwhite;
         font-weight: 700;
+    }
+
+    #check {
+        margin: 0.9em 0 0 0.8em;
+        color: rgb(22, 214, 22) !important;
     }
 
 }
@@ -390,7 +396,7 @@ footer {
 .newaccountingform {
 
     // max-width: 30em;
-    padding: 1em 0 3em 0;
+    padding: 1em 0 2em 0;
 
 
     .input {
@@ -401,7 +407,7 @@ footer {
     .short {
         max-width: 30em;
     }
-   
+
     li {
         color: $lightblue;
         text-decoration: underline;
@@ -416,6 +422,7 @@ footer {
             color: $lightwhite;
         }
     }
+
     // button {
     //     @include button-style;
     // }
@@ -424,3 +431,108 @@ footer {
         display: flex;
     }
 }
+
+
+
+
+//-------------
+//ALL ACCOUNTING
+//-------------
+
+.allaccountingswrapper {
+    h2 {
+        font-size: 2.5em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+
+    h5 {
+        font-size: 1.5em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
+
+    h6 {
+        font-size: 1em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
+
+}
+
+
+.allaccountingstable {
+
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // /* Adjust the number of columns as needed */
+    // gap: 16px;
+    // /* Adjust the gap between grid items */
+    // align-items: start;
+    // /* Align items to the start (top) of the grid container */
+    // justify-items: start;
+    // /* Align items to the start (left) of the grid container */
+
+    // // padding: 0.5em 1em;
+    // // background-color: rgb(255, 255, 255, 0.05);
+
+    color: $lightwhite;
+
+
+    .input {
+        height: 3.4em !important;
+        width: 25em !important;
+    }
+
+    .filter {
+        height: 3.4em !important;
+        width: 8em !important;
+    }
+
+    th {
+        padding: 1em 1em 1em 0.5em;
+        border-bottom: 0.5px white solid;
+    }
+
+    td {
+        padding: 1em 1em 1em 0.5em;
+        // border: 0.5px white solid;
+    }
+
+}
+
+
+
+
+
+//-------------
+// SHEETS
+//-------------
+
+.sheetswrapper {
+    color: $lightwhite;
+
+    h2 {
+        font-size: 2.5em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+
+    h5 {
+        font-size: 1.5em;
+        color: $lightwhite;
+        font-weight: 700;
+
+    }
+
+    h6 {
+        font-style: italic;
+        font-size: 1.2em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+}
+
+.balancesheet {}
+
+.resultsheet {}

@@ -50,6 +50,25 @@ router.post('/newaccounting', async (req, res) => {
 })
 
 
+// Example: Search route
+router.get('/search', async (req, res) => {
+    const searchString = req.query.searchString;
+  
+    try {
+      const searchResults = await Accounting.find({
+        $or: [
+          { companyName: { $regex: new RegExp(searchString, 'i') } },
+          { comment: { $regex: new RegExp(searchString, 'i') } },
+        ],
+      });
+  
+      res.json(searchResults);
+    } catch (error) {
+      console.error('Error during search:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 
 // //----------------------
 // //UPDATING

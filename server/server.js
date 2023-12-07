@@ -23,6 +23,9 @@ app.use('/accountings', AccountingRouter)
 const UserRouter = require('./routes/userRoute')
 app.use('/users', UserRouter)
 
+// const SearchRouter = require("./routes/searchRoute")
+// app.use("/search", SearchRouter)
+
 
 //connect to mongodb
 mongoose.connect(process.env.DATABASE_URL)

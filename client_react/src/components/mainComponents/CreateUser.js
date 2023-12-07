@@ -166,9 +166,9 @@ function CreateUser() {
                         <h3>Demo</h3>
                         <p><span>0 SEK / year</span></p>
                         <div className='my-4'>
-                            <p><i class="fa-solid fa-circle"></i>100 accoutings/year</p>
-                            <p><i class="fa-solid fa-circle"></i>Free balance- and result sheets</p>
-                            <p><i class="fa-solid fa-circle"></i>100 AI support questions</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> 50 accoutings/year</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Free balance- and result sheets</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> 50 AI support questions</p>
                         </div>
 
                     </article>
@@ -176,9 +176,10 @@ function CreateUser() {
                         <h3>Light</h3>
                         <p><span>999 SEK / year</span></p>
                         <div className='my-4'>
-                            <p><i class="fa-solid fa-circle"></i>100 accoutings/year</p>
-                            <p><i class="fa-solid fa-circle"></i>Free balance- and result sheets</p>
-                            <p><i class="fa-solid fa-circle"></i>100 AI support questions</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> 200 accoutings/year</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Create invoice tool</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Free balance- and result sheets</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> 200 AI support questions</p>
                         </div>
 
                     </article>
@@ -186,9 +187,10 @@ function CreateUser() {
                         <h3>Unlimited</h3>
                         <p><span>1999 SEK / year</span></p>
                         <div className='my-4'>
-                            <p><i class="fa-solid fa-circle"></i>100 accoutings/year</p>
-                            <p><i class="fa-solid fa-circle"></i>Free balance- and result sheets</p>
-                            <p><i class="fa-solid fa-circle"></i>100 AI support questions</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Unlimited accoutings/year</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Create invoice tool</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Free balance- and result sheets</p>
+                            <p><i class="fa-solid fa-xs fa-circle"></i> Unlimited AI support questions</p>
                         </div>
 
                     </article>
