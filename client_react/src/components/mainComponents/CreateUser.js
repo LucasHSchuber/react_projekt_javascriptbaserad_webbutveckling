@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function CreateUser() {
 
@@ -12,18 +12,21 @@ function CreateUser() {
     const [password, setPassword] = useState('');
     const [verifypassword, setVerifyPassword] = useState('');
 
+    useEffect(() => {
+        getLastId();
+    }, []); // Fetch the last ID when the component mounts
+
 
     const createUser = async (e) => {
         // e.preventDefault(); // Prevents the default form submission
        
         const regdate = new Date().toISOString();
-        setRegdate(regdate);
-
-        getLastId();
-
+        // getLastId();
+        // setRegdate(regdate);
+        const idset = id;
 
         const data = {
-            id: id,
+            id: idset,
             name: name,
             email: email,
             password: password,

@@ -10,6 +10,7 @@ function Footer() {
         const token = sessionStorage.getItem('token');
         console.log(token + " has been removed from session storage"); 
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('userid');
         
     }
     return (

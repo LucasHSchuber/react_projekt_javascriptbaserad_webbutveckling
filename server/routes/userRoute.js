@@ -108,7 +108,12 @@ router.post('/login', async (req, res) => {
         const result = await User.updateOne(filter, update);
 
         //send token to client
-        res.json({ token: token });
+        res.json({ 
+            token: token,
+            userId: user.id,
+            userName: user.name,
+            // ... other data you want to send
+          });
 
     } catch (err) {
         res.status(400).json({ message: err.message })

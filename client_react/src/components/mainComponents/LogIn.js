@@ -29,15 +29,19 @@ function LogIn() {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log("user signed in");
+                console.log(responseData);
 
                 // Store the token in sessionStorage
                 const token = responseData.token;
-                const id = responseData.id;
+                const userid = responseData.userId;
+                const username = responseData.userName;
                 console.log(responseData.token);
-                console.log(responseData.id);
+                console.log(responseData.userId);
+                console.log(responseData.userName);
                 sessionStorage.setItem('token', token);
-                sessionStorage.setItem('userid', id);
-
+                sessionStorage.setItem('userid', userid);
+                sessionStorage.setItem('username', username);
+                
                 //send user to main page
 
 

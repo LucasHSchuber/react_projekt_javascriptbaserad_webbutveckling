@@ -16,9 +16,11 @@ function AlAccountings() {
     const getAllAccountings = async () => {
 
         const token = sessionStorage.getItem('token');
+        const userId = sessionStorage.getItem('userid'); // Assuming userId is stored in session storage
+
 
         try {
-            const response = await fetch("http://localhost:5000/accountings", {
+            const response = await fetch(`http://localhost:5000/accountings?id=${userId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

@@ -11,7 +11,7 @@ function NewAccounting() {
 
     const [accountingsCount, setAccountingsCount] = useState(1);
     const [id, setId] = useState(0);
-    const [userId, setUserId] = useState("");
+    // const [userId, setUserId] = useState("");
     const [date, setDate] = useState("");
     const [companyName, setCompanyName] = useState("");
     const [comment, setComment] = useState("");
@@ -19,6 +19,13 @@ function NewAccounting() {
 
     const [sumDebit, setSumDebit] = useState(0);
     const [sumCredit, setSumCredit] = useState(0);
+
+    useEffect(() => {
+        getLastId();
+    }, []); // Fetch the last ID when the component mounts
+
+
+
 
     const handleAddAccounting = () => {
         setAccountingsCount(accountingsCount + 1);
@@ -57,7 +64,7 @@ function NewAccounting() {
     const fetchData = async () => {
         try {
             const userData = await fetchUser();
-            setUserId(userData.id);
+            // setUserId(userData.id);
         } catch (error) {
             console.error("Error in fetchData:", error.message);
             // Handle error as needed
@@ -67,17 +74,18 @@ function NewAccounting() {
     const createAccounting = async () => {
 
         const token = sessionStorage.getItem("token");
+        const userId = sessionStorage.getItem("userid");
         // const date = new Date().toISOString();
 
-        await fetchData();
+        // await fetchData();
         // await getLastId();
+        await getLastId();
+        const idset = id;
 
-        const userId = 1;
-        const id = 4;
 
 
         const data = {
-            id: id,
+            id: idset,
             userId: userId,
             date: date,
             companyName: companyName,
@@ -119,15 +127,10 @@ function NewAccounting() {
             const response = await axios.get('http://localhost:5000/accountings');
             const accountings = response.data;
 
-            if (accountings && accountings.length > 0) {
-                const lastId = accountings[accountings.length - 1].id;
-                const newId = lastId + 1;
-                console.log('Next available ID:', newId);
-                setId(newId);
-            } else {
-                console.log('No existing accountings. Setting ID to 1.');
-                setId(1);
-            }
+            const lastId = accountings.length > 0 ? accountings[accountings.length - 1].id : 0;
+            const newId = lastId + 1;
+            setId(newId);
+
         } catch (error) {
             console.error('Error getting accountings:', error.message);
             // Handle error more gracefully, e.g., display an error message to the user
@@ -225,8 +228,8 @@ function NewAccounting() {
                                     >
                                         {planOptions.map((option) => (
                                             <option key={option.value} value={option.value}>
-                                            {option.label}
-                                          </option>
+                                                {option.label}
+                                            </option>
                                         ))}
                                         {/* <option selected value="">Plan</option>
                                         <option value="1930 - bank">1930 - bank</option>
