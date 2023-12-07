@@ -459,4 +459,8 @@ footer {
   color: #78BEFF;
   font-weight: 700;
 }
+
+#balancesheet {
+  display: none;
+}
 /*# sourceMappingURL=maps/main.css.map */

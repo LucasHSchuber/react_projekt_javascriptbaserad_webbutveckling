@@ -9,11 +9,9 @@ function Sheets() {
 
     const [accountings, setAccountings] = useState([]);
 
-
     const getAllAccountings = async () => {
 
         const token = sessionStorage.getItem('token');
-
         try {
             const response = await fetch("http://localhost:5000/accountings", {
                 method: "GET",
@@ -24,7 +22,7 @@ function Sheets() {
             })
             if (response.ok) {
                 const responseData = await response.json();
-                // console.log("Accounting data:", responseData);
+                console.log("Accounting data:", responseData);
                 setAccountings(responseData);
 
             } else {
@@ -39,6 +37,12 @@ function Sheets() {
             throw error;
 
         }
+    }
+
+
+    const generateSheet = () => {
+        console.log("sheet genereated");
+        document.getElementById("balancesheet").style.display = "block";
     }
 
 
@@ -67,16 +71,25 @@ function Sheets() {
                         className='button my-3'
                         // onClick={}
                         type='button'
+                        onClick={generateSheet}
                     >
                         Generate
                     </Button>
 
+
+                    <div id='balancesheet'>
+                        {accountings.map(item => (
+                            <div key={item.id}>
+                                <p>{item.companyName}</p>
+                            </div>
+                        ))}
+                    </div>
+
+
                 </div>
 
             </div>
-        </main>
+        </main >
     );
 }
-
-
 export default Sheets;
