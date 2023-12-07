@@ -6,7 +6,12 @@ import React, { useState, useEffect } from 'react';
 
 function Sheets() {
 
-
+    const [calculatedValues, setCalculatedValues] = useState({
+        creditAssetsTotal: 0,
+        debitAssetsTotal: 0,
+        debitDebtTotal: 0,
+        creditDebtTotal: 0,
+    })
     const [accountings, setAccountings] = useState([]);
 
     const getAllAccountings = async () => {
@@ -43,6 +48,97 @@ function Sheets() {
     const generateSheet = () => {
         console.log("sheet genereated");
         document.getElementById("balancesheet").style.display = "block";
+
+        //calculate debit TILLGÅNGAR
+        const sumAssetsCredit = accountings.reduce((total, accounting) => {
+            const credit = accounting.entries
+                .filter(entry => entry.plan.startsWith("1"))
+                .map(entry => entry.credit)
+
+            const creditAssetsTotal = credit.reduce((sum, credit) => sum + credit, 0);
+
+            console.log("credit ASSETS:", creditAssetsTotal);
+
+            return total + creditAssetsTotal;
+
+        }, 0)
+
+
+
+        //calculate debit TILLGÅNGAR
+        const sumAssetsDebit = accountings.reduce((total, accounting) => {
+            const debit = accounting.entries
+                .filter(entry => entry.plan.startsWith("1"))
+                .map(entry => entry.debit)
+
+            const debitAssetsTotal = debit.reduce((sum, debit) => sum + debit, 0);
+
+            console.log("debit ASSETS:", debitAssetsTotal);
+
+            return total + debitAssetsTotal;
+
+        }, 0)
+
+        //calculate debit SKULDER OCH EGET KAPITAL
+        const sumDebtDebit = accountings.reduce((total, accounting) => {
+            const debit = accounting.entries
+                .filter(entry => entry.plan.startsWith("2"))
+                .map(entry => entry.debit)
+
+            const debitDebtTotal = debit.reduce((sum, debit) => sum + debit, 0);
+
+            console.log("debit DEBT:", debitDebtTotal);
+
+            return total + debitDebtTotal;
+
+        }, 0)
+
+
+        //calculate credit SKULDER OCH EGET KAPITAL
+        const sumDebtCredit = accountings.reduce((total, accounting) => {
+            const credit = accounting.entries
+                .filter(entry => entry.plan.startsWith("2"))
+                .map(entry => entry.credit)
+
+            const creditDebtTotal = credit.reduce((sum, credit) => sum + credit, 0)
+
+            console.log("credit DEBT:", creditDebtTotal);
+
+            return total + creditDebtTotal;
+
+        }, 0)
+
+
+
+        setCalculatedValues({
+            creditAssetsTotal: sumAssetsCredit,
+            debitAssetsTotal: sumAssetsDebit,
+            debitDebtTotal: sumDebtDebit,
+            creditDebtTotal: sumDebtCredit,
+
+
+        });
+
+    }
+
+
+    const showValues = () => {
+        // Access the calculated values from the state
+        console.log('Credit Assets Total:', calculatedValues.creditAssetsTotal);
+        console.log('Debit Assets Total:', calculatedValues.debitAssetsTotal);
+        console.log('Debit Debt Total:', calculatedValues.debitDebtTotal);
+        console.log('Credit Debt Total:', calculatedValues.creditDebtTotal);
+
+        calcTotal()
+    };
+
+    const calcTotal = () => {
+
+            const nettoAssets = calculatedValues.debitAssetsTotal - calculatedValues.creditAssetsTotal;
+            console.log("nettoASSETS: ", nettoAssets)
+
+            const nettoDebt = calculatedValues.debitDebtTotal + calculatedValues.creditDebtTotal;
+            console.log("nettoDEBT: ", nettoDebt)
     }
 
 
@@ -76,14 +172,25 @@ function Sheets() {
                         Generate
                     </Button>
 
+                    <Button className="button my-3" onClick={showValues} type="button">
+                        Show Values
+                    </Button>
+
 
                     <div id='balancesheet'>
                         {accountings.map(item => (
                             <div key={item.id}>
+                                {item.entries.map(entry => (
+                                    <div key={entry._id}>
+                                        <p>{entry.plan}</p>
+                                    </div>
+                                ))}
                                 <p>{item.companyName}</p>
                             </div>
                         ))}
                     </div>
+
+
 
 
                 </div>

@@ -16,7 +16,7 @@ const accountingSchema = new mongoose.Schema({
     },
     companyName: {
         type: String,
-        required: true
+        required: false
     },
     comment: {
         type: String,
