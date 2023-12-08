@@ -8,7 +8,9 @@ function Footer() {
     const logoutUser = () => {
         // Remove the token from sessionStorage
         const token = sessionStorage.getItem('token');
+        const user = sessionStorage.getItem('userid');
         console.log(token + " has been removed from session storage"); 
+        console.log(user + " has been removed from session storage"); 
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('userid');
         

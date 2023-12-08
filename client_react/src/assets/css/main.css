@@ -14,44 +14,59 @@ body {
   background-color: rgb(236, 236, 236);
 }
 
-header .header {
-  padding: 2em 7em;
+.header .logo {
+  display: flex;
+  align-items: center;
 }
-header .logo img {
+.header .logo img {
   width: 3.5em;
   height: 3.5em;
   margin-top: 0.5em;
   margin-right: 2em;
 }
-header li {
-  padding: 0 4em;
-  margin-top: 2.3em;
-  list-style-type: none;
-  font-size: 1.2em;
-  font-weight: 700;
-}
-header .menulinks {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.9s ease;
-  /* Adjust the duration and timing of the links the display*/
-}
-header .menu-visible {
-  display: block;
-  opacity: 1;
-}
-header a {
-  color: white;
-  text-decoration: none;
-  opacity: 1;
-  transition: 0.3s;
-}
-header a:hover {
-  color: rgb(158, 158, 158);
-  text-decoration: none;
-  opacity: 0.9;
-}
 
+@media screen and (min-width: 992px) {
+  header .header {
+    padding: 2em 7em;
+  }
+  header .menu-link {
+    padding: 0 4em;
+    margin-top: 2.3em;
+    list-style-type: none;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: white !important;
+    text-decoration: none;
+  }
+  header .menu-link .dropdown-item {
+    color: white !important;
+    /* Set your desired text color for dropdown items */
+  }
+  header .menu-visible {
+    display: block;
+  }
+  header a {
+    color: white;
+    text-decoration: none;
+  }
+  .dropdown {
+    position: relative;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .dropdown-menu {
+    display: none;
+    padding: 1em 3em;
+    width: 17em;
+    top: 95%;
+    left: 1em;
+    background-color: inherit;
+    border: none;
+    border-bottom: 0.5px solid #78BEFF;
+    z-index: 2;
+  }
+}
 .startpage {
   padding-bottom: 15em;
 }
@@ -377,7 +392,7 @@ footer {
 }
 .newaccountingwrapper #check {
   margin: 0.9em 0 0 0.8em;
-  color: rgb(22, 214, 22) !important;
+  color: #16d616 !important;
 }
 
 .newaccountingform {
@@ -388,6 +403,7 @@ footer {
 }
 .newaccountingform .short {
   max-width: 30em;
+  margin-bottom: 1em;
 }
 .newaccountingform li {
   color: #78BEFF;
@@ -403,6 +419,7 @@ footer {
 }
 .newaccountingform .accountings {
   display: flex;
+  margin-bottom: 0.3em;
 }
 
 .allaccountingswrapper h2 {
@@ -462,5 +479,24 @@ footer {
 
 #balancesheet {
   display: none;
+}
+
+.balance-sheet-container {
+  width: 50%;
+  margin: 0 auto;
+}
+.balance-sheet-container p {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-left: 1em;
+}
+.balance-sheet-container span {
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-left: -1em;
+}
+.balance-sheet-container .hr {
+  background-color: white;
 }
 /*# sourceMappingURL=maps/main.css.map */

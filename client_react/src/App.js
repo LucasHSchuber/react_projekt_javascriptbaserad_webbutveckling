@@ -10,7 +10,7 @@ import LogIn from "./components/mainComponents/LogIn";
 import HomePage from "./components/mainComponents/HomePage";
 import NewAccounting from "./components/mainComponents/NewAccounting";
 import AllAccountings from "./components/mainComponents/AllAccountings";
-import Sheets from "./components/mainComponents/Sheets";
+import BalanceSheets from "./components/mainComponents/BalanceSheets";
 
 
 // css imports
@@ -31,7 +31,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             <Route path="/newaccounting" element={<NewAccounting />} />
             <Route path="/allaccountings" element={<AllAccountings />} />
-            <Route path="/sheets" element={<Sheets />} />
+            <Route path="/balancesheets" element={<BalanceSheets />} />
           </Routes>
         </div>
         <Footer />

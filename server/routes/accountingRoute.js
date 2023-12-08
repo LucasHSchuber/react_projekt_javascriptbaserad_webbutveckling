@@ -16,13 +16,33 @@ router.get('/', async (req, res) => {
 })
 
 
-// //----------------------
-// //GETTING ONE POST
-// //---------------------_
+//----------------------
+//GETTING ONE POST
+//---------------------_
 
-// router.get('/:id', getCourse, (req, res) => {
-//     res.json(res.course)
+// router.get('/:id', getAccounting, (req, res) => {
+//     res.json(res.accounting)
 // })
+
+
+
+//----------------------
+//GETTING ONE POST WHERE ID = USERID
+//---------------------_
+
+router.get('/acc', async (req, res) => {
+    const userId = req.query.userId;
+
+    try {
+        const userAccountings = await Accounting.find({ userId: userId });
+        res.json(userAccountings);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+
 
 
 
@@ -111,12 +131,12 @@ router.get('/search', async (req, res) => {
 
 
 
-// //getCourse method
-// async function getCourse(req, res, next) {
+// //getAccounting method
+// async function getAccounting(req, res, next) {
 //     try {
-//         course = await Course.findById(req.params.id)
-//         if (course == null) {
-//             return res.status(404).json({ message: "cannot find course" })
+//         accounting = await Accounting.findById(req.params.id)
+//         if (accounting == null) {
+//             return res.status(404).json({ message: "cannot find accounting" })
 //         }
 //     } catch (err) {
 //         return res.status(500).json({ message: err.message })

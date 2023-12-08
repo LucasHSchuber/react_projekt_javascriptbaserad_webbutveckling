@@ -16,11 +16,11 @@ function AlAccountings() {
     const getAllAccountings = async () => {
 
         const token = sessionStorage.getItem('token');
-        const userId = sessionStorage.getItem('userid'); // Assuming userId is stored in session storage
-
+        const userId = sessionStorage.getItem('userid');
+        console.log(userId);
 
         try {
-            const response = await fetch(`http://localhost:5000/accountings?id=${userId}`, {
+            const response = await fetch(`http://localhost:5000/accountings/acc?userId=${userId}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -29,14 +29,13 @@ function AlAccountings() {
             })
             if (response.ok) {
                 const responseData = await response.json();
-                // console.log("Accounting data:", responseData);
+                console.log("Accounting data:", responseData);
                 setAccountings(responseData);
 
             } else {
                 const responseData = await response.json();
                 console.log("Error:", responseData.message);
                 console.log("Error:", response.status, response.statusText, response.message);
-
             }
 
         } catch (error) {
@@ -105,7 +104,7 @@ function AlAccountings() {
                             <input
                                 className="form-control input mr-sm-2"
                                 type="search"
-                                placeholder="Search for date and company"
+                                placeholder="Search for company and comment"
                                 aria-label="Search"
                                 value={searchString}
                                 onChange={(e) => setSearchString(e.target.value)}

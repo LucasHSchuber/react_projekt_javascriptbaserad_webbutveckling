@@ -215,6 +215,8 @@ function NewAccounting() {
                         </Form.Group>
 
 
+                        <h6 className='mt-4 mb-3'>Verifications</h6>
+
                         {[...Array(accountingsCount)].map((_, index) => (
                             <div key={index} className='accountings' id={`accId${index}`}>
                                 <Form.Group controlId={`formCompany${index}`}>
