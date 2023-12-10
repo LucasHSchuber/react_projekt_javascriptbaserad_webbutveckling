@@ -11,6 +11,7 @@ import HomePage from "./components/mainComponents/HomePage";
 import NewAccounting from "./components/mainComponents/NewAccounting";
 import AllAccountings from "./components/mainComponents/AllAccountings";
 import BalanceSheets from "./components/mainComponents/BalanceSheets";
+import ChatBot from "./components/mainComponents/ChatBot";
 
 
 // css imports
@@ -18,6 +19,7 @@ import "./assets/css/main.css";
 
 
 function App() {
+  
   return (
     <div className="gradient-container">
     <Router>

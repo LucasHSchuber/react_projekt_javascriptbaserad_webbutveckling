@@ -57,6 +57,8 @@ router.post('/newaccounting', async (req, res) => {
         date: req.body.date,
         companyName: req.body.companyName,
         comment: req.body.comment,
+        created_at: req.body.created_at,
+        invoiceNmbr: req.body.invoiceNmbr,
         entries: req.body.entries
     })
     try {
@@ -78,6 +80,7 @@ router.get('/search', async (req, res) => {
       const searchResults = await Accounting.find({
         $or: [
           { companyName: { $regex: new RegExp(searchString, 'i') } },
+          { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
           { comment: { $regex: new RegExp(searchString, 'i') } },
         ],
       });

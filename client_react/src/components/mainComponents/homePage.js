@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fetchUser from '../../assets/js/fetchUser';
+import chatbotImg from '../../assets/images/chatbot.png';
 
 function HomePage() {
 
@@ -26,6 +27,26 @@ function HomePage() {
     }, []); // The empty dependency array [] ensures that this effect runs only once when the component mounts
 
 
+    const openChatbot = () => {
+        console.log("open chatbot");
+
+        const chatbotElement = document.getElementById("show-chatbot");
+
+        if (chatbotElement.style.display === "" || chatbotElement.style.display === "none") {
+            chatbotElement.style.display = "block";
+        } else {
+            chatbotElement.style.display = "none";
+        }
+    };
+
+    const closeChatbot = () => {
+
+        const chatbotElement = document.getElementById("show-chatbot");
+        chatbotElement.style.display = "none";
+
+    };
+
+
 
     return (
         <main className='py-5'>
@@ -34,8 +55,64 @@ function HomePage() {
                 <h1>Welcome <br></br><span>{name}</span></h1>
                 <h6>Company: {company}</h6>
 
+
+
+                <div className='chatbot' id="show-chatbot">
+                    <div className='header-chatbot d-flex'>
+                        <div className='d-flex w-100'>
+                            <img src={chatbotImg} alt='chatbot img' />
+                            <h6 className='ml-3'>AI Chatbot</h6>
+                        </div>
+                        <div className='flex-shrink-1'>
+                            <a
+                                onClick={closeChatbot}
+                            >
+                                <i class=" close-chatbot fa-2x fa-solid fa-minus"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div className='main-chatbot'>
+                        <div >
+                            <div className='intro-message d-flex'>
+                                <img src={chatbotImg} alt='chatbot img' className='mr-3' />
+                                <div>
+                                    <p>Hello there!</p>
+                                </div>
+                            </div>
+                            <div className='ml-5 selection-message'>
+                                <p>What can i assist you with?</p>
+                                <select>
+                                    <option value="" disabled selected hidden>Select an option</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    <option value="option3">Option 3</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div className='footer-chatbot'>
+                        <h6>Choose an alternative</h6>
+
+                    </div>
+                </div>
+
+                <button
+                    className=''
+                    id='button-openChatbot'
+                    onClick={openChatbot}
+                >
+                    <img src={chatbotImg} alt='chatbot img' />
+                </button>
+
             </div>
-        </main>
+        </main >
+
+
     );
 }
 

@@ -499,4 +499,113 @@ footer {
 .balance-sheet-container .hr {
   background-color: white;
 }
+
+#show-chatbot {
+  display: none;
+}
+
+.chatbot {
+  position: fixed;
+  flex-direction: column;
+  width: 20em;
+  height: 30em;
+  bottom: 7em;
+  right: 1em;
+  background-color: #EDEDED;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  /* Add a smooth box shadow */
+  z-index: 3;
+}
+.chatbot .header-chatbot {
+  background-color: #78BEFF;
+  color: #EDEDED !important;
+  padding: 1em 1em;
+  height: 4em;
+  font-size: 0.8em;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+}
+.chatbot .header-chatbot .close-chatbot {
+  padding-right: 0.6em;
+}
+.chatbot .header-chatbot h6 {
+  color: #EDEDED;
+}
+.chatbot .header-chatbot img {
+  width: 2em;
+  height: 2em;
+}
+.chatbot .main-chatbot {
+  padding: 0.4em 0.7em;
+  font-size: 0.8em;
+  height: 29em;
+  border-radius: 5px;
+}
+.chatbot .main-chatbot .intro-message {
+  padding: 2em 0 0 0.5em;
+}
+.chatbot .main-chatbot .intro-message p {
+  color: #01172C;
+  font-size: 1em;
+  background-color: rgb(224, 224, 224);
+  color: #01172C;
+  padding: 0.8em 1.2em;
+  border-radius: 10px;
+}
+.chatbot .main-chatbot select {
+  padding: 0.5em;
+  margin-top: -0.5em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.chatbot .main-chatbot select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.chatbot .main-chatbot .selection-message {
+  background-color: rgb(224, 224, 224);
+  padding: 0.8em 1.2em;
+  width: fit-content;
+  border-radius: 10px;
+}
+.chatbot .main-chatbot .selection-message p {
+  color: #01172C;
+  font-size: 1em;
+  color: #01172C;
+}
+.chatbot .main-chatbot img {
+  width: 2em;
+  height: 2em;
+}
+.chatbot .footer-chatbot {
+  margin-top: auto;
+  /* Push the footer to the bottom */
+  padding: 0.8em 0.7em;
+  font-size: 0.8em;
+  height: 2.5em;
+  border-top: 0.5px solid gray;
+}
+.chatbot .footer-chatbot h6 {
+  color: gray;
+  font-weight: 300;
+  font-size: 1.1em;
+  padding-top: 0.4em;
+}
+
+#button-openChatbot {
+  position: fixed;
+  width: 3em;
+  bottom: 2em;
+  right: 1em;
+}
+#button-openChatbot img {
+  margin-left: -0.65em;
+  width: 1.6em;
+  height: 1.6em;
+}
 /*# sourceMappingURL=maps/main.css.map */

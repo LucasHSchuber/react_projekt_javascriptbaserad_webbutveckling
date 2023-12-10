@@ -189,8 +189,10 @@ function BalanceSheets() {
         });
 
 
-        calcCredit1930(); 
+        calcCredit1930();
         calcDebit1930();
+
+
     }
 
 
@@ -221,6 +223,9 @@ function BalanceSheets() {
         console.log("result: ", result);
     }
 
+    useEffect(() => {
+        showValues();
+    }, [calculatedValues]);
 
     useEffect(() => {
         getAllAccountings();
@@ -252,9 +257,9 @@ function BalanceSheets() {
                         Generate
                     </Button>
 
-                    <Button className="button my-3" onClick={showValues} type="button">
+                    {/* <Button className="button my-3" onClick={showValues} type="button">
                         Show Values
-                    </Button>
+                    </Button> */}
 
 
                     <div id='balancesheet' className='py-4'>
@@ -302,23 +307,23 @@ function BalanceSheets() {
                                 <h3>Debts & Capital</h3>
 
                                 <div className="capital-category">
-                                    <p><span>Equity Capital</span></p>
+                                    <p><span>Equity</span></p>
                                     <div className="d-flex justify-content-between">
-                                        <p>2512 - Year's Result</p>
+                                        <p>2512 - årets resultat</p>
                                         <p>{result}</p>
                                     </div>
                                 </div>
 
                                 <div className="debt-category">
-                                    <p><span>Other Debts</span></p>
+                                    <p><span>Liabilities</span></p>
                                     <div className="d-flex justify-content-between">
-                                        <p>Debts</p>
+                                        <p>Annat</p>
                                         <p>{debts}</p>
                                     </div>
                                 </div>
 
                                 <div className="d-flex justify-content-between">
-                                    <h6>Total Debts & Capital</h6>
+                                    <h6>Total Equity & Liabilities</h6>
                                     <p style={{ fontWeight: "800" }}>{debts + result}</p>
 
                                 </div>

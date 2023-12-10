@@ -116,9 +116,9 @@ body {
         z-index: 2;
     }
 
-
-
 }
+
+@media screen and (max-width: 992px) {}
 
 
 
@@ -436,7 +436,7 @@ footer {
 
     .input {
         height: 3.4em !important;
-        
+
     }
 
     .short {
@@ -573,17 +573,18 @@ footer {
 #balancesheet {
     display: none;
 }
-.balance-sheet-container{
-    width: 50%;
-    margin:0 auto;
 
-    p{
+.balance-sheet-container {
+    width: 50%;
+    margin: 0 auto;
+
+    p {
         font-size: 0.9em;
         font-weight: 500;
         margin-left: 1em;
     }
 
-    span{
+    span {
         text-decoration: underline;
         font-weight: 700;
         font-size: 1.1em;
@@ -591,8 +592,145 @@ footer {
 
     }
 
-    .hr{
+    .hr {
 
         background-color: white;
+    }
+}
+
+
+
+
+//-------------
+// CHAT BOT
+//-------------
+#show-chatbot {
+    display: none;
+}
+
+.chatbot {
+    position: fixed;
+    flex-direction: column;
+    width: 20em;
+    height: 30em;
+    bottom: 7em;
+    right: 1em;
+    background-color: $lightwhite;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    /* Add a smooth box shadow */
+    z-index: 3;
+
+
+
+    .header-chatbot {
+        background-color: $lightblue;
+        color: $lightwhite !important;
+        padding: 1em 1em;
+        height: 4em;
+        font-size: 0.8em;
+        border: 1px solid #ebebeb;
+        border-radius: 5px;
+
+        .close-chatbot {
+            padding-right: 0.6em;
+        }
+
+        h6 {
+            color: $lightwhite;
+        }
+
+        img {
+            width: 2em;
+            height: 2em;
+        }
+    }
+
+    .main-chatbot {
+        padding: 0.4em 0.7em;
+        font-size: 0.8em;
+        height: 29em;
+        border-radius: 5px;
+
+
+
+        .intro-message {
+            padding: 2em 0 0 0.5em;
+
+            p {
+                color: $darkblue;
+                font-size: 1em;
+                background-color: rgb(224, 224, 224);
+                color: $darkblue;
+                padding: 0.8em 1.2em;
+                border-radius: 10px;
+            }
+        }
+
+        select {
+            padding: 0.5em;
+            margin-top: -0.5em;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .selection-message {
+
+            background-color: rgb(224, 224, 224);
+            padding: 0.8em 1.2em;
+            width: fit-content;
+            border-radius: 10px;
+
+            p {
+                color: $darkblue;
+                font-size: 1em;
+                color: $darkblue;
+            }
+        }
+
+        img {
+            width: 2em;
+            height: 2em;
+        }
+
+    }
+
+    .footer-chatbot {
+        margin-top: auto;
+        /* Push the footer to the bottom */
+        padding: 0.8em 0.7em;
+        font-size: 0.8em;
+        height: 2.5em;
+        border-top: 0.5px solid gray;
+
+        h6 {
+            color: gray;
+            font-weight: 300;
+            font-size: 1.1em;
+            padding-top: 0.4em
+        }
+
+    }
+}
+
+#button-openChatbot {
+    position: fixed;
+    width: 3em;
+    bottom: 2em;
+    right: 1em;
+
+    img {
+        margin-left: -0.65em;
+        width: 1.6em;
+        height: 1.6em;
     }
 }

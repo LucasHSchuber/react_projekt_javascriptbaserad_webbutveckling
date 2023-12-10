@@ -104,7 +104,7 @@ function AlAccountings() {
                             <input
                                 className="form-control input mr-sm-2"
                                 type="search"
-                                placeholder="Search: company, comment, invoice number"
+                                placeholder="Search for company and comment"
                                 aria-label="Search"
                                 value={searchString}
                                 onChange={(e) => setSearchString(e.target.value)}
@@ -131,10 +131,12 @@ function AlAccountings() {
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Invoice nmbr</th>
-                                <th>Comapny</th>
+                                <th>Company</th>
                                 <th>Comment</th>
-                                <th>Verifications</th>
+                                <th>Plan</th>
+                                <th>Debit</th>
+                                <th>Credit</th>
+                                <th>Redigera</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -146,20 +148,23 @@ function AlAccountings() {
                                             {index === 0 && (
                                                 <>
                                                     <td>{accounting.date.substring(0, 10)}</td>
-                                                    <td>{accounting.invoiceNmbr}</td>
                                                     <td>
-                                                        {accounting.companyName.length > 15
-                                                            ? accounting.companyName.substring(0, 15) + "..."
+                                                        {accounting.companyName.length > 10
+                                                            ? accounting.companyName.substring(0, 10) + "..."
                                                             : accounting.companyName}
                                                     </td>
                                                     <td>
-                                                        {accounting.comment.length > 15
-                                                            ? accounting.comment.substring(0, 15) + "..."
+                                                        {accounting.comment.length > 10
+                                                            ? accounting.comment.substring(0, 10) + "..."
                                                             : accounting.comment}
                                                     </td>
-                                                    <td>{array.length}</td>
                                                 </>
                                             )}
+
+                                            {/* Dataceller för varje inlägg */}
+                                            <td>{entry.plan}</td>
+                                            <td>{entry.debit}</td>
+                                            <td>{entry.credit}</td>
 
                                             {/* Sista cellen i varje rad */}
                                             {index === 0 && (

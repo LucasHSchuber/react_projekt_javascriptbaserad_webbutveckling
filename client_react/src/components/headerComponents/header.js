@@ -34,9 +34,15 @@ function Header() {
       <div className="header">
         <Navbar expand="lg">
           <div className="logo">
-            <Link to="/" onMouseOver={handleMouseOver}>
-              <img src={mImage} alt='Logo button menu show' />
-            </Link>
+            {isLoggedIn ? (
+              <Link to="/home" onMouseOver={handleMouseOver}>
+                <img src={mImage} alt='Logo button menu show' />
+              </Link>
+            ) : (
+              <Link to="/" onMouseOver={handleMouseOver}>
+                <img src={mImage} alt='Logo button menu show' />
+              </Link>
+            )}
           </div>
           <Navbar.Toggle aria-controls="navbarSupportedContent" />
           <Navbar.Collapse id="navbarSupportedContent">
@@ -99,18 +105,19 @@ function Header() {
                       Unhandled invoices
                     </NavDropdown.Item>
                   </NavDropdown>
+                  
 
                 </>
               ) : (
                 <>
                   {/* Links to show when the user is not logged in */}
-                  <Nav.Link as={Link} to="/">
+                  <Nav.Link as={Link} to="/" className='menu-link mt-5 mr-5 ml-5'>
                     Start
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/createuser">
+                  <Nav.Link as={Link} to="/createuser" className='menu-link mt-5 mr-5 ml-5'>
                     Sign up
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/login">
+                  <Nav.Link as={Link} to="/login" className='menu-link mt-5 mr-5 ml-5'>
                     Log in
                   </Nav.Link>
                 </>

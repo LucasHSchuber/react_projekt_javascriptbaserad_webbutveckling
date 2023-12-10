@@ -15,6 +15,7 @@ function NewAccounting() {
     const [date, setDate] = useState("");
     const [companyName, setCompanyName] = useState("");
     const [comment, setComment] = useState("");
+    const [invoiceNmbr, setInvoiceNmbr] = useState("");
     const [entries, setEntries] = useState([{ plan: "", debit: 0, credit: 0 }]);
 
     const [sumDebit, setSumDebit] = useState(0);
@@ -81,6 +82,7 @@ function NewAccounting() {
         // await getLastId();
         await getLastId();
         const idset = id;
+        let created_at = new Date();
 
 
 
@@ -90,6 +92,8 @@ function NewAccounting() {
             date: date,
             companyName: companyName,
             comment: comment,
+            invoiceNmbr: invoiceNmbr,
+            created_at: created_at,
             entries: entries
         }
 
@@ -193,9 +197,21 @@ function NewAccounting() {
                                 type="text"
                                 placeholder="Company name"
                                 name="company"
-                                id="test"
                                 // value={email}
                                 onChange={(e) => setCompanyName(e.target.value)}
+                                required
+                            />
+                        </Form.Group>
+
+                        {/* invoice nmbr */}
+                        <Form.Group controlId="formCompany">
+                            <Form.Control
+                                className='input short'
+                                type="text"
+                                placeholder="Invoice number"
+                                name="invoice"
+                                // value={company}
+                                onChange={(e) => setInvoiceNmbr(e.target.value)}
                                 required
                             />
                         </Form.Group>
@@ -207,7 +223,6 @@ function NewAccounting() {
                                 type="text"
                                 placeholder="Comment"
                                 name="comment"
-                                id="test2"
                                 // value={company}
                                 onChange={(e) => setComment(e.target.value)}
                                 required
