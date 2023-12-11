@@ -54,12 +54,11 @@ body {
         }
 
         .menu-link {
-            padding: 0 4em;
+            padding: 0 1em;
             margin-top: 2.3em;
             list-style-type: none;
             font-size: 1.1em;
             font-weight: 700;
-
             color: white !important;
             text-decoration: none;
             // transition: 0.1s;
@@ -94,6 +93,7 @@ body {
 
     .dropdown {
         position: relative;
+        margin-right: 2em;
 
         &:hover {
             .dropdown-menu {
@@ -104,12 +104,12 @@ body {
 
     .dropdown-menu {
         display: none;
-        padding: 1em 3em;
-        width: 17em;
+        margin-left: 0.3em;
+        width: fit-content;
 
-        // position: absolute;
+        position: absolute;
         top: 95%;
-        left: 1em;
+        // left: 0em;
         background-color: inherit;
         border: none;
         border-bottom: 0.5px solid $lightblue;
@@ -171,9 +171,9 @@ body {
     }
 }
 
-.button {
-    @include button-style;
-}
+// .button {
+//     @include button-style;
+// }
 
 .createuserwrapper {
     max-width: 30em;
@@ -203,7 +203,10 @@ body {
         font-size: 2em;
         color: $lightblue;
         font-weight: 700;
+    }
 
+    .button {
+        @include button-style;
     }
 
 }
@@ -262,10 +265,6 @@ body {
     }
 }
 
-.button {
-    @include button-style;
-}
-
 .signinuserwrapper {
     max-width: 30em;
     margin: 0 auto;
@@ -294,7 +293,10 @@ body {
         font-size: 2em;
         color: $lightblue;
         font-weight: 700;
+    }
 
+    .button {
+        @include button-style;
     }
 
 }
@@ -391,9 +393,7 @@ footer {
         }
     }
 
-    button {
-        @include button-style;
-    }
+
 }
 
 
@@ -424,6 +424,10 @@ footer {
     #check {
         margin: 0.9em 0 0 0.8em;
         color: #16d616 !important;
+    }
+
+    .button {
+        @include button-style;
     }
 
 }
@@ -568,6 +572,10 @@ footer {
         color: $lightblue;
         font-weight: 700;
     }
+
+    .button {
+        @include button-style;
+    }
 }
 
 #balancesheet {
@@ -611,13 +619,13 @@ footer {
 .chatbot {
     position: fixed;
     flex-direction: column;
-    width: 20em;
-    height: 30em;
+    width: 22em;
+    height: 34em;
     bottom: 7em;
     right: 1em;
     background-color: $lightwhite;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     /* Add a smooth box shadow */
     z-index: 3;
 
@@ -649,9 +657,24 @@ footer {
     .main-chatbot {
         padding: 0.4em 0.7em;
         font-size: 0.8em;
-        height: 29em;
+        height: 34em;
         border-radius: 5px;
 
+        .button-ok-chatbot {
+            width: fit-content;
+            height: fit-content;
+            padding: 0.4em 1.3em;
+            background-color: $lightwhite;
+            color: $darkblue;
+            border: none;
+            margin-top: 0.5em;
+            transition: 0.2s;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: $lightblue;
+            }
+        }
 
 
         .intro-message {
@@ -724,12 +747,24 @@ footer {
 
 #button-openChatbot {
     position: fixed;
-    width: 3em;
     bottom: 2em;
     right: 1em;
+    font-size: 1.3em;
+    font-weight: 600;
+    padding: 0.4em 1em;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.4s ease;
+
+    &:hover {
+        background-color: #468ED2;
+        border: none;
+    }
 
     img {
-        margin-left: -0.65em;
+        // margin-left: -0.65em;
         width: 1.6em;
         height: 1.6em;
     }

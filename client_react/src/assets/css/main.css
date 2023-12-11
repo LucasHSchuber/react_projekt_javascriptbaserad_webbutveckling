@@ -30,7 +30,7 @@ body {
     padding: 2em 7em;
   }
   header .menu-link {
-    padding: 0 4em;
+    padding: 0 1em;
     margin-top: 2.3em;
     list-style-type: none;
     font-size: 1.1em;
@@ -51,16 +51,17 @@ body {
   }
   .dropdown {
     position: relative;
+    margin-right: 2em;
   }
   .dropdown:hover .dropdown-menu {
     display: block;
   }
   .dropdown-menu {
     display: none;
-    padding: 1em 3em;
-    width: 17em;
+    margin-left: 0.3em;
+    width: fit-content;
+    position: absolute;
     top: 95%;
-    left: 1em;
     background-color: inherit;
     border: none;
     border-bottom: 0.5px solid #78BEFF;
@@ -126,37 +127,6 @@ body {
   margin: 1em 0;
 }
 
-.button {
-  background-color: #78BEFF;
-  color: #EDEDED;
-  border-radius: 50%;
-  font-size: 1.5em;
-  font-weight: 600;
-  padding: 0.4em 1.4em;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  border-radius: 50px;
-  transition: background-color 0.4s ease;
-}
-.button:hover {
-  background-color: #468ED2;
-  border: none;
-}
-.button:active {
-  background-color: #468ED2;
-  border: none;
-  outline: #468ED2;
-}
-.button:focus {
-  background-color: #468ED2;
-  border: none;
-}
-.button:disabled {
-  background-color: #468ED2;
-  border: none;
-}
-
 .createuserwrapper {
   max-width: 30em;
   margin: 0 auto;
@@ -181,6 +151,36 @@ body {
   font-size: 2em;
   color: #78BEFF;
   font-weight: 700;
+}
+.createuserwrapper .button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding: 0.4em 1.4em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.createuserwrapper .button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.createuserwrapper .button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.createuserwrapper .button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.createuserwrapper .button:disabled {
+  background-color: #468ED2;
+  border: none;
 }
 
 .createplanwrapper {
@@ -221,37 +221,6 @@ body {
   margin: 1em 0;
 }
 
-.button {
-  background-color: #78BEFF;
-  color: #EDEDED;
-  border-radius: 50%;
-  font-size: 1.5em;
-  font-weight: 600;
-  padding: 0.4em 1.4em;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  border-radius: 50px;
-  transition: background-color 0.4s ease;
-}
-.button:hover {
-  background-color: #468ED2;
-  border: none;
-}
-.button:active {
-  background-color: #468ED2;
-  border: none;
-  outline: #468ED2;
-}
-.button:focus {
-  background-color: #468ED2;
-  border: none;
-}
-.button:disabled {
-  background-color: #468ED2;
-  border: none;
-}
-
 .signinuserwrapper {
   max-width: 30em;
   margin: 0 auto;
@@ -277,6 +246,36 @@ body {
   font-size: 2em;
   color: #78BEFF;
   font-weight: 700;
+}
+.signinuserwrapper .button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding: 0.4em 1.4em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.signinuserwrapper .button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.signinuserwrapper .button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.signinuserwrapper .button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.signinuserwrapper .button:disabled {
+  background-color: #468ED2;
+  border: none;
 }
 
 .createplanwrapper {
@@ -344,36 +343,6 @@ footer {
 .homepage li:hover {
   color: #EDEDED;
 }
-.homepage button {
-  background-color: #78BEFF;
-  color: #EDEDED;
-  border-radius: 50%;
-  font-size: 1.5em;
-  font-weight: 600;
-  padding: 0.4em 1.4em;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  border-radius: 50px;
-  transition: background-color 0.4s ease;
-}
-.homepage button:hover {
-  background-color: #468ED2;
-  border: none;
-}
-.homepage button:active {
-  background-color: #468ED2;
-  border: none;
-  outline: #468ED2;
-}
-.homepage button:focus {
-  background-color: #468ED2;
-  border: none;
-}
-.homepage button:disabled {
-  background-color: #468ED2;
-  border: none;
-}
 
 .newaccountingwrapper h2 {
   font-size: 2.5em;
@@ -393,6 +362,36 @@ footer {
 .newaccountingwrapper #check {
   margin: 0.9em 0 0 0.8em;
   color: #16d616 !important;
+}
+.newaccountingwrapper .button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding: 0.4em 1.4em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.newaccountingwrapper .button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.newaccountingwrapper .button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.newaccountingwrapper .button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.newaccountingwrapper .button:disabled {
+  background-color: #468ED2;
+  border: none;
 }
 
 .newaccountingform {
@@ -476,6 +475,36 @@ footer {
   color: #78BEFF;
   font-weight: 700;
 }
+.sheetswrapper .button {
+  background-color: #78BEFF;
+  color: #EDEDED;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: 600;
+  padding: 0.4em 1.4em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+.sheetswrapper .button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.sheetswrapper .button:active {
+  background-color: #468ED2;
+  border: none;
+  outline: #468ED2;
+}
+.sheetswrapper .button:focus {
+  background-color: #468ED2;
+  border: none;
+}
+.sheetswrapper .button:disabled {
+  background-color: #468ED2;
+  border: none;
+}
 
 #balancesheet {
   display: none;
@@ -507,13 +536,13 @@ footer {
 .chatbot {
   position: fixed;
   flex-direction: column;
-  width: 20em;
-  height: 30em;
+  width: 22em;
+  height: 34em;
   bottom: 7em;
   right: 1em;
   background-color: #EDEDED;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   /* Add a smooth box shadow */
   z-index: 3;
 }
@@ -539,8 +568,22 @@ footer {
 .chatbot .main-chatbot {
   padding: 0.4em 0.7em;
   font-size: 0.8em;
-  height: 29em;
+  height: 34em;
   border-radius: 5px;
+}
+.chatbot .main-chatbot .button-ok-chatbot {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.4em 1.3em;
+  background-color: #EDEDED;
+  color: #01172C;
+  border: none;
+  margin-top: 0.5em;
+  transition: 0.2s;
+  border-radius: 10px;
+}
+.chatbot .main-chatbot .button-ok-chatbot:hover {
+  background-color: #78BEFF;
 }
 .chatbot .main-chatbot .intro-message {
   padding: 2em 0 0 0.5em;
@@ -599,12 +642,22 @@ footer {
 
 #button-openChatbot {
   position: fixed;
-  width: 3em;
   bottom: 2em;
   right: 1em;
+  font-size: 1.3em;
+  font-weight: 600;
+  padding: 0.4em 1em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;
+  transition: background-color 0.4s ease;
+}
+#button-openChatbot:hover {
+  background-color: #468ED2;
+  border: none;
 }
 #button-openChatbot img {
-  margin-left: -0.65em;
   width: 1.6em;
   height: 1.6em;
 }

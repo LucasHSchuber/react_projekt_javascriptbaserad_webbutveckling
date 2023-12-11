@@ -40,12 +40,13 @@ function HomePage() {
     };
 
     const closeChatbot = () => {
-
         const chatbotElement = document.getElementById("show-chatbot");
         chatbotElement.style.display = "none";
-
     };
 
+    const answerChatbot = () => {
+        console.log("choice made");
+    }
 
 
     return (
@@ -89,27 +90,37 @@ function HomePage() {
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
                                 </select>
+                                <button
+                                    className='button-ok-chatbot'
+                                    onClick={answerChatbot}
+                                    type="button"
+                                >
+                                    Ok
+                                </button>
                             </div>
 
                         </div>
                     </div>
 
-
                     <div className='footer-chatbot'>
                         <h6>Choose an alternative</h6>
 
                     </div>
+
                 </div>
 
-                <button
-                    className=''
-                    id='button-openChatbot'
-                    onClick={openChatbot}
-                >
-                    <img src={chatbotImg} alt='chatbot img' />
-                </button>
+                <div>
+                    <button
+                        className='button-chatbot'
+                        id='button-openChatbot'
+                        onClick={openChatbot}
+                    >
+                        <img src={chatbotImg} alt='chatbot img' />
+                    </button>
+                </div>
 
             </div>
+
         </main >
 
 
