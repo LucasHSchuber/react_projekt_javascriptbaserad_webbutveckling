@@ -75,46 +75,49 @@ router.post('/newaccounting', async (req, res) => {
 // Example: Search route
 router.get('/search', async (req, res) => {
     const searchString = req.query.searchString;
-  
+
     try {
-      const searchResults = await Accounting.find({
-        $or: [
-          { companyName: { $regex: new RegExp(searchString, 'i') } },
-          { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
-          { comment: { $regex: new RegExp(searchString, 'i') } },
-        ],
-      });
-  
-      res.json(searchResults);
+        const searchResults = await Accounting.find({
+            $or: [
+                { companyName: { $regex: new RegExp(searchString, 'i') } },
+                { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
+                { comment: { $regex: new RegExp(searchString, 'i') } },
+            ],
+        });
+
+        res.json(searchResults);
     } catch (error) {
-      console.error('Error during search:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
+        console.error('Error during search:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
 
 
 // //----------------------
 // //UPDATING
 // //----------------------
 
-// router.patch('/:id', getCourse, async (req, res) => {
-//     if (req.body.courseId != null) {
-//         res.course.courseId = req.body.courseId
-//     }
-//     if (req.body.courseName != null) {
-//         res.course.courseName = req.body.courseName
-//     }
-//     if (req.body.coursePeriod != null) {
-//         res.course.coursePeriod = req.body.coursePeriod
-//     }
 
-//     try {
-//         const updatedCourse = await res.course.save()
-//         res.json(updatedCourse)
-//     } catch (err) {
-//         res.status(400).json({ message: err.message })
-//     }
-// })
+
+
+router.patch('/:id', getAccounting, async (req, res) => {
+    if (req.body.companyName != null) {
+        res.accounting.companyName = req.body.companyName
+    }
+    if (req.body.comment != null) {
+        res.accounting.comment = req.body.comment
+    }
+    if (req.body.invoiceNmbr != null) {
+        res.accounting.invoiceNmbr = req.body.invoiceNmbr
+    }
+
+    try {
+        const updatedAccounting = await res.accounting.save()
+        res.json(updatedAccounting)
+    } catch (err) {
+        res.status(500).json({ message: "Internal server error", error: err.message });
+    }
+})
 
 
 
@@ -122,19 +125,34 @@ router.get('/search', async (req, res) => {
 // //DELETING
 // //----------------------
 
-// router.delete('/:id', getCourse, async (req, res) => {
-//     try {
-//         await res.course.deleteOne()
-//         res.json({ message: "Course Deleted" })
-//     } catch (err) {
-//         res.status(500).json({ message: err.message })
-//     }
-// })
+router.delete('/:id', async (req, res) => {
+    try {
+        await Accounting.deleteOne({ id: req.params.id });
+        res.json({ message: "Accounting Deleted" })
+    } catch (err) {
+        res.status(500).json({ message: err.message })
+    }
+})
 
 
 
 
-// //getAccounting method
+//getAccounting method
+async function getAccounting(req, res, next) {
+    try {
+        const accounting = await Accounting.findOne({ id: req.params.id });
+        if (!accounting) {
+            return res.status(404).json({ message: "Cannot find accounting" });
+        }
+        res.accounting = accounting;
+        next();
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+}
+
+
+
 // async function getAccounting(req, res, next) {
 //     try {
 //         accounting = await Accounting.findById(req.params.id)
@@ -145,7 +163,7 @@ router.get('/search', async (req, res) => {
 //         return res.status(500).json({ message: err.message })
 //     }
 
-//     res.course = course
+//     res.accounting = accounting
 //     next()
 // }
 

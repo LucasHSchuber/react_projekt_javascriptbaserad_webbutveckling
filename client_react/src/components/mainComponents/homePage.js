@@ -9,6 +9,12 @@ function HomePage() {
     const [name, setUserName] = useState(null);
     const [company, setUserCompany] = useState(null);
 
+    const [showSpinner, setShowSpinner] = useState(false);
+    const [showAnswer, setShowAnswer] = useState(false);
+
+    const [selectedOption, setSelectedOption] = useState("");
+    const [answer, setAnswer] = useState("");
+
 
     // useEffect hook to run fetchUser when the component mounts
     useEffect(() => {
@@ -31,21 +37,56 @@ function HomePage() {
         console.log("open chatbot");
 
         const chatbotElement = document.getElementById("show-chatbot");
+        const buttonElement = document.getElementById("button-openChatbot");
+
 
         if (chatbotElement.style.display === "" || chatbotElement.style.display === "none") {
             chatbotElement.style.display = "block";
+            buttonElement.style.right = "2.5em";
+            buttonElement.style.backgroundColor = "#78BEFF";
         } else {
             chatbotElement.style.display = "none";
+            buttonElement.style.right = "2em";
+            buttonElement.style.backgroundColor = "#EDEDED";
+
         }
+
+
     };
 
     const closeChatbot = () => {
         const chatbotElement = document.getElementById("show-chatbot");
+        const buttonElement = document.getElementById("button-openChatbot");
         chatbotElement.style.display = "none";
+        buttonElement.style.right = "2em";
+
+
     };
 
     const answerChatbot = () => {
-        console.log("choice made");
+
+        const userinput = document.getElementById("userinput");
+        const selection = document.getElementById("selection");
+        // const spinner = document.getElementById("spinner");
+        userinput.style.display = "block";
+        selection.style.display = "none";
+        // spinner.style.display = "block";
+
+        setShowSpinner(true);
+
+        if (selectedOption === "What is accounting?") {
+            let string = "Accounting is the process of recording, summarizing, analyzing, and reporting financial transactions of a business or organization. It involves the systematic and comprehensive recording of financial activities, ensuring that all financial information is accurate, complete, and in compliance with accounting standards and regulations";
+            setAnswer(string);
+        } else if (selectedOption === "How should I account a sale?") {
+            let string = "Debit: Ex, 1930 - bank account \n Credit: Ex, 3010 - sales \n Credit: Ex, 2610 - VAT \n Make sure that the credit posts has the same totalt amount as credit posts.";
+            setAnswer(string);
+        }
+
+        setTimeout(() => {
+            setShowSpinner(false);
+            setShowAnswer(true);
+        }, 1500)
+
     }
 
 
@@ -84,27 +125,50 @@ function HomePage() {
                             </div>
                             <div className='ml-5 selection-message'>
                                 <p>What can i assist you with?</p>
-                                <select>
-                                    <option value="" disabled selected hidden>Select an option</option>
-                                    <option value="option1">Option 1</option>
-                                    <option value="option2">Option 2</option>
-                                    <option value="option3">Option 3</option>
-                                </select>
-                                <button
-                                    className='button-ok-chatbot'
-                                    onClick={answerChatbot}
-                                    type="button"
-                                >
-                                    Ok
-                                </button>
+                                <div id="selection">
+                                    <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} >
+                                        <option value="" disabled selected hidden>Select an option</option>
+                                        <option value="What is accounting?">What is accounting?</option>
+                                        <option value="How should I account a sale?">How should I account a sale?</option>
+                                        <option value="Why can't I edit the verifications?">Why can't I edit the verifications?</option>
+                                        <option value="Do you have any open positions?">Do you have any open positions?</option>
+                                    </select>
+                                    <button
+                                        className='button-ok-chatbot'
+                                        onClick={answerChatbot}
+                                        type="button"
+                                    >
+                                        Ok
+                                    </button>
+                                </div>
                             </div>
+
+                            <div className='userinput-chatbot' id="userinput">
+                                <p>{selectedOption}</p>
+                            </div>
+                            {showSpinner && (
+                                <div class="spinner-border" role="status" id="spinner">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            )}
+
+                            {showAnswer && (
+
+                                <div className='respone-chatbot d-flex'>
+                                    <img src={chatbotImg} alt='chatbot img' className='mr-3' />
+                                    <div>
+                                        <p>{answer}</p>
+                                    </div>
+                                </div>
+
+
+                            )}
 
                         </div>
                     </div>
 
                     <div className='footer-chatbot'>
                         <h6>Choose an alternative</h6>
-
                     </div>
 
                 </div>

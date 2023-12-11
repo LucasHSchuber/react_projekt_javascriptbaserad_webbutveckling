@@ -41,7 +41,7 @@ function LogIn() {
                 sessionStorage.setItem('token', token);
                 sessionStorage.setItem('userid', userid);
                 sessionStorage.setItem('username', username);
-                
+
                 //send user to main page
 
 
@@ -102,7 +102,7 @@ function LogIn() {
                         Sign in
                     </Button>
 
-                    <li className=''>Create a new account? Click here!</li>
+                    <li className='ml-1'>Create a new account? Click here!</li>
 
                 </Form>
 

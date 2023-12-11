@@ -106,7 +106,6 @@ body {
         display: none;
         margin-left: 0.3em;
         width: fit-content;
-
         position: absolute;
         top: 95%;
         // left: 0em;
@@ -181,7 +180,7 @@ body {
     padding: 4em 0 0 0;
 
     .input {
-        height: 3.4em;
+        height: 3em;
     }
 
     li {
@@ -271,7 +270,7 @@ body {
     padding: 4em 0 3em 0;
 
     .input {
-        height: 3.4em;
+        height: 3em;
     }
 
     li {
@@ -297,6 +296,7 @@ body {
 
     .button {
         @include button-style;
+        margin-bottom: -0.1em;
     }
 
 }
@@ -346,7 +346,25 @@ body {
 footer {
     height: 50vh;
     margin-top: 3em;
+    padding: 5em 3em;
     border-top: solid 0.5px white;
+
+    .footer {
+        color: $lightwhite;
+
+    }
+
+    .menu-link {
+        color: white !important;
+        text-decoration: none;
+        font-size: 1.1em;
+        font-weight: 200;
+        transition: 0.2s;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 
@@ -439,8 +457,7 @@ footer {
 
 
     .input {
-        height: 3.4em !important;
-
+        height: 3em !important;
     }
 
     .short {
@@ -521,7 +538,7 @@ footer {
 
 
     .input {
-        height: 3.4em !important;
+        height: 3em !important;
         width: 25em !important;
     }
 
@@ -538,6 +555,29 @@ footer {
     td {
         padding: 1em 1em 1em 0.5em;
         // border: 0.5px white solid;
+    }
+
+    #edit-button {
+        background-color: $lightblue;
+        border: none;
+        font-size: 1.2em;
+
+        &:hover {
+            background-color: #468ED2;
+            border: none;
+        }
+
+    }
+
+    #delete-button {
+        background-color: rgb(255, 94, 94);
+        border: none;
+        font-size: 1.2em;
+
+        &:hover {
+            background-color: rgb(250, 135, 135);
+            border: none;
+        }
     }
 
 }
@@ -612,6 +652,7 @@ footer {
 //-------------
 // CHAT BOT
 //-------------
+
 #show-chatbot {
     display: none;
 }
@@ -619,10 +660,10 @@ footer {
 .chatbot {
     position: fixed;
     flex-direction: column;
-    width: 22em;
-    height: 34em;
-    bottom: 7em;
-    right: 1em;
+    width: 24em;
+    height: 36em;
+    bottom: 6.2em;
+    right: 4em;
     background-color: $lightwhite;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
@@ -657,14 +698,14 @@ footer {
     .main-chatbot {
         padding: 0.4em 0.7em;
         font-size: 0.8em;
-        height: 34em;
+        height: 37em;
         border-radius: 5px;
 
         .button-ok-chatbot {
             width: fit-content;
             height: fit-content;
             padding: 0.4em 1.3em;
-            background-color: $lightwhite;
+            background-color: white;
             color: $darkblue;
             border: none;
             margin-top: 0.5em;
@@ -675,7 +716,6 @@ footer {
                 background-color: $lightblue;
             }
         }
-
 
         .intro-message {
             padding: 2em 0 0 0.5em;
@@ -707,8 +747,29 @@ footer {
         }
 
         .selection-message {
-
             background-color: rgb(224, 224, 224);
+            padding: 0.8em 1.2em;
+            width: fit-content;
+            border-radius: 10px;
+
+            #selection {
+                width: 18em;
+            }
+
+            p {
+                color: $darkblue;
+                font-size: 1em;
+                color: $darkblue;
+            }
+        }
+
+        .userinput-chatbot {
+            position: relative;
+            background-color: $lightblue;
+            float: right;
+            height: 3.3em;
+            margin-right: 3.5em;
+            margin-top: 1.5em;
             padding: 0.8em 1.2em;
             width: fit-content;
             border-radius: 10px;
@@ -718,6 +779,38 @@ footer {
                 font-size: 1em;
                 color: $darkblue;
             }
+        }
+
+        .respone-chatbot {
+
+            position: relative;
+            float: left;
+            width: fit-content;
+
+            p {
+                margin-top: 1.5em;
+                max-width: 22em;
+                padding: 1em 1.2em 1em 1.2em;
+                background-color: rgb(224, 224, 224);
+                color: $darkblue;
+                font-size: 1em;
+                color: $darkblue;
+                border-radius: 10px;
+            }
+
+            img {
+                margin-top: 1.5em;
+            }
+
+        }
+
+        #spinner {
+            margin-top: 5em !important;
+            margin-left: 12em;
+        }
+
+        #userinput {
+            display: none;
         }
 
         img {
@@ -730,7 +823,7 @@ footer {
     .footer-chatbot {
         margin-top: auto;
         /* Push the footer to the bottom */
-        padding: 0.8em 0.7em;
+        padding: 0.8em 1.2em;
         font-size: 0.8em;
         height: 2.5em;
         border-top: 0.5px solid gray;
@@ -748,15 +841,17 @@ footer {
 #button-openChatbot {
     position: fixed;
     bottom: 2em;
-    right: 1em;
+    right: 2em;
     font-size: 1.3em;
     font-weight: 600;
     padding: 0.4em 1em;
     text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     cursor: pointer;
     border: none;
     border-radius: 50px;
-    transition: background-color 0.4s ease;
+    transition: 0.4s ease;
+    background-color: $lightwhite;
 
     &:hover {
         background-color: #468ED2;
@@ -768,4 +863,39 @@ footer {
         width: 1.6em;
         height: 1.6em;
     }
+}
+
+
+
+
+
+//-------------
+// MODAL
+//-------------
+
+.modal {
+
+
+    #modal-close-button {
+        background-color: gray;
+        border: none;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: #b3b3b3;
+            border: none;
+        }
+    }
+
+    #modal-save-button {
+        background-color: $lightblue;
+        border: none;
+        transition: 0.2s;
+
+        &:hover {
+            background-color: #468ED2;
+            border: none;
+        }
+    }
+
 }

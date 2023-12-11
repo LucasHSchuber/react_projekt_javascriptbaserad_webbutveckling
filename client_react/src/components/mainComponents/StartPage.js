@@ -13,7 +13,12 @@ function StartPage() {
                 <h1>Artificial Intellegence <br></br><span>Accounting System</span></h1>
 
                 <div className='my-5'>
-                    <button className='button'>Sign in</button>
+                    <button className='button'>
+                        <Link to="/login" style={{ color: "white" }}>
+                            Sign in
+                        </Link>
+                    </button>
+
 
                     <Link to="/createuser"> <li className='mt-4'>Create a new account?</li></Link>
                 </div>

@@ -133,7 +133,7 @@ body {
   padding: 4em 0 0 0;
 }
 .createuserwrapper .input {
-  height: 3.4em;
+  height: 3em;
 }
 .createuserwrapper li {
   color: #78BEFF;
@@ -227,7 +227,7 @@ body {
   padding: 4em 0 3em 0;
 }
 .signinuserwrapper .input {
-  height: 3.4em;
+  height: 3em;
 }
 .signinuserwrapper li {
   color: #78BEFF;
@@ -259,6 +259,7 @@ body {
   border: none;
   border-radius: 50px;
   transition: background-color 0.4s ease;
+  margin-bottom: -0.1em;
 }
 .signinuserwrapper .button:hover {
   background-color: #468ED2;
@@ -310,7 +311,21 @@ body {
 footer {
   height: 50vh;
   margin-top: 3em;
+  padding: 5em 3em;
   border-top: solid 0.5px white;
+}
+footer .footer {
+  color: #EDEDED;
+}
+footer .menu-link {
+  color: white !important;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 200;
+  transition: 0.2s;
+}
+footer .menu-link:hover {
+  text-decoration: underline;
 }
 
 .homepage {
@@ -398,7 +413,7 @@ footer {
   padding: 1em 0 2em 0;
 }
 .newaccountingform .input {
-  height: 3.4em !important;
+  height: 3em !important;
 }
 .newaccountingform .short {
   max-width: 30em;
@@ -441,7 +456,7 @@ footer {
   color: #EDEDED;
 }
 .allaccountingstable .input {
-  height: 3.4em !important;
+  height: 3em !important;
   width: 25em !important;
 }
 .allaccountingstable .filter {
@@ -454,6 +469,24 @@ footer {
 }
 .allaccountingstable td {
   padding: 1em 1em 1em 0.5em;
+}
+.allaccountingstable #edit-button {
+  background-color: #78BEFF;
+  border: none;
+  font-size: 1.2em;
+}
+.allaccountingstable #edit-button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.allaccountingstable #delete-button {
+  background-color: rgb(255, 94, 94);
+  border: none;
+  font-size: 1.2em;
+}
+.allaccountingstable #delete-button:hover {
+  background-color: rgb(250, 135, 135);
+  border: none;
 }
 
 .sheetswrapper {
@@ -536,10 +569,10 @@ footer {
 .chatbot {
   position: fixed;
   flex-direction: column;
-  width: 22em;
-  height: 34em;
-  bottom: 7em;
-  right: 1em;
+  width: 24em;
+  height: 36em;
+  bottom: 6.2em;
+  right: 4em;
   background-color: #EDEDED;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
@@ -568,14 +601,14 @@ footer {
 .chatbot .main-chatbot {
   padding: 0.4em 0.7em;
   font-size: 0.8em;
-  height: 34em;
+  height: 37em;
   border-radius: 5px;
 }
 .chatbot .main-chatbot .button-ok-chatbot {
   width: fit-content;
   height: fit-content;
   padding: 0.4em 1.3em;
-  background-color: #EDEDED;
+  background-color: white;
   color: #01172C;
   border: none;
   margin-top: 0.5em;
@@ -616,10 +649,54 @@ footer {
   width: fit-content;
   border-radius: 10px;
 }
+.chatbot .main-chatbot .selection-message #selection {
+  width: 18em;
+}
 .chatbot .main-chatbot .selection-message p {
   color: #01172C;
   font-size: 1em;
   color: #01172C;
+}
+.chatbot .main-chatbot .userinput-chatbot {
+  position: relative;
+  background-color: #78BEFF;
+  float: right;
+  height: 3.3em;
+  margin-right: 3.5em;
+  margin-top: 1.5em;
+  padding: 0.8em 1.2em;
+  width: fit-content;
+  border-radius: 10px;
+}
+.chatbot .main-chatbot .userinput-chatbot p {
+  color: #01172C;
+  font-size: 1em;
+  color: #01172C;
+}
+.chatbot .main-chatbot .respone-chatbot {
+  position: relative;
+  float: left;
+  width: fit-content;
+}
+.chatbot .main-chatbot .respone-chatbot p {
+  margin-top: 1.5em;
+  max-width: 22em;
+  padding: 1em 1.2em 1em 1.2em;
+  background-color: rgb(224, 224, 224);
+  color: #01172C;
+  font-size: 1em;
+  color: #01172C;
+  border-radius: 10px;
+}
+.chatbot .main-chatbot .respone-chatbot img {
+  margin-top: 1.5em;
+}
+.chatbot .main-chatbot #spinner {
+  margin-top: 5em !important;
+  margin-left: 12em;
+}
+.chatbot .main-chatbot #userinput {
+  display: none;
 }
 .chatbot .main-chatbot img {
   width: 2em;
@@ -628,7 +705,7 @@ footer {
 .chatbot .footer-chatbot {
   margin-top: auto;
   /* Push the footer to the bottom */
-  padding: 0.8em 0.7em;
+  padding: 0.8em 1.2em;
   font-size: 0.8em;
   height: 2.5em;
   border-top: 0.5px solid gray;
@@ -643,15 +720,17 @@ footer {
 #button-openChatbot {
   position: fixed;
   bottom: 2em;
-  right: 1em;
+  right: 2em;
   font-size: 1.3em;
   font-weight: 600;
   padding: 0.4em 1em;
   text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   cursor: pointer;
   border: none;
   border-radius: 50px;
-  transition: background-color 0.4s ease;
+  transition: 0.4s ease;
+  background-color: #EDEDED;
 }
 #button-openChatbot:hover {
   background-color: #468ED2;
@@ -660,5 +739,24 @@ footer {
 #button-openChatbot img {
   width: 1.6em;
   height: 1.6em;
+}
+
+.modal #modal-close-button {
+  background-color: gray;
+  border: none;
+  transition: 0.2s;
+}
+.modal #modal-close-button:hover {
+  background-color: #b3b3b3;
+  border: none;
+}
+.modal #modal-save-button {
+  background-color: #78BEFF;
+  border: none;
+  transition: 0.2s;
+}
+.modal #modal-save-button:hover {
+  background-color: #468ED2;
+  border: none;
 }
 /*# sourceMappingURL=maps/main.css.map */

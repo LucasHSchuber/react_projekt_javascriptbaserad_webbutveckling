@@ -202,14 +202,14 @@ function CreateUser() {
                 <div className='createuserwrapper'>
 
                     <Button
-                        className="button mt-4"
+                        className="button"
                         variant="primary"
                         type="button"
                         onClick={createUser}
                     >
                         Create
                     </Button>
-                    <li className='py-5'>Already have an account? Sign in here!</li>
+                    <li className='py-3'>Already have an account? Sign in here!</li>
 
                 </div>
             </div>

@@ -26,6 +26,16 @@ function Header() {
     setIsVisible2(!isVisible2);
   }
 
+  const logoutUser = () => {
+    // Remove the token from sessionStorage
+    const token = sessionStorage.getItem('token');
+    const user = sessionStorage.getItem('userid');
+    console.log(token + " has been removed from session storage");
+    console.log(user + " has been removed from session storage");
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userid');
+}
+
   // Check if the user is logged in based on the presence of the token
   const isLoggedIn = sessionStorage.getItem('token') !== null;
 
@@ -105,7 +115,27 @@ function Header() {
                       Unhandled invoices
                     </NavDropdown.Item>
                   </NavDropdown>
-                  
+
+                  {/* dropdown */}
+                  <NavDropdown
+                    title={(
+                      <span style={{ color: 'white' }}>
+                        User
+                      </span>
+                    )}
+                    id="basic-nav-dropdown"
+                    className=' menu-link'
+                    onMouseEnter={handleDropdownToggle2}
+                    onMouseLeave={handleDropdownToggle2}
+                  >
+                    <NavDropdown.Item as={Link} to="/">
+                      User settings
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/" onClick={logoutUser}>
+                      Log out
+                    </NavDropdown.Item>
+                  </NavDropdown>
+
 
                 </>
               ) : (
