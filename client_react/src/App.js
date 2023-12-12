@@ -7,11 +7,13 @@ import Footer from "./components/footerComponents/footer";
 import StartPage from "./components/mainComponents/StartPage";
 import CreateUser from "./components/mainComponents/CreateUser";
 import LogIn from "./components/mainComponents/LogIn";
-import HomePage from "./components/mainComponents/HomePage";
+
 import NewAccounting from "./components/mainComponents/NewAccounting";
 import AllAccountings from "./components/mainComponents/AllAccountings";
 import BalanceSheets from "./components/mainComponents/BalanceSheets";
 import ChatBot from "./components/mainComponents/ChatBot";
+import HomePage from "./components/mainComponents/HomePage"
+import UserSettings from "./components/mainComponents/UserSettings"
 
 
 // css imports
@@ -34,6 +36,7 @@ function App() {
             <Route path="/newaccounting" element={<NewAccounting />} />
             <Route path="/allaccountings" element={<AllAccountings />} />
             <Route path="/balancesheets" element={<BalanceSheets />} />
+            <Route path="/usersettings" element={<UserSettings />} />
           </Routes>
         </div>
         <Footer />

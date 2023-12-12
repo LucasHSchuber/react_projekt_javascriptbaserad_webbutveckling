@@ -1,6 +1,6 @@
 // typically use the useEffect hook. The useEffect hook is used for side effects in functional components, such as data fetching, subscriptions, or manually changing the DOM.
 import axios from 'axios';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Modal, Table } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 
 
@@ -138,7 +138,6 @@ function AlAccountings() {
 
     const deleteAccounting = async (accountId) => {
 
-
         const token = sessionStorage.getItem("token");
 
         const isConfirmed = window.confirm("Are you sure you want to delete this accounting post?");
@@ -182,7 +181,7 @@ function AlAccountings() {
 
                 <div className='allaccountingstable'>
 
-                    <nav className="navbar mb-4">
+                    <nav className="mb-4">
                         <form className="form-inline">
                             <input
                                 className="form-control input mr-sm-2"
@@ -295,15 +294,26 @@ function AlAccountings() {
 
 
                                     <hr></hr>
-                                    <h6>Verifications:</h6>
+                                    {/* <h6>Verifications:</h6> */}
 
-                                    {selectedAcc.entries.map((item, index) => (
-                                        <div key={index} className='d-flex'>
-                                            <p>Plan: {item.plan}</p>
-                                            {item.debit !== 0 && <p>Debit: {item.debit}</p>}
-                                            <p>Credit: {item.credit}</p>
-                                        </div>
-                                    ))}
+                                    <Table striped bordered hover>
+                                        <thead>
+                                            <tr>
+                                                <th>Plan</th>
+                                                <th>Debit</th>
+                                                <th>Credit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {selectedAcc.entries.map((item, index) => (
+                                                <tr key={index}>
+                                                    <td>{item.plan}</td>
+                                                    <td>{item.debit}</td>
+                                                    <td>{item.credit}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </Table>
 
                                 </Modal.Body>
                                 <Modal.Footer>

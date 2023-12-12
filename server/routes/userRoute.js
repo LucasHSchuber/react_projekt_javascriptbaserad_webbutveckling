@@ -108,12 +108,12 @@ router.post('/login', async (req, res) => {
         const result = await User.updateOne(filter, update);
 
         //send token to client
-        res.json({ 
+        res.json({
             token: token,
             userId: user.id,
             userName: user.name,
             // ... other data you want to send
-          });
+        });
 
     } catch (err) {
         res.status(400).json({ message: err.message })
@@ -146,33 +146,37 @@ router.get('/logedinuser', async (req, res) => {
 
 
 
-module.exports = router;
-
-
-
 
 // //----------------------
 // //UPDATING
 // //----------------------
 
-// router.patch('/:id', getCourse, async (req, res) => {
-//     if (req.body.courseId != null) {
-//         res.course.courseId = req.body.courseId
-//     }
-//     if (req.body.courseName != null) {
-//         res.course.courseName = req.body.courseName
-//     }
-//     if (req.body.coursePeriod != null) {
-//         res.course.coursePeriod = req.body.coursePeriod
-//     }
+router.patch('/:id', getUser, async (req, res) => {
 
-//     try {
-//         const updatedCourse = await res.course.save()
-//         res.json(updatedCourse)
-//     } catch (err) {
-//         res.status(400).json({ message: err.message })
-//     }
-// })
+    // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // if (req.body.email != null && !emailPattern.test(req.body.email)) {
+    //     return res.status(401).json({ message: "Invalid email address" });
+    // }
+
+    if (req.body.name != null) {
+        res.user.name = req.body.name
+    }
+    if (req.body.company != null) {
+        res.user.company = req.body.company
+    }
+    if (req.body.email != null) {
+        res.user.email = req.body.email
+    }
+
+    
+    try {
+        const updatedUser = await res.user.save()
+        res.json(updatedUser)
+    } catch (err) {
+        res.status(400).json({ message: err.message })
+    }
+})
 
 
 
@@ -180,9 +184,38 @@ module.exports = router;
 // //DELETING
 // //----------------------
 
-// router.delete('/:id', getCourse, async (req, res) => {
+router.delete('/deleteuser', async (req, res) => {
+
+    const user = await User.findOne({ id: req.body.id });
+
+    if (!user) {
+        return res.status(401).json({ message: "Invalid password. Can't find user" })
+    }
+
+    const passwordValidate = await bcrypt.compare(req.body.password, user.hashed_password)
+
+    if (!passwordValidate) {
+        return res.status(401).json({ message: "Invalid password" })
+    } else {
+
+        try {
+            await User.deleteOne({ id: user.id });
+            res.json({ message: "User Deleted" })
+        } catch (err) {
+            res.status(500).json({ message: err.message })
+        }
+
+
+    }
+
+
+
+})
+
+
+// router.delete('/:id', async (req, res) => {
 //     try {
-//         await res.course.deleteOne()
+//         await res.User.deleteOne()
 //         res.json({ message: "Course Deleted" })
 //     } catch (err) {
 //         res.status(500).json({ message: err.message })
@@ -190,6 +223,18 @@ module.exports = router;
 // })
 
 
+async function getUser(req, res, next) {
+    try {
+        const user = await User.findOne({ id: req.params.id });
+        if (!user) {
+            return res.status(404).json({ message: "Cannot find user" });
+        }
+        res.user = user;
+        next();
+    } catch (err) {
+        return res.status(500).json({ message: err.message });
+    }
+}
 
 
 // //getCourse method

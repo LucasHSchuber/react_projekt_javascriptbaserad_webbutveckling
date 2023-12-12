@@ -22,6 +22,8 @@ const fetchUser = async () => {
             console.log("User data:", responseData);
 
             return {
+                id: responseData.id,
+                email: responseData.email,
                 name: responseData.name,
                 company: responseData.company
             };

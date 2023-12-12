@@ -99,7 +99,6 @@ router.get('/search', async (req, res) => {
 
 
 
-
 router.patch('/:id', getAccounting, async (req, res) => {
     if (req.body.companyName != null) {
         res.accounting.companyName = req.body.companyName

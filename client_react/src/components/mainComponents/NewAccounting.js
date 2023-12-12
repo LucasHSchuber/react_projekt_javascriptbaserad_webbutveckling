@@ -248,10 +248,6 @@ function NewAccounting() {
                                                 {option.label}
                                             </option>
                                         ))}
-                                        {/* <option selected value="">Plan</option>
-                                        <option value="1930 - bank">1930 - bank</option>
-                                        <option value="2640 - ingående moms">2640 ingående moms</option>
-                                        <option value="3010 - försäljning">3010 - försäljning</option> */}
                                     </Form.Control>
                                 </Form.Group>
                                 <Form.Group controlId={`formCompany${index}`}>

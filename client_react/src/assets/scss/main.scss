@@ -4,6 +4,9 @@
 @import 'components';
 @import 'layout';
 
+* {
+    font-family: 'Assistant', sans-serif;
+}
 
 .gradient-container {
     background: linear-gradient(to bottom, $lightblue2, $darkblue);
@@ -16,6 +19,7 @@
 
 body {
     background-color: rgb(236, 236, 236);
+
 }
 
 
@@ -896,6 +900,65 @@ footer {
             background-color: #468ED2;
             border: none;
         }
+    }
+
+}
+
+
+
+
+//-------------
+// USER SETTINGS
+//-------------
+
+
+.usersettingswrapper {
+    h2 {
+        font-size: 2.5em;
+        color: $lightblue;
+        font-weight: 700;
+    }
+
+    h5 {
+        font-size: 1.5em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
+
+    h6 {
+        font-size: 1em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
+
+}
+
+.usersettings {
+
+    color: $lightwhite;
+
+    .circle {
+        width: 100px;
+        height: 100px;
+        background-color: #3498db;
+        /* Use your preferred background color */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 35px;
+        font-weight: bold;
+        margin: 1em 0em;
+    }
+
+    .input {
+        height: 3em !important;
+    }
+
+    .short {
+        max-width: 30em;
+        margin-bottom: 1em;
     }
 
 }
