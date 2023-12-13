@@ -148,16 +148,16 @@ router.get('/logedinuser', async (req, res) => {
 
 
 // //----------------------
-// //UPDATING
+// //UPDATING DATA
 // //----------------------
 
 router.patch('/:id', getUser, async (req, res) => {
 
-    // const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // if (req.body.email != null && !emailPattern.test(req.body.email)) {
-    //     return res.status(401).json({ message: "Invalid email address" });
-    // }
+    if (req.body.email != null && !emailPattern.test(req.body.email)) {
+        return res.status(401).json({ message: "Invalid email address" });
+    }
 
     if (req.body.name != null) {
         res.user.name = req.body.name
@@ -169,7 +169,7 @@ router.patch('/:id', getUser, async (req, res) => {
         res.user.email = req.body.email
     }
 
-    
+
     try {
         const updatedUser = await res.user.save()
         res.json(updatedUser)
@@ -177,6 +177,62 @@ router.patch('/:id', getUser, async (req, res) => {
         res.status(400).json({ message: err.message })
     }
 })
+
+
+
+
+// //----------------------
+// //UPDATING PASSWORD
+// //----------------------
+
+// Update user password
+router.patch('/updatepassword/:id', async (req, res) => {
+    try {
+
+        if (!req.body.id || !req.body.currentpassword || !req.body.password || !req.body.repeatpassword) {
+            return res.status(400).json({ message: "Invalid input data" });
+        }
+
+        console.log("User ID:", req.body.id);
+        const user = await User.findOne({ id: req.body.id });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const passwordValidate = await bcrypt.compare(req.body.currentpassword, user.hashed_password);
+        if (!passwordValidate) {
+            return res.status(401).json({ message: "Invalid current password" });
+        }
+
+        if (req.body.password !== req.body.repeatpassword) {
+            return res.status(400).json({ message: "Passwords do not match" });
+        }
+
+        if (req.body.password.length < 5) {
+            return res.status(400).json({ message: "Password must be at least five characters" });
+        }
+
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+
+        if (user) {
+            user.hashed_password = hashedPassword;
+            const updatedUser = await user.save();
+            res.json(updatedUser)
+
+        } else {
+            res.status(400).json({ message: err.message })
+        }
+
+    } catch (err) {
+        console.error("Error in updatepassword:", err);
+        res.status(500).json({ message: "Internal server error", details: err.message });
+    }
+});
+
+
+
 
 
 

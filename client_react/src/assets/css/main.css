@@ -224,6 +224,14 @@ body {
 .signinuserform * {
   margin: 1em 0;
 }
+.signinuserform .redBorder {
+  border: 1px solid red;
+}
+.signinuserform .error {
+  color: rgb(255, 198, 198);
+  font-size: 1.1em;
+  font-weight: 700;
+}
 
 .signinuserwrapper {
   max-width: 30em;
@@ -803,5 +811,23 @@ footer .menu-link:hover {
 .usersettings .short {
   max-width: 30em;
   margin-bottom: 1em;
+}
+.usersettings .button {
+  background-color: #78BEFF;
+  border: none;
+  font-size: 1.2em;
+}
+.usersettings .button:hover {
+  background-color: #468ED2;
+  border: none;
+}
+.usersettings .delete-account-button {
+  background-color: rgb(255, 94, 94);
+  border: none;
+  font-size: 1.2em;
+}
+.usersettings .delete-account-button:hover {
+  background-color: rgb(250, 135, 135);
+  border: none;
 }
 /*# sourceMappingURL=maps/main.css.map */

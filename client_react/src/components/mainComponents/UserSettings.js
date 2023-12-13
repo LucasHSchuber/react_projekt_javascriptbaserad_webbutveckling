@@ -15,6 +15,11 @@ function UserSettings() {
 
     const [showModal, setShowModal] = useState(false);
     const [deletePassword, setDeletePassword] = useState("");
+    const [updatedPassword, setUpdatedPassword] = useState({
+        currentpassword: "",
+        password: "",
+        repeatpassword: ""
+    });
 
 
 
@@ -50,7 +55,49 @@ function UserSettings() {
 
 
 
-    const handleUpdate = async (accountId) => {
+    //update user password 
+    const updatePassword = async (accountId) => {
+
+        const token = sessionStorage.getItem("token");
+        const data = {
+            id: accountId,
+            currentpassword: updatedPassword.currentpassword,
+            password: updatedPassword.password,
+            repeatpassword: updatedPassword.repeatpassword,
+            token: token,
+        }
+
+        console.log(data);
+
+        try {
+            const response = await fetch(`http://localhost:5000/users/updatepassword/${accountId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify(data),
+            })
+
+            if (response.ok) {
+                console.log("User password updated");
+
+            } else {
+                const responseData = await response.json();
+                console.log("Error when updating user password:", responseData.message);
+                console.log("Error details:", responseData);
+            }
+
+        } catch (error) {
+            console.log("error when updating user password:", error);
+
+        }
+    }
+
+
+
+    //update user data 
+    const updateData = async (accountId) => {
 
         const token = sessionStorage.getItem("token");
 
@@ -90,6 +137,7 @@ function UserSettings() {
 
 
 
+    //delete user 
     const openDeleteModal = () => {
         setShowModal(true);
     }
@@ -157,69 +205,81 @@ function UserSettings() {
                     <div className="circle">
                         {userData.name.substring(0, 1).toUpperCase()}
                     </div>
-                    <Form>
-                        <Form.Group controlId="formName" className="short">
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder=""
-                                name="name"
-                                value={userData.name}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
 
-                        <Form.Group controlId="formEmail" className="short">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control
-                                type="email"
-                                placeholder=""
-                                name="email"
-                                value={userData.email}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
-
-                        <Form.Group controlId="formCompany" className="short">
-                            <Form.Label>Company</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Enter your company name"
-                                name="company"
-                                value={userData.company}
-                                onChange={handleInputChange}
-                            />
-                        </Form.Group>
-
-                        <Button variant="primary" onClick={event => handleUpdate(userData.id)}>
-                            Update
-                        </Button>
-                    </Form>
-
-                    <div className="changepassword my-5">
+                    <div className="updatedata">
                         <Form>
                             <Form.Group controlId="formName" className="short">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label>Name</Form.Label>
                                 <Form.Control
-
-                                    type="password"
+                                    type="text"
                                     placeholder=""
-                                    name="password"
+                                    name="name"
+                                    value={userData.name}
                                     onChange={handleInputChange}
                                 />
                             </Form.Group>
 
                             <Form.Group controlId="formEmail" className="short">
-                                <Form.Label>Repeat password</Form.Label>
+                                <Form.Label>Email</Form.Label>
                                 <Form.Control
-                                    type="password"
+                                    type="email"
                                     placeholder=""
-                                    name="repaeatpassword"
+                                    name="email"
+                                    value={userData.email}
                                     onChange={handleInputChange}
                                 />
                             </Form.Group>
 
-                            <Button variant="primary">
+                            <Form.Group controlId="formCompany" className="short">
+                                <Form.Label>Company</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter your company name"
+                                    name="company"
+                                    value={userData.company}
+                                    onChange={handleInputChange}
+                                />
+                            </Form.Group>
+
+                            <Button className='button' onClick={event => updateData(userData.id)}>
+                                Update
+                            </Button>
+                        </Form>
+                    </div>
+
+                    <div className="changepassword my-5">
+                        <Form>
+                            <Form.Group controlId="" className="short">
+                                <Form.Label>Current password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder=""
+                                    name="currentpassword"
+                                    onChange={(e) => setUpdatedPassword({ ...updatedPassword, currentpassword: e.target.value })}
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="" className="short">
+                                <Form.Label>New password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder=""
+                                    name="password"
+                                    onChange={(e) => setUpdatedPassword({ ...updatedPassword, password: e.target.value })}
+                                />
+                            </Form.Group>
+
+                            <Form.Group controlId="" className="short">
+                                <Form.Label>Repeat new password</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    placeholder=""
+                                    name="repeatpassword"
+                                    onChange={(e) => setUpdatedPassword({ ...updatedPassword, repeatpassword: e.target.value })}
+                                />
+                            </Form.Group>
+
+                            <Button className='button' onClick={event => updatePassword(userData.id)}>
                                 Change Password
                             </Button>
                         </Form>
@@ -227,7 +287,7 @@ function UserSettings() {
 
                     <hr></hr>
 
-                    <Button variant="danger" onClick={openDeleteModal}>
+                    <Button className='delete-account-button' onClick={openDeleteModal}>
                         Delete Account
                     </Button>
 

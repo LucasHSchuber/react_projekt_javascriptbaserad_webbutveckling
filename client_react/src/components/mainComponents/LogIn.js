@@ -9,12 +9,34 @@ function LogIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [error, setError] = useState({
+        email: "",
+        password: "",
+        invalid: "",
+    })
+
     const loginUser = async (e) => {
         e.preventDefault(); // Prevents the default form submission
 
         const data = {
             email: email,
             password: password
+        }
+
+        if (email === "") {
+            document.getElementById("emailfield").style.borderColor = "red";
+            document.getElementById("emailfield").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("emailfield").style.borderColor = "";
+            document.getElementById("emailfield").style.backgroundColor = "";
+        }
+        
+        if (password === "") {
+            document.getElementById("passwordfield").style.borderColor = "red";
+            document.getElementById("passwordfield").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("passwordfield").style.borderColor = "";
+            document.getElementById("passwordfield").style.backgroundColor = "";
         }
 
         try {
@@ -35,9 +57,9 @@ function LogIn() {
                 const token = responseData.token;
                 const userid = responseData.userId;
                 const username = responseData.userName;
-                console.log(responseData.token);
-                console.log(responseData.userId);
-                console.log(responseData.userName);
+                console.log(token);
+                console.log(userid);
+                console.log(username);
                 sessionStorage.setItem('token', token);
                 sessionStorage.setItem('userid', userid);
                 sessionStorage.setItem('username', username);
@@ -49,6 +71,7 @@ function LogIn() {
                 const responseData = await response.json();
                 console.log("Error when signin in user:", responseData.message);
                 console.log("Error when signin in user:", response.status, response.statusText, response.message);
+                setError({ ...error, invalid: responseData.message });
             }
 
         } catch (error) {
@@ -66,11 +89,13 @@ function LogIn() {
             <div className="signinuserwrapper">
                 <h2>Sign In</h2>
                 <Form className='signinuserform'>
+                    <div className="error">{error.invalid}</div>
 
                     {/* Email */}
                     <Form.Group controlId="formEmail">
                         <Form.Control
                             className='input'
+                            id="emailfield"
                             type="email"
                             placeholder="Email"
                             name="email"
@@ -84,6 +109,7 @@ function LogIn() {
                     <Form.Group controlId="formPassword">
                         <Form.Control
                             className='input'
+                            id="passwordfield"
                             type="password"
                             placeholder="Password"
                             name="password"

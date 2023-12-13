@@ -266,6 +266,17 @@ body {
     & * {
         margin: 1em 0;
     }
+
+    .redBorder {
+        border: 1px solid red;
+    }
+
+    .error {
+        color:rgb(255, 198, 198);
+        font-size: 1.1em;
+        font-weight: 700;
+    }
+
 }
 
 .signinuserwrapper {
@@ -524,19 +535,6 @@ footer {
 
 
 .allaccountingstable {
-
-    // display: grid;
-    // grid-template-columns: repeat(3, 1fr);
-    // /* Adjust the number of columns as needed */
-    // gap: 16px;
-    // /* Adjust the gap between grid items */
-    // align-items: start;
-    // /* Align items to the start (top) of the grid container */
-    // justify-items: start;
-    // /* Align items to the start (left) of the grid container */
-
-    // // padding: 0.5em 1em;
-    // // background-color: rgb(255, 255, 255, 0.05);
 
     color: $lightwhite;
 
@@ -961,4 +959,25 @@ footer {
         margin-bottom: 1em;
     }
 
+    .button {
+        background-color: $lightblue;
+        border: none;
+        font-size: 1.2em;
+
+        &:hover {
+            background-color: #468ED2;
+            border: none;
+        }
+    }
+
+    .delete-account-button {
+        background-color: rgb(255, 94, 94);
+        border: none;
+        font-size: 1.2em;
+
+        &:hover {
+            background-color: rgb(250, 135, 135);
+            border: none;
+        }
+    }
 }

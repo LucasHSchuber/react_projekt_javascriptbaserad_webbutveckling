@@ -76,15 +76,10 @@ function NewAccounting() {
 
         const token = sessionStorage.getItem("token");
         const userId = sessionStorage.getItem("userid");
-        // const date = new Date().toISOString();
 
-        // await fetchData();
-        // await getLastId();
         await getLastId();
         const idset = id;
         let created_at = new Date();
-
-
 
         const data = {
             id: idset,
@@ -98,6 +93,22 @@ function NewAccounting() {
         }
 
         console.log(data);
+
+        if (date === "") {
+            document.getElementById("date").style.borderColor = "red";
+            document.getElementById("date").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("date").style.borderColor = "";
+            document.getElementById("date").style.backgroundColor = "";
+        }
+
+        if (!entries[0].plan) {
+            document.getElementById(`plan${0}`).style.borderColor = "red";
+            document.getElementById(`plan${0}`).style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById(`plan${0}`).style.borderColor = "";
+            document.getElementById(`plan${0}`).style.backgroundColor = "";
+        }
 
         try {
             const response = await fetch("http://localhost:5000/accountings/newaccounting", {
@@ -114,6 +125,7 @@ function NewAccounting() {
 
             } else {
                 const responseData = await response.json();
+                console.log("Error when storing data in mongodb:", responseData);
                 console.log("Error when storing data in mongodb:", responseData.message);
                 console.log("Error when storing data in mongodb:", response.status, response.statusText, response.message);
                 // Handle error message on the front end, for example:
@@ -181,6 +193,7 @@ function NewAccounting() {
                         <Form.Group controlId="formName">
                             <Form.Control
                                 className='input short'
+                                id="date"
                                 type="date"
                                 placeholder="Date"
                                 name="date"
@@ -237,7 +250,8 @@ function NewAccounting() {
                                 <Form.Group controlId={`formCompany${index}`}>
                                     <Form.Control
                                         as="select"
-                                        className='input select'
+                                        id={`plan${index}`}
+                                        className='input select entries'
                                         name={`plan${index}`}
                                         value={entries[index] ? entries[index].plan : ""}
                                         onChange={(e) => handleEntryChange(index, "plan", e.target.value)}
@@ -252,7 +266,8 @@ function NewAccounting() {
                                 </Form.Group>
                                 <Form.Group controlId={`formCompany${index}`}>
                                     <Form.Control
-                                        className='input'
+                                        className='input entries'
+                                        id="debit"
                                         type="number"
                                         placeholder={`Debit ${index + 1}`}
                                         name={`debit${index}`}
@@ -263,7 +278,8 @@ function NewAccounting() {
                                 </Form.Group>
                                 <Form.Group controlId={`formCompany${index}`}>
                                     <Form.Control
-                                        className='input'
+                                        className='input entries'
+                                        id="credit"
                                         type="number"
                                         placeholder={`Credit ${index + 1}`}
                                         name={`credit${index}`}

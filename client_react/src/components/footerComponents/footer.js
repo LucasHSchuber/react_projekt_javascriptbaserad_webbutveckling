@@ -40,6 +40,9 @@ function Footer() {
                                         <Nav.Link as={Link} to="/balancesheets" className='menu-link'>
                                             Balance Sheet
                                         </Nav.Link>
+                                        <Nav.Link as={Link} to="/usersettings" className='menu-link'>
+                                        User settings
+                                        </Nav.Link>
 
                                     </>
                                 ) : (

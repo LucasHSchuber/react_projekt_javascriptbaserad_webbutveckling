@@ -61,6 +61,14 @@ router.post('/newaccounting', async (req, res) => {
         invoiceNmbr: req.body.invoiceNmbr,
         entries: req.body.entries
     })
+
+    if (!req.body.date) {
+        return res.status(400).json({ message: "Enter a valid date" });
+    }
+    if (!req.body.entries) {
+        return res.status(400).json({ message: "Enter at least one verification" });
+    }
+
     try {
         const newAccounting = await accounting.save()
         res.status(201).json(newAccounting)
