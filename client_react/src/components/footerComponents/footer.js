@@ -19,10 +19,9 @@ function Footer() {
                     <i class="mx-5 fa-brands fa-2x fa-square-instagram"></i>
                     <i class="fa-brands fa-2x fa-twitter"></i>
                 </div>
-                <div className='d-flex justify-content-center my-3'>
-                    <Navbar expand="lg">
-                        <Navbar.Toggle aria-controls="navbarSupportedContent" />
-                        <Navbar.Collapse id="navbarSupportedContent">
+                <div className='footer-nav d-flex justify-content-md-center my-3'>
+                    <Navbar>
+                        <Navbar aria-controls="navbarSupportedContent" />
                             <Nav className={`d-flex flex-row menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
                                 {/* Conditionally render other links based on authentication status */}
                                 {isLoggedIn ? (
@@ -61,7 +60,6 @@ function Footer() {
                                 )}
                             </Nav>
 
-                        </Navbar.Collapse>
                     </Navbar>
                 </div>
                 <div className='d-flex justify-content-center' style={{ fontSize: "0.9em" }}>

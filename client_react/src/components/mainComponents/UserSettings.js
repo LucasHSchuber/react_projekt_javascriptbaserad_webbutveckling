@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Modal } from 'react-bootstrap';
 import fetchUser from '../../assets/js/fetchUser';
+import Chatbot from '../../assets/js/Chatbot';
+
 
 function UserSettings() {
 
@@ -247,7 +249,7 @@ function UserSettings() {
                         </Form>
                     </div>
 
-                    <div className="changepassword my-5">
+                    <div className="changepassword mb-5 mt-4">
                         <Form>
                             <Form.Group controlId="" className="short">
                                 <Form.Label>Current password</Form.Label>
@@ -285,11 +287,13 @@ function UserSettings() {
                         </Form>
                     </div>
 
-                    <hr></hr>
+                    <hr style={{ backgroundColor: "white" }}></hr>
 
-                    <Button className='delete-account-button' onClick={openDeleteModal}>
-                        Delete Account
-                    </Button>
+                    <div className='deleteaccountwrapper'>
+                        <Button className='delete-account-button' onClick={openDeleteModal}>
+                            Delete Account
+                        </Button>
+                    </div>
 
 
                 </div>
@@ -330,6 +334,7 @@ function UserSettings() {
                     </Modal>
                 </div>
 
+                <Chatbot />
             </div>
         </main >
     );

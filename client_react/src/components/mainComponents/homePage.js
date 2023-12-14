@@ -3,17 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import fetchUser from '../../assets/js/fetchUser';
 import chatbotImg from '../../assets/images/chatbot.png';
+import Chatbot from '../../assets/js/Chatbot';  
+
 
 function HomePage() {
 
     const [name, setUserName] = useState(null);
     const [company, setUserCompany] = useState(null);
 
-    const [showSpinner, setShowSpinner] = useState(false);
-    const [showAnswer, setShowAnswer] = useState(false);
+    // const [showSpinner, setShowSpinner] = useState(false);
+    // const [showAnswer, setShowAnswer] = useState(false);
 
-    const [selectedOption, setSelectedOption] = useState("");
-    const [answer, setAnswer] = useState("");
+    // const [selectedOption, setSelectedOption] = useState("");
+    // const [answer, setAnswer] = useState("");
 
 
     // useEffect hook to run fetchUser when the component mounts
@@ -33,61 +35,61 @@ function HomePage() {
     }, []); // The empty dependency array [] ensures that this effect runs only once when the component mounts
 
 
-    const openChatbot = () => {
-        console.log("open chatbot");
+    // const openChatbot = () => {
+    //     console.log("open chatbot");
 
-        const chatbotElement = document.getElementById("show-chatbot");
-        const buttonElement = document.getElementById("button-openChatbot");
-
-
-        if (chatbotElement.style.display === "" || chatbotElement.style.display === "none") {
-            chatbotElement.style.display = "block";
-            buttonElement.style.right = "2.5em";
-            buttonElement.style.backgroundColor = "#78BEFF";
-        } else {
-            chatbotElement.style.display = "none";
-            buttonElement.style.right = "2em";
-            buttonElement.style.backgroundColor = "#EDEDED";
-
-        }
+    //     const chatbotElement = document.getElementById("show-chatbot");
+    //     const buttonElement = document.getElementById("button-openChatbot");
 
 
-    };
+    //     if (chatbotElement.style.display === "" || chatbotElement.style.display === "none") {
+    //         chatbotElement.style.display = "block";
+    //         buttonElement.style.right = "2.5em";
+    //         buttonElement.style.backgroundColor = "#78BEFF";
+    //     } else {
+    //         chatbotElement.style.display = "none";
+    //         buttonElement.style.right = "2em";
+    //         buttonElement.style.backgroundColor = "#EDEDED";
 
-    const closeChatbot = () => {
-        const chatbotElement = document.getElementById("show-chatbot");
-        const buttonElement = document.getElementById("button-openChatbot");
-        chatbotElement.style.display = "none";
-        buttonElement.style.right = "2em";
+    //     }
 
 
-    };
+    // };
 
-    const answerChatbot = () => {
+    // // const closeChatbot = () => {
+    // //     const chatbotElement = document.getElementById("show-chatbot");
+    // //     const buttonElement = document.getElementById("button-openChatbot");
+    // //     chatbotElement.style.display = "none";
+    // //     buttonElement.style.right = "2em";
 
-        const userinput = document.getElementById("userinput");
-        const selection = document.getElementById("selection");
-        // const spinner = document.getElementById("spinner");
-        userinput.style.display = "block";
-        selection.style.display = "none";
-        // spinner.style.display = "block";
 
-        setShowSpinner(true);
+    // // };
 
-        if (selectedOption === "What is accounting?") {
-            let string = "Accounting is the process of recording, summarizing, analyzing, and reporting financial transactions of a business or organization. It involves the systematic and comprehensive recording of financial activities, ensuring that all financial information is accurate, complete, and in compliance with accounting standards and regulations";
-            setAnswer(string);
-        } else if (selectedOption === "How should I account a sale?") {
-            let string = "Debit: Ex, 1930 - bank account \n Credit: Ex, 3010 - sales \n Credit: Ex, 2610 - VAT \n Make sure that the credit posts has the same totalt amount as credit posts.";
-            setAnswer(string);
-        }
+    // const answerChatbot = () => {
 
-        setTimeout(() => {
-            setShowSpinner(false);
-            setShowAnswer(true);
-        }, 1500)
+    //     const userinput = document.getElementById("userinput");
+    //     const selection = document.getElementById("selection");
+    //     // const spinner = document.getElementById("spinner");
+    //     userinput.style.display = "block";
+    //     selection.style.display = "none";
+    //     // spinner.style.display = "block";
 
-    }
+    //     setShowSpinner(true);
+
+    //     if (selectedOption === "What is accounting?") {
+    //         let string = "Accounting is the process of recording, summarizing, analyzing, and reporting financial transactions of a business or organization. It involves the systematic and comprehensive recording of financial activities, ensuring that all financial information is accurate, complete, and in compliance with accounting standards and regulations";
+    //         setAnswer(string);
+    //     } else if (selectedOption === "How should I account a sale?") {
+    //         let string = "Debit: Ex, 1930 - bank account \n Credit: Ex, 3010 - sales \n Credit: Ex, 2610 - VAT \n Make sure that the credit posts has the same totalt amount as credit posts.";
+    //         setAnswer(string);
+    //     }
+
+    //     setTimeout(() => {
+    //         setShowSpinner(false);
+    //         setShowAnswer(true);
+    //     }, 1500)
+
+    // }
 
 
     return (
@@ -97,9 +99,9 @@ function HomePage() {
                 <h1>Welcome <br></br><span>{name}</span></h1>
                 <h6>Company: {company}</h6>
 
+                <Chatbot />
 
-
-                <div className='chatbot' id="show-chatbot">
+                {/* <div className='chatbot' id="show-chatbot">
                     <div className='header-chatbot d-flex'>
                         <div className='d-flex w-100'>
                             <img src={chatbotImg} alt='chatbot img' />
@@ -107,14 +109,12 @@ function HomePage() {
                         </div>
                         <div className='flex-shrink-1'>
                             <a
-                                onClick={closeChatbot}
+                                onClick={openChatbot}
                             >
                                 <i class=" close-chatbot fa-2x fa-solid fa-minus"></i>
                             </a>
                         </div>
                     </div>
-
-
                     <div className='main-chatbot'>
                         <div >
                             <div className='intro-message d-flex'>
@@ -166,7 +166,6 @@ function HomePage() {
 
                         </div>
                     </div>
-
                     <div className='footer-chatbot'>
                         <h6>Choose an alternative</h6>
                     </div>
@@ -181,7 +180,7 @@ function HomePage() {
                     >
                         <img src={chatbotImg} alt='chatbot img' />
                     </button>
-                </div>
+                </div> */}
 
             </div>
 

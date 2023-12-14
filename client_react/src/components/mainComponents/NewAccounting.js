@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import fetchUser from '../../assets/js/fetchUser';
 import planOptions from '../../assets/js/planOptions';
+import Chatbot from '../../assets/js/Chatbot';  
 
 
 
@@ -332,6 +333,7 @@ function NewAccounting() {
                 </Button>
 
 
+                <Chatbot />
             </div>
         </main>
     );

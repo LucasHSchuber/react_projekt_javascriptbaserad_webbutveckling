@@ -164,6 +164,29 @@ body {
     }
 }
 
+@media screen and (max-width: 992px) {
+    .startpage {
+
+        h1 {
+            font-size: 3em;
+        }
+    }
+
+}
+
+@media screen and (max-width: 772px) {
+    .startpage {
+
+        h1 {
+            font-size: 2.5em;
+        }
+    }
+
+}
+
+
+
+
 
 //-------------
 //CREATE USER
@@ -272,7 +295,7 @@ body {
     }
 
     .error {
-        color:rgb(255, 198, 198);
+        color: rgb(255, 198, 198);
         font-size: 1.1em;
         font-weight: 700;
     }
@@ -366,7 +389,6 @@ footer {
 
     .footer {
         color: $lightwhite;
-
     }
 
     .menu-link {
@@ -378,6 +400,18 @@ footer {
 
         &:hover {
             text-decoration: underline;
+        }
+    }
+}
+
+@media screen and (max-width: 772px) {
+    footer {
+        padding: 5em 1em;
+        align-items: center !important;
+
+        .menu-link {
+            font-size: 0.9em;
+            text-align: center;
         }
     }
 }
@@ -428,6 +462,24 @@ footer {
 
 
 }
+
+
+@media screen and (max-width: 772px) {
+    .homepage {
+
+        h1 {
+            font-size: 2.7em;
+        }
+
+        h6 {
+            font-size: 1.4em;
+        }
+
+    }
+}
+
+
+
 
 
 //-------------
@@ -518,26 +570,11 @@ footer {
         color: $lightblue;
         font-weight: 700;
     }
-
-    h5 {
-        font-size: 1.5em;
-        color: $lightwhite;
-        font-weight: 700;
-    }
-
-    h6 {
-        font-size: 1em;
-        color: $lightwhite;
-        font-weight: 700;
-    }
-
 }
-
 
 .allaccountingstable {
 
     color: $lightwhite;
-
 
     .input {
         height: 3em !important;
@@ -582,6 +619,21 @@ footer {
         }
     }
 
+}
+
+@media screen and (max-width: 992px) {
+
+    .allaccountingstable {
+        font-size: 0.8em;
+
+        th {
+            padding: 1em 1em 1em 0.5em;
+        }
+
+        td {
+            padding: 0.75em 0.5em;
+        }
+    }
 }
 
 
@@ -647,6 +699,13 @@ footer {
         background-color: white;
     }
 }
+
+@media screen and (max-width: 992px) {
+    .balance-sheet-container {
+        width: 80%;
+    }
+}
+
 
 
 
@@ -871,6 +930,7 @@ footer {
 
 
 
+
 //-------------
 // MODAL
 //-------------
@@ -956,7 +1016,7 @@ footer {
 
     .short {
         max-width: 30em;
-        margin-bottom: 1em;
+        margin-bottom: 0.6em;
     }
 
     .button {

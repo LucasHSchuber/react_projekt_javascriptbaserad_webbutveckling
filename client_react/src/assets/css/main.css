@@ -127,6 +127,16 @@ body {
   border: none;
 }
 
+@media screen and (max-width: 992px) {
+  .startpage h1 {
+    font-size: 3em;
+  }
+}
+@media screen and (max-width: 772px) {
+  .startpage h1 {
+    font-size: 2.5em;
+  }
+}
 .createuserform * {
   margin: 1em 0;
 }
@@ -340,6 +350,16 @@ footer .menu-link:hover {
   text-decoration: underline;
 }
 
+@media screen and (max-width: 772px) {
+  footer {
+    padding: 5em 1em;
+    align-items: center !important;
+  }
+  footer .menu-link {
+    font-size: 0.9em;
+    text-align: center;
+  }
+}
 .homepage {
   padding-bottom: 15em;
 }
@@ -371,6 +391,14 @@ footer .menu-link:hover {
   color: #EDEDED;
 }
 
+@media screen and (max-width: 772px) {
+  .homepage h1 {
+    font-size: 2.7em;
+  }
+  .homepage h6 {
+    font-size: 1.4em;
+  }
+}
 .newaccountingwrapper h2 {
   font-size: 2.5em;
   color: #78BEFF;
@@ -453,16 +481,6 @@ footer .menu-link:hover {
   color: #78BEFF;
   font-weight: 700;
 }
-.allaccountingswrapper h5 {
-  font-size: 1.5em;
-  color: #EDEDED;
-  font-weight: 700;
-}
-.allaccountingswrapper h6 {
-  font-size: 1em;
-  color: #EDEDED;
-  font-weight: 700;
-}
 
 .allaccountingstable {
   color: #EDEDED;
@@ -501,6 +519,17 @@ footer .menu-link:hover {
   border: none;
 }
 
+@media screen and (max-width: 992px) {
+  .allaccountingstable {
+    font-size: 0.8em;
+  }
+  .allaccountingstable th {
+    padding: 1em 1em 1em 0.5em;
+  }
+  .allaccountingstable td {
+    padding: 0.75em 0.5em;
+  }
+}
 .sheetswrapper {
   color: #EDEDED;
 }
@@ -574,6 +603,11 @@ footer .menu-link:hover {
   background-color: white;
 }
 
+@media screen and (max-width: 992px) {
+  .balance-sheet-container {
+    width: 80%;
+  }
+}
 #show-chatbot {
   display: none;
 }
@@ -810,7 +844,7 @@ footer .menu-link:hover {
 }
 .usersettings .short {
   max-width: 30em;
-  margin-bottom: 1em;
+  margin-bottom: 0.6em;
 }
 .usersettings .button {
   background-color: #78BEFF;

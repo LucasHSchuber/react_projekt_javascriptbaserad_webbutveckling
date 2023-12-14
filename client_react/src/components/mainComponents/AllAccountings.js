@@ -2,10 +2,13 @@
 import axios from 'axios';
 import { Form, Button, Modal, Table } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
+import Chatbot from '../../assets/js/Chatbot';
+
 
 
 function AlAccountings() {
 
+    const isSmallScreen = window.innerWidth < 992;
 
     const [accountings, setAccountings] = useState([]);
 
@@ -96,14 +99,11 @@ function AlAccountings() {
     const saveAccounting = async (accountId) => {
 
         const token = sessionStorage.getItem("token");
-
         const data = {
             companyName: companyName,
             comment: comment,
             invoiceNmbr: invoiceNmbr
         }
-
-        console.log(data);
 
         try {
             const response = await fetch(`http://localhost:5000/accountings/${accountId}`, {
@@ -118,10 +118,6 @@ function AlAccountings() {
             if (response.ok) {
                 console.log("Data updated in mongodb");
                 getAllAccountings();
-
-                // setTimeout(() => {
-                // }, 1500)
-
                 handleCloseModal(false);
 
             } else {
@@ -139,7 +135,6 @@ function AlAccountings() {
     const deleteAccounting = async (accountId) => {
 
         const token = sessionStorage.getItem("token");
-
         const isConfirmed = window.confirm("Are you sure you want to delete this accounting post?");
 
         if (!isConfirmed) {
@@ -200,10 +195,10 @@ function AlAccountings() {
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Invoice nmbr</th>
-                                <th>Company</th>
-                                <th>Comment</th>
-                                <th>Verifications</th>
+                                <th>{isSmallScreen ? "Inv.nmbr" : "Invoice number"}</th>
+                                <th>{isSmallScreen ? "Comp" : "Company"}</th>
+                                <th>{isSmallScreen ? "Com" : "Comment"}</th>
+                                <th>{isSmallScreen ? "Ver" : "Verifications"}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -232,12 +227,12 @@ function AlAccountings() {
 
                                             {index === 0 && (
                                                 <td>
-                                                    <Button id="edit-button" onClick={() => editAccounting(accounting)}>Edit</Button>
+                                                    <Button id="edit-button" onClick={() => editAccounting(accounting)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-trash-can"></i> : "Edit" }</Button>
                                                 </td>
                                             )}
                                             {index === 0 && (
                                                 <td>
-                                                    <Button id="delete-button" onClick={event => deleteAccounting(accounting.id)}>Delete</Button>
+                                                    <Button id="delete-button" onClick={event => deleteAccounting(accounting.id)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-pen-to-square"></i> : "Delete"  }</Button>
                                                 </td>
                                             )}
                                         </tr>
@@ -329,6 +324,7 @@ function AlAccountings() {
                     )}
                 </div>
 
+                <Chatbot />
             </div>
         </main >
     );

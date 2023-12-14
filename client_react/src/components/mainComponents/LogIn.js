@@ -2,9 +2,13 @@
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 
 function LogIn() {
+
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +20,7 @@ function LogIn() {
     })
 
     const loginUser = async (e) => {
-        e.preventDefault(); // Prevents the default form submission
+        // e.preventDefault(); // Prevents the default form submission
 
         const data = {
             email: email,
@@ -30,7 +34,7 @@ function LogIn() {
             document.getElementById("emailfield").style.borderColor = "";
             document.getElementById("emailfield").style.backgroundColor = "";
         }
-        
+
         if (password === "") {
             document.getElementById("passwordfield").style.borderColor = "red";
             document.getElementById("passwordfield").style.backgroundColor = "#ffccc4";
@@ -65,6 +69,7 @@ function LogIn() {
                 sessionStorage.setItem('username', username);
 
                 //send user to main page
+                navigate('/home');
 
 
             } else {

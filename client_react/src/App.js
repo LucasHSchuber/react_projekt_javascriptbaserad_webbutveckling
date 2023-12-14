@@ -11,7 +11,7 @@ import LogIn from "./components/mainComponents/LogIn";
 import NewAccounting from "./components/mainComponents/NewAccounting";
 import AllAccountings from "./components/mainComponents/AllAccountings";
 import BalanceSheets from "./components/mainComponents/BalanceSheets";
-import ChatBot from "./components/mainComponents/ChatBot";
+import ResultSheets from "./components/mainComponents/ResultSheets";
 import HomePage from "./components/mainComponents/HomePage"
 import UserSettings from "./components/mainComponents/UserSettings"
 
@@ -21,27 +21,28 @@ import "./assets/css/main.css";
 
 
 function App() {
-  
+
   return (
     <div className="gradient-container">
-    <Router>
-      <div className="App">
-        <Header />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<StartPage />} />
-            <Route path="/createuser" element={<CreateUser />} />
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/newaccounting" element={<NewAccounting />} />
-            <Route path="/allaccountings" element={<AllAccountings />} />
-            <Route path="/balancesheets" element={<BalanceSheets />} />
-            <Route path="/usersettings" element={<UserSettings />} />
-          </Routes>
+      <Router>
+        <div className="App">
+          <Header />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<StartPage />} />
+              <Route path="/createuser" element={<CreateUser />} />
+              <Route path="/login" element={<LogIn />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/newaccounting" element={<NewAccounting />} />
+              <Route path="/allaccountings" element={<AllAccountings />} />
+              <Route path="/balancesheets" element={<BalanceSheets />} />
+              <Route path="/resultsheets" element={<ResultSheets />} />
+              <Route path="/usersettings" element={<UserSettings />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import Calculations from '../../assets/js/Calculations';
+import Chatbot from '../../assets/js/Chatbot';
+
 
 
 function BalanceSheets() {
@@ -346,6 +348,8 @@ function BalanceSheets() {
 
                     </div>
                 </div>
+
+                <Chatbot />
             </div>
         </main >
     );

@@ -35,6 +35,42 @@ function CreateUser() {
             regdate: regdate
         }
 
+        if (name === "") {
+            document.getElementById("name").style.borderColor = "red";
+            document.getElementById("name").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("name").style.borderColor = "";
+            document.getElementById("name").style.backgroundColor = "";
+        }
+        if (email === "") {
+            document.getElementById("email").style.borderColor = "red";
+            document.getElementById("email").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("email").style.borderColor = "";
+            document.getElementById("email").style.backgroundColor = "";
+        }
+        if (company === "") {
+            document.getElementById("company").style.borderColor = "red";
+            document.getElementById("company").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("company").style.borderColor = "";
+            document.getElementById("company").style.backgroundColor = "";
+        }
+        if (password === "") {
+            document.getElementById("password").style.borderColor = "red";
+            document.getElementById("password").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("password").style.borderColor = "";
+            document.getElementById("password").style.backgroundColor = "";
+        }
+        if (verifypassword === "") {
+            document.getElementById("verifypassword").style.borderColor = "red";
+            document.getElementById("verifypassword").style.backgroundColor = "#ffccc4";
+        } else {
+            document.getElementById("verifypassword").style.borderColor = "";
+            document.getElementById("verifypassword").style.backgroundColor = "";
+        }
+
         try {
             const response = await fetch("http://localhost:5000/users/register", {
                 method: "POST",
@@ -94,6 +130,7 @@ function CreateUser() {
                     <Form.Group controlId="formName">
                         <Form.Control
                             className='input'
+                            id="name"
                             type="text"
                             placeholder="Name"
                             name="name"
@@ -107,6 +144,7 @@ function CreateUser() {
                     <Form.Group controlId="formEmail">
                         <Form.Control
                             className='input'
+                            id="email"
                             type="email"
                             placeholder="Email"
                             name="email"
@@ -120,6 +158,7 @@ function CreateUser() {
                     <Form.Group controlId="formCompany">
                         <Form.Control
                             className='input'
+                            id="company"
                             type="text"
                             placeholder="Company name"
                             name="companyName"
@@ -133,6 +172,7 @@ function CreateUser() {
                     <Form.Group controlId="formPassword">
                         <Form.Control
                             className='input'
+                            id="password"
                             type="password"
                             placeholder="Password"
                             name="password"
@@ -146,6 +186,7 @@ function CreateUser() {
                     <Form.Group controlId="formVerifyPassword">
                         <Form.Control
                             className='input'
+                            id="verifypassword"
                             type="password"
                             placeholder="Verify password"
                             name="verifypassword"
