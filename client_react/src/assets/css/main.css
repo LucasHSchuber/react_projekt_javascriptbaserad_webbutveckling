@@ -359,6 +359,9 @@ footer .menu-link:hover {
     font-size: 0.9em;
     text-align: center;
   }
+  .footer-nav {
+    text-align: center;
+  }
 }
 .homepage {
   padding-bottom: 15em;
@@ -854,6 +857,10 @@ footer .menu-link:hover {
 .usersettings .button:hover {
   background-color: #468ED2;
   border: none;
+}
+.usersettings hr {
+  max-width: 30em;
+  margin-left: 0;
 }
 .usersettings .delete-account-button {
   background-color: rgb(255, 94, 94);

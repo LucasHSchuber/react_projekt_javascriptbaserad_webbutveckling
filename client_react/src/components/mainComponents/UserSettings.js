@@ -209,6 +209,7 @@ function UserSettings() {
                     </div>
 
                     <div className="updatedata">
+                        <h5>Update information</h5>
                         <Form>
                             <Form.Group controlId="formName" className="short">
                                 <Form.Label>Name</Form.Label>
@@ -244,12 +245,15 @@ function UserSettings() {
                             </Form.Group>
 
                             <Button className='button' onClick={event => updateData(userData.id)}>
-                                Update
+                                Update information
                             </Button>
                         </Form>
                     </div>
 
+
+
                     <div className="changepassword mb-5 mt-4">
+                        <h5>Change password</h5>
                         <Form>
                             <Form.Group controlId="" className="short">
                                 <Form.Label>Current password</Form.Label>
@@ -290,6 +294,7 @@ function UserSettings() {
                     <hr style={{ backgroundColor: "white" }}></hr>
 
                     <div className='deleteaccountwrapper'>
+                        <h5 className='mt-3 mb-3'>Do you want to delete your account?</h5>
                         <Button className='delete-account-button' onClick={openDeleteModal}>
                             Delete Account
                         </Button>
