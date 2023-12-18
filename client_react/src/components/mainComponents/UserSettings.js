@@ -244,7 +244,7 @@ function UserSettings() {
                                 />
                             </Form.Group>
 
-                            <Button className='button' onClick={event => updateData(userData.id)}>
+                            <Button className='button my-2' onClick={event => updateData(userData.id)}>
                                 Update information
                             </Button>
                         </Form>
@@ -285,7 +285,7 @@ function UserSettings() {
                                 />
                             </Form.Group>
 
-                            <Button className='button' onClick={event => updatePassword(userData.id)}>
+                            <Button className='button my-2' onClick={event => updatePassword(userData.id)}>
                                 Change Password
                             </Button>
                         </Form>

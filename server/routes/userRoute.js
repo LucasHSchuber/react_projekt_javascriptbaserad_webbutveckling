@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 
 
 //----------------------
-//CREATING POST
+//CREATING USER
 //---------------------_
 router.post('/register', async (req, res) => {
     // const { id, name, email, password, company, regdate, verifypassword } = req.body;

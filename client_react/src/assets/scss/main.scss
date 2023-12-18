@@ -425,7 +425,7 @@ footer {
 
 .homepage {
 
-    padding-bottom: 15em;
+    padding-bottom: 5em;
 
     h1 {
         font-size: 4em;
@@ -457,6 +457,47 @@ footer {
 
         &:hover {
             color: $lightwhite;
+        }
+    }
+
+
+    .hr {
+        background-color: white;
+        margin: 4em 0;
+    }
+
+    .data-wrapper {
+
+        margin: 4em 0;
+
+        .data-box {
+            color: $lightwhite;
+            margin: 2em 4em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            p {
+                font-size: 1.2em;
+                font-weight: 700;
+            }
+
+            .circle {
+                width: 85px;
+                height: 85px;
+                border: 1px solid $lightblue;
+                /* Use your preferred background color */
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 35px;
+                font-weight: bold;
+
+            }
         }
     }
 
@@ -695,7 +736,6 @@ footer {
     }
 
     .hr {
-
         background-color: white;
     }
 }
