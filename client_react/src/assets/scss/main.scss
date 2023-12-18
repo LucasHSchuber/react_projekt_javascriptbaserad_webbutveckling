@@ -190,6 +190,19 @@ body {
     & * {
         margin: 1em 0;
     }
+
+    .error {
+        
+        li{
+            color: rgb(255, 198, 198) !important; 
+            text-decoration: none;
+            font-style: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-left: -2em;
+        }
+       
+    }
 }
 
 // .button {
@@ -1085,4 +1098,28 @@ footer {
             border: none;
         }
     }
+}
+
+
+
+
+//-------------
+// ALERT
+//-------------
+
+.alert-wrapper {
+    position: fixed;
+    width: fit-content;
+    height: fit-content;
+    padding: 1.3em 1.5em 1em 1.5em;
+    bottom: 2em;
+    left: 2em;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    font-size: 1em;
+    font-weight: 600;
+    z-index: 3;
+    transition: 0.5s ease;
 }

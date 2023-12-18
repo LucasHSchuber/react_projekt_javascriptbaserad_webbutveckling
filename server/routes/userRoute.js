@@ -39,19 +39,24 @@ router.get('/', async (req, res) => {
 router.post('/register', async (req, res) => {
     // const { id, name, email, password, company, regdate, verifypassword } = req.body;
 
-    //if passwords not match
+    // Check for validation errors
+    const validationErrors = [];
+
     if (req.body.password !== req.body.verifypassword) {
-        return res.status(400).json({ message: "Passwords do not match" });
+        validationErrors.push("Passwords do not match");
     }
-    //if password is less than 5 in length
+
     if (req.body.password.length <= 4) {
-        return res.status(401).json({ message: "Password must be at least four characters" });
+        validationErrors.push("Password must be at least four characters");
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if (!emailPattern.test(req.body.email)) {
-        return res.status(401).json({ message: "Invalid email address" });
+        validationErrors.push("Invalid email address");
+    }
+
+    if (validationErrors.length > 0) {
+        return res.status(400).json({ errors: validationErrors });
     }
 
     // Hash the password before saving to mongodb
@@ -72,7 +77,20 @@ router.post('/register', async (req, res) => {
         const newUser = await user.save()
         res.status(201).json(newUser)
     } catch (err) {
-        res.status(400).json({ message: err.message })
+
+        if (err.name === 'ValidationError') {
+
+            const errors = Object.values(err.errors).map((error) => error.message);
+            return res.status(400).json({ message: 'Validation error', errors });
+        }
+
+        if (err.code === 11000 && err.keyPattern && err.keyPattern.email) {
+
+            return res.status(400).json({ message: 'Email address is already in use' });
+        }
+
+
+        res.status(500).json({ message: 'Internal server error' });
     }
 })
 
@@ -98,10 +116,10 @@ router.post('/login', async (req, res) => {
         const token = generateRandomToken(10);
         console.log(token);
         //update token in mongodb
-        const filter = { id: user.id }; // Replace with the actual filter criteria
+        const filter = { id: user.id };
         const update = {
             $set: {
-                token: token // Replace with the key-value pairs you want to update
+                token: token
             }
         };
 
@@ -112,11 +130,16 @@ router.post('/login', async (req, res) => {
             token: token,
             userId: user.id,
             userName: user.name,
-            // ... other data you want to send
         });
 
     } catch (err) {
-        res.status(400).json({ message: err.message })
+
+        if (err.name === 'ValidationError') {
+            const errors = Object.values(err.errors).map((error) => error.message);
+            return res.status(400).json({ message: 'Validation error', errors });
+        }
+
+        res.status(500).json({ message: 'Internal server error' });
     }
 })
 
@@ -129,7 +152,7 @@ router.post('/login', async (req, res) => {
 // Assuming you're using Express.js
 router.get('/logedinuser', async (req, res) => {
     try {
-        const token = req.headers.authorization.replace('Bearer ', ''); // Extract the token from the Authorization header
+        const token = req.headers.authorization.replace('Bearer ', '');
         const user = await User.findOne({ token: token });
 
         if (!user) {

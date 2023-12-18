@@ -75,7 +75,7 @@ function LogIn() {
             } else {
                 const responseData = await response.json();
                 console.log("Error when signin in user:", responseData.message);
-                console.log("Error when signin in user:", response.status, response.statusText, response.message);
+                console.log("Error when signin in user:", responseData);
                 setError({ ...error, invalid: responseData.message });
             }
 

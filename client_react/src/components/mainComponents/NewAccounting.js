@@ -4,11 +4,16 @@ import { Form, Button } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import fetchUser from '../../assets/js/fetchUser';
 import planOptions from '../../assets/js/planOptions';
-import Chatbot from '../../assets/js/Chatbot';  
+import Chatbot from '../../assets/js/Chatbot';
+import Alert from '../../assets/js/Alert';
 
 
 
 function NewAccounting() {
+
+    //alert
+    const [showAlert, setShowAlert] = useState(false);
+
 
     const [accountingsCount, setAccountingsCount] = useState(1);
     const [id, setId] = useState(0);
@@ -123,6 +128,7 @@ function NewAccounting() {
 
             if (response.ok) {
                 console.log("Data stored in mongodb");
+                setShowAlert(true);
 
             } else {
                 const responseData = await response.json();
@@ -332,7 +338,9 @@ function NewAccounting() {
                     Account
                 </Button>
 
-
+                {showAlert && (
+                    <Alert initialMessage="Accounting has been registered" color="#038815" icon="" />
+                )}
                 <Chatbot />
             </div>
         </main>

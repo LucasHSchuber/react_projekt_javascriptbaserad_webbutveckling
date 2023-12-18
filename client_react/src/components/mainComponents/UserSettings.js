@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Modal } from 'react-bootstrap';
 import fetchUser from '../../assets/js/fetchUser';
 import Chatbot from '../../assets/js/Chatbot';
+import { useNavigate } from 'react-router-dom';
+import Alert from '../../assets/js/Alert';
 
 
 function UserSettings() {
+
+    //alert
+    const [showAlert, setShowAlert] = useState(false);
+
+    const navigate = useNavigate();
 
     const [userData, setUserData] = useState({
         id: "",
@@ -83,6 +90,7 @@ function UserSettings() {
 
             if (response.ok) {
                 console.log("User password updated");
+                setShowAlert(true);
 
             } else {
                 const responseData = await response.json();
@@ -125,6 +133,8 @@ function UserSettings() {
             })
             if (response.ok) {
                 console.log("User updated");
+                setShowAlert(true);
+
 
             } else {
                 const responseData = await response.json();
@@ -182,6 +192,9 @@ function UserSettings() {
                 sessionStorage.removeItem('userid');
 
                 handleCloseModal();
+
+                 //send user to main page
+                 navigate('/');
 
 
             } else {
@@ -338,6 +351,10 @@ function UserSettings() {
                         </Modal.Footer>
                     </Modal>
                 </div>
+
+                {showAlert && (
+                    <Alert initialMessage="Data has been updated" color="#038815" icon="" />
+                )}
 
                 <Chatbot />
             </div>

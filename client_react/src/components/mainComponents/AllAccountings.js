@@ -3,10 +3,16 @@ import axios from 'axios';
 import { Form, Button, Modal, Table } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import Chatbot from '../../assets/js/Chatbot';
+import Alert from '../../assets/js/Alert';
 
 
 
 function AlAccountings() {
+
+    //alert
+    const [showAlert, setShowAlert] = useState(false);
+    const [showAlert2, setShowAlert2] = useState(false);
+
 
     const isSmallScreen = window.innerWidth < 992;
 
@@ -119,6 +125,7 @@ function AlAccountings() {
                 console.log("Data updated in mongodb");
                 getAllAccountings();
                 handleCloseModal(false);
+                setShowAlert2(true);
 
             } else {
                 const responseData = await response.json();
@@ -132,6 +139,7 @@ function AlAccountings() {
     }
 
 
+    //deleting a account
     const deleteAccounting = async (accountId) => {
 
         const token = sessionStorage.getItem("token");
@@ -152,6 +160,7 @@ function AlAccountings() {
             if (response.ok) {
                 console.log("Data deleted from mongodb");
                 getAllAccountings();
+                setShowAlert(true);
 
             } else {
                 const responseData = await response.json();
@@ -227,12 +236,12 @@ function AlAccountings() {
 
                                             {index === 0 && (
                                                 <td>
-                                                    <Button id="edit-button" onClick={() => editAccounting(accounting)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-trash-can"></i> : "Edit" }</Button>
+                                                    <Button id="edit-button" onClick={() => editAccounting(accounting)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-trash-can"></i> : "Edit"}</Button>
                                                 </td>
                                             )}
                                             {index === 0 && (
                                                 <td>
-                                                    <Button id="delete-button" onClick={event => deleteAccounting(accounting.id)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-pen-to-square"></i> : "Delete"  }</Button>
+                                                    <Button id="delete-button" onClick={event => deleteAccounting(accounting.id)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-pen-to-square"></i> : "Delete"}</Button>
                                                 </td>
                                             )}
                                         </tr>
@@ -324,6 +333,12 @@ function AlAccountings() {
                     )}
                 </div>
 
+                {showAlert && (
+                    <Alert initialMessage="Accounting has been deleted" color="#B91623" icon="" />
+                )}
+                {showAlert2 && (
+                    <Alert initialMessage="Accounting has been edited" color="#B8A01A" icon="" />
+                )}
                 <Chatbot />
             </div>
         </main >

@@ -1,11 +1,15 @@
 const express = require('express')
+const jwt = require('jsonwebtoken');
 const router = express.Router()
 const Accounting = require('../models/accountingModel')
+const User = require('../models/userModel')
+
+
 
 //----------------------
 //GETTING ALL POSTS
 //---------------------_
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken, async (req, res) => {
 
     try {
         const accounting = await Accounting.find()
@@ -16,13 +20,15 @@ router.get('/', async (req, res) => {
 })
 
 
+
+
+
 //----------------------
 //GETTING ONE POST
 //---------------------_
 
-// router.get('/:id', getAccounting, (req, res) => {
-//     res.json(res.accounting)
-// })
+
+
 
 
 
@@ -30,7 +36,7 @@ router.get('/', async (req, res) => {
 //GETTING ONE POST WHERE ID = USERID
 //---------------------_
 
-router.get('/acc', async (req, res) => {
+router.get('/acc', authenticateToken, async (req, res) => {
     const userId = req.query.userId;
 
     try {
@@ -45,12 +51,11 @@ router.get('/acc', async (req, res) => {
 
 
 
-
 //----------------------
 //CREATING POST
 //---------------------_
 
-router.post('/newaccounting', async (req, res) => {
+router.post('/newaccounting', authenticateToken, async (req, res) => {
     const accounting = new Accounting({
         id: req.body.id,
         userId: req.body.userId,
@@ -80,34 +85,14 @@ router.post('/newaccounting', async (req, res) => {
 })
 
 
-// Example: Search route
-router.get('/search', async (req, res) => {
-    const searchString = req.query.searchString;
 
-    try {
-        const searchResults = await Accounting.find({
-            $or: [
-                { companyName: { $regex: new RegExp(searchString, 'i') } },
-                { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
-                { comment: { $regex: new RegExp(searchString, 'i') } },
-            ],
-        });
-
-        res.json(searchResults);
-    } catch (error) {
-        console.error('Error during search:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 
 
 // //----------------------
 // //UPDATING
 // //----------------------
 
-
-
-router.patch('/:id', getAccounting, async (req, res) => {
+router.patch('/:id', getAccounting, authenticateToken, async (req, res) => {
     if (req.body.companyName != null) {
         res.accounting.companyName = req.body.companyName
     }
@@ -143,6 +128,31 @@ router.delete('/:id', async (req, res) => {
 
 
 
+// Search route
+router.get('/search', async (req, res) => {
+    const searchString = req.query.searchString;
+
+    try {
+        const searchResults = await Accounting.find({
+            $or: [
+                { companyName: { $regex: new RegExp(searchString, 'i') } },
+                { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
+                { comment: { $regex: new RegExp(searchString, 'i') } },
+            ],
+        });
+
+        res.json(searchResults);
+    } catch (error) {
+        console.error('Error during search:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
+
+
+// --METHODS----
+
 
 //getAccounting method
 async function getAccounting(req, res, next) {
@@ -160,19 +170,29 @@ async function getAccounting(req, res, next) {
 
 
 
-// async function getAccounting(req, res, next) {
-//     try {
-//         accounting = await Accounting.findById(req.params.id)
-//         if (accounting == null) {
-//             return res.status(404).json({ message: "cannot find accounting" })
-//         }
-//     } catch (err) {
-//         return res.status(500).json({ message: err.message })
-//     }
 
-//     res.accounting = accounting
-//     next()
-// }
+function authenticateToken(req, res, next) {
+    const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
+
+    if (!token) {
+        return res.sendStatus(401); // Unauthorized
+    }
+
+    User.findOne({ token })
+        .then(user => {
+            if (!user) {
+                return res.sendStatus(403); // Forbidden
+            }
+
+            req.user = user; // You can access the user data in the route handlers
+            next();
+        })
+        .catch(err => {
+            console.error('Error checking token:', err);
+            res.sendStatus(500); // Internal Server Error
+        });
+}
+
 
 
 module.exports = router

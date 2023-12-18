@@ -1,8 +1,15 @@
 import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
+import Alert from '../../assets/js/Alert';
+import { useNavigate } from 'react-router-dom';
 
 function CreateUser() {
+
+    const navigate = useNavigate();
+    //alert
+    const [showAlert, setShowAlert] = useState(false);
+
 
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
@@ -12,6 +19,9 @@ function CreateUser() {
     const [password, setPassword] = useState('');
     const [verifypassword, setVerifyPassword] = useState('');
 
+    const [validationErrors, setValidationErrors] = useState([]);
+
+
     useEffect(() => {
         getLastId();
     }, []); // Fetch the last ID when the component mounts
@@ -19,10 +29,9 @@ function CreateUser() {
 
     const createUser = async (e) => {
         // e.preventDefault(); // Prevents the default form submission
-       
+
         const regdate = new Date().toISOString();
-        // getLastId();
-        // setRegdate(regdate);
+
         const idset = id;
 
         const data = {
@@ -71,6 +80,7 @@ function CreateUser() {
             document.getElementById("verifypassword").style.backgroundColor = "";
         }
 
+
         try {
             const response = await fetch("http://localhost:5000/users/register", {
                 method: "POST",
@@ -80,15 +90,26 @@ function CreateUser() {
                 body: JSON.stringify(data)
             });
 
-            if (response.ok) {
-                console.log("Data stored in mongodb");
+            if (!response.ok) {
+
+                const errorData = await response.json();
+                console.error('Registration failed:', errorData.message);
+
+                // Handle specific error scenarios
+                if (errorData.errors) {
+                    // Handle validation errors
+                    console.error('Validation errors:', errorData.errors);
+
+                    setValidationErrors(errorData.errors);
+
+                } else if (errorData.message === 'Email address is already in use') {
+                    // Handle duplicate email error
+                    console.error('Email address is already in use');
+                }
 
             } else {
-                const responseData = await response.json();
-                console.log("Error when storing data in mongodb:", responseData.message);
-                console.log("Error when storing data in mongodb:", response.status, response.statusText, response.message);
-                // Handle error message on the front end, for example:
-                // setError(responseData.message);
+                console.log("Data stored in mongodb");
+                setShowAlert(true);
             }
 
         } catch (error) {
@@ -113,19 +134,21 @@ function CreateUser() {
         }
     }
 
-    //setting regdate on stored user
-    // const getRegdate = (e) => {
-    //     const regdate = new Date().toISOString();
-    //     setRegdate(regdate);
-    // }
-
 
     return (
         <div className="">
-
             <div className="createuserwrapper">
                 <h2>Create User</h2>
                 <Form className='createuserform'>
+
+                    <div>
+                        <ul className="error">
+                            {validationErrors.map((error, index) => (
+                                <li key={index}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+
                     {/* Name */}
                     <Form.Group controlId="formName">
                         <Form.Control
@@ -254,8 +277,9 @@ function CreateUser() {
 
                 </div>
             </div>
-
-
+            {showAlert && (
+                <Alert initialMessage="Account has been created" color="#038815" icon="" />
+            )}
         </div>
     );
 }
