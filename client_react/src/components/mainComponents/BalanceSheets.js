@@ -163,8 +163,7 @@ function BalanceSheets() {
                 return sum + entry.entries.filter(e => e.plan.startsWith('1930')).reduce((subSum, e) => subSum + e.credit, 0);
             }, 0);
 
-            set1930Credit(Credit1930); // Assuming setValue is a function for updating state
-            console.log(Credit1930);
+            set1930Credit(Credit1930); 
             return Credit1930;
         };
         const calcDebit1930 = () => {
@@ -173,8 +172,7 @@ function BalanceSheets() {
                 return sum + entry.entries.filter(e => e.plan.startsWith('1930')).reduce((subSum, e) => subSum + e.debit, 0);
             }, 0);
 
-            set1930Debit(Debit1930); // Assuming setValue is a function for updating state
-            console.log(Debit1930);
+            set1930Debit(Debit1930); 
             return Debit1930;
         };
 
@@ -198,27 +196,30 @@ function BalanceSheets() {
 
 
     const showValues = () => {
-        // Access the calculated values from the state
-        console.log('Credit Assets Total:', calculatedValues.creditAssetsTotal);
-        console.log('Debit Assets Total:', calculatedValues.debitAssetsTotal);
-        console.log('Debit Debt Total:', calculatedValues.debitDebtTotal);
-        console.log('Credit Debt Total:', calculatedValues.creditDebtTotal);
-        console.log('Credit Income Total:', calculatedValues.creditIncomeTotal);
-        console.log('Debit Costs Total:', calculatedValues.debitCostsTotal);
+        // // Access the calculated values from the state
+        // console.log('Credit Assets Total:', calculatedValues.creditAssetsTotal);
+        // console.log('Debit Assets Total:', calculatedValues.debitAssetsTotal);
+        // console.log('Debit Debt Total:', calculatedValues.debitDebtTotal);
+        // console.log('Credit Debt Total:', calculatedValues.creditDebtTotal);
+        // console.log('Credit Income Total:', calculatedValues.creditIncomeTotal);
+        // console.log('Debit Costs Total:', calculatedValues.debitCostsTotal);
 
         calcTotal()
     };
 
     const calcTotal = () => {
 
+        //calculate netto-assets
         const nettoAssets = calculatedValues.debitAssetsTotal - calculatedValues.creditAssetsTotal;
         setAssets(nettoAssets);
         console.log("nettoASSETS: ", nettoAssets);
 
+        //calculate netto-debt
         const nettoDebt = calculatedValues.debitDebtTotal + calculatedValues.creditDebtTotal;
         setDebts(nettoDebt);
         console.log("nettoDEBT: ", nettoDebt);
 
+        //calculate result
         const result = calculatedValues.creditIncomeTotal - calculatedValues.debitCostsTotal;
         setResult(result);
         console.log("result: ", result);

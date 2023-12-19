@@ -135,8 +135,7 @@ function NewAccounting() {
                 console.log("Error when storing data in mongodb:", responseData);
                 console.log("Error when storing data in mongodb:", responseData.message);
                 console.log("Error when storing data in mongodb:", response.status, response.statusText, response.message);
-                // Handle error message on the front end, for example:
-                // setError(responseData.message);
+
             }
 
         } catch (error) {
@@ -162,7 +161,7 @@ function NewAccounting() {
 
 
     useEffect(() => {
-        // In the reduce function used in the useEffect hook, acc stands for accumulator, and entry represents each element in the entries array.
+
         const calculatedSumDebit = entries.reduce((acc, entry) => acc + entry.debit, 0);
         const calculatedSumCredit = entries.reduce((acc, entry) => acc + entry.credit, 0);
 

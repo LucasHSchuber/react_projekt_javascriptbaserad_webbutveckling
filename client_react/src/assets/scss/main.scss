@@ -192,16 +192,16 @@ body {
     }
 
     .error {
-        
-        li{
-            color: rgb(255, 198, 198) !important; 
+
+        li {
+            color: rgb(255, 198, 198) !important;
             text-decoration: none;
             font-style: none;
             font-size: 1.1em;
             font-weight: 700;
             margin-left: -2em;
         }
-       
+
     }
 }
 
@@ -482,6 +482,8 @@ footer {
     .data-wrapper {
 
         margin: 4em 0;
+        display: flex;
+        justify-content: center;
 
         .data-box {
             color: $lightwhite;
@@ -498,8 +500,8 @@ footer {
             }
 
             .circle {
-                width: 85px;
-                height: 85px;
+                width: 100px;
+                height: 100px;
                 border: 1px solid $lightblue;
                 /* Use your preferred background color */
                 border-radius: 50%;
@@ -529,6 +531,12 @@ footer {
             font-size: 1.4em;
         }
 
+
+        .data-wrapper {
+            flex-direction: column;
+            align-items: center;
+
+        }
     }
 }
 
@@ -1122,4 +1130,21 @@ footer {
     font-weight: 600;
     z-index: 3;
     transition: 0.5s ease;
+}
+
+
+
+//-------------
+// CHART
+//-------------
+.chart-container{
+    p{
+        color: white;
+    }
+
+    h5 {
+        font-size: 1.5em;
+        color: $lightwhite;
+        font-weight: 700;
+    }
 }

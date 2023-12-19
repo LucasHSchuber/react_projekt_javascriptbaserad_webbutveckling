@@ -106,8 +106,7 @@ function HomePage() {
                     <hr ></hr>
                 </div>
 
-                <div className='data-wrapper d-flex content-justify-center'>
-
+                <div className='data-wrapper '>
                     <div className='data-box'>
                         <p>
                             Amount of accountings
@@ -125,9 +124,7 @@ function HomePage() {
                             <div>{number}</div>
                         </div>
                     </div>
-
                 </div>
-
 
                 <Chart />
 
