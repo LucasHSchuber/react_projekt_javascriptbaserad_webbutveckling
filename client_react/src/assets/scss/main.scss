@@ -681,6 +681,19 @@ footer {
         }
     }
 
+    #filter-date-button {
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 0.5em;
+        border: 0.1px solid hsl(209, 100%, 91%, 0.2);
+
+        &:hover {
+            border: 0.1px solid $darkblue;
+
+        }
+    }
+
 }
 
 @media screen and (max-width: 992px) {
@@ -1137,8 +1150,8 @@ footer {
 //-------------
 // CHART
 //-------------
-.chart-container{
-    p{
+.chart-container {
+    p {
         color: white;
     }
 

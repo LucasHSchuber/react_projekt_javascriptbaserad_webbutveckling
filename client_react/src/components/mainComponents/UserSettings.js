@@ -228,7 +228,7 @@ function UserSettings() {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder=""
+                                    placeholder="Name"
                                     name="name"
                                     value={userData.name}
                                     onChange={handleInputChange}
@@ -239,7 +239,7 @@ function UserSettings() {
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder=""
+                                    placeholder="Email"
                                     name="email"
                                     value={userData.email}
                                     onChange={handleInputChange}
@@ -247,10 +247,10 @@ function UserSettings() {
                             </Form.Group>
 
                             <Form.Group controlId="formCompany" className="short">
-                                <Form.Label>Company</Form.Label>
+                                <Form.Label>Company name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Enter your company name"
+                                    placeholder="Company name"
                                     name="company"
                                     value={userData.company}
                                     onChange={handleInputChange}

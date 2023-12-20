@@ -13,23 +13,25 @@ function AlAccountings() {
     const [showAlert, setShowAlert] = useState(false);
     const [showAlert2, setShowAlert2] = useState(false);
 
-
+    //screen size
     const isSmallScreen = window.innerWidth < 992;
 
     const [accountings, setAccountings] = useState([]);
-
     const [searchString, setSearchString] = useState("");
+    const [dateOrder, setDateOrder] = useState("asc");
     const [searchResponse, setSearchResponse] = useState("");
-
     const [selectedAcc, setSelectedAcc] = useState(null)
     const [showModal, setShowModal] = useState(false)
+    const [userData, setUserData] = useState({
+        invoiceNmbr: "",
+        comment: "",
+        companyName: "",
+    });
 
-    const [companyName, setCompanyName] = useState("");
-    const [invoiceNmbr, setInvoiceNmbr] = useState("");
-    const [comment, setComment] = useState("");
 
 
 
+    //running when method is triggered
     const getAllAccountings = async () => {
 
         const token = sessionStorage.getItem('token');
@@ -37,7 +39,7 @@ function AlAccountings() {
         console.log(userId);
 
         try {
-            const response = await fetch(`http://localhost:5000/accountings/acc?userId=${userId}`, {
+            const response = await fetch(`http://localhost:5000/accountings/acc?userId=${userId}&order=${dateOrder}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -59,20 +61,36 @@ function AlAccountings() {
             console.log("Error fetching accountings: ", error.message);
             throw error;
         }
+    };
+
+
+
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUserData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+
+
+    //sorting date 
+    const handleDateOrder = () => {
+        setDateOrder((prevDateOrder) => (prevDateOrder === "asc" ? "desc" : "asc"));
     }
+
 
 
     //load when mounted
     useEffect(() => {
         getAllAccountings();
-    }, []);
+    }, [dateOrder]);
 
 
     useEffect(() => {
 
         const fetchSearchResults = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/accountings/search?searchString=${searchString}`);
+                const response = await axios.get(`http://localhost:5000/accountings/search?searchString=${searchString}&order=${dateOrder}`);
                 console.log(response.data);
                 setSearchResponse(response.data);
             } catch (error) {
@@ -86,29 +104,38 @@ function AlAccountings() {
             setSearchResponse([]);
         }
 
-    }, [searchString])
+    }, [searchString, dateOrder])
 
 
 
-
+    //when clicking edit button
     const editAccounting = async (accounting) => {
-        console.log("Clicked: " + accounting.id);
-        setSelectedAcc(accounting);
-        setShowModal(true);
-    }
 
+        setSelectedAcc(accounting); //set the plan. credit, debit to use in modal
+        setUserData({
+            invoiceNmbr: accounting.invoiceNmbr,
+            comment: accounting.comment,
+            companyName: accounting.companyName,
+        });
+
+        setShowModal(true);
+    };
+
+    //closes modal
     const handleCloseModal = () => {
         setShowModal(false);
     }
+
+
 
 
     const saveAccounting = async (accountId) => {
 
         const token = sessionStorage.getItem("token");
         const data = {
-            companyName: companyName,
-            comment: comment,
-            invoiceNmbr: invoiceNmbr
+            companyName: userData.companyName,
+            comment: userData.comment,
+            invoiceNmbr: userData.invoiceNmbr
         }
 
         try {
@@ -137,6 +164,8 @@ function AlAccountings() {
             console.log("Error updating accounting:", error.message);
         }
     }
+
+
 
 
     //deleting a account
@@ -203,7 +232,14 @@ function AlAccountings() {
                     <table>
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Date<Button
+                                    id="filter-date-button"
+                                    className='ml-1'
+                                    onClick={handleDateOrder}
+                                >
+                                    <i class="fa-solid fa-sm fa-arrow-down"></i>
+                                </Button>
+                                </th>
                                 <th>{isSmallScreen ? "Inv.nmbr" : "Invoice number"}</th>
                                 <th>{isSmallScreen ? "Comp" : "Company"}</th>
                                 <th>{isSmallScreen ? "Com" : "Comment"}</th>
@@ -260,27 +296,29 @@ function AlAccountings() {
                                 <Modal.Body>
 
 
-                                    <Form.Group controlId="formCompanyName">
-                                        <Form.Label>Company Name:</Form.Label>
+                                    <Form.Group controlId="formInvoiceNmbr" className='my-3'>
+                                        <Form.Label>Invoice number:</Form.Label>
                                         <Form.Control
                                             className='input short'
                                             type="text"
-                                            placeholder={selectedAcc.companyName}
-                                            name="company"
-                                            onChange={(e) => setCompanyName(e.target.value)}
-                                            required
+                                            placeholder=""
+                                            name="invoiceNmbr"
+                                            value={userData.invoiceNmbr}
+                                            onChange={handleInputChange}
+
                                         />
                                     </Form.Group>
 
-                                    <Form.Group controlId="formInvoiceNmbr" className='my-3'>
-                                        <Form.Label>Invoice Number:</Form.Label>
+                                    <Form.Group controlId="formCompanyName">
+                                        <Form.Label>Company:</Form.Label>
                                         <Form.Control
                                             className='input short'
                                             type="text"
-                                            placeholder={selectedAcc.invoiceNmbr}
-                                            name="invoice"
-                                            onChange={(e) => setInvoiceNmbr(e.target.value)}
-                                            required
+                                            placeholder=""
+                                            name="companyName"
+                                            value={userData.companyName}
+                                            onChange={handleInputChange}
+
                                         />
                                     </Form.Group>
 
@@ -289,10 +327,11 @@ function AlAccountings() {
                                         <Form.Control
                                             className='input short'
                                             type="text"
-                                            placeholder={selectedAcc.comment}
+                                            placeholder=""
                                             name="comment"
-                                            onChange={(e) => setComment(e.target.value)}
-                                            required
+                                            value={userData.comment}
+                                            onChange={handleInputChange}
+
                                         />
                                     </Form.Group>
 

@@ -38,10 +38,20 @@ router.get('/', authenticateToken, async (req, res) => {
 
 router.get('/acc', authenticateToken, async (req, res) => {
     const userId = req.query.userId;
+    const order = req.query.order || 'asc';
 
     try {
-        const userAccountings = await Accounting.find({ userId: userId });
+        let userAccountings;
+
+        if (order === 'asc' || order === 'desc') {
+            const sortOrder = order === 'asc' ? 1 : -1;
+            userAccountings = await Accounting.find({ userId: userId }).sort({ date: sortOrder });
+        } else {
+            return res.status(400).json({ message: 'Invalid order value' });
+        }
+
         res.json(userAccountings);
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -131,17 +141,26 @@ router.delete('/:id', async (req, res) => {
 // Search route
 router.get('/search', async (req, res) => {
     const searchString = req.query.searchString;
+    const order = req.query.order || 'asc';
 
     try {
-        const searchResults = await Accounting.find({
-            $or: [
-                { companyName: { $regex: new RegExp(searchString, 'i') } },
-                { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
-                { comment: { $regex: new RegExp(searchString, 'i') } },
-            ],
-        });
+        let searchResults;
 
-        res.json(searchResults);
+        if (order === 'asc' || order === 'desc') {
+            const sortOrder = order === 'asc' ? 1 : -1;
+
+            searchResults = await Accounting.find({
+                $or: [
+                    { companyName: { $regex: new RegExp(searchString, 'i') } },
+                    { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
+                    { comment: { $regex: new RegExp(searchString, 'i') } },
+                ]
+            }).sort({ date: sortOrder });
+
+            res.json(searchResults);
+        } else {
+            return res.status(400).json({ message: 'Invalid order value. Use "asc" or "desc".' });
+        }
     } catch (error) {
         console.error('Error during search:', error);
         res.status(500).json({ error: 'Internal Server Error' });

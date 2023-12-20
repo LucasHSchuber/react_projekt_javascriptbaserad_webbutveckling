@@ -29,8 +29,12 @@ function NewAccounting() {
 
     useEffect(() => {
         getLastId();
+
     }, []); // Fetch the last ID when the component mounts
 
+
+
+    console.log(id);
 
 
 
@@ -129,6 +133,7 @@ function NewAccounting() {
             if (response.ok) {
                 console.log("Data stored in mongodb");
                 setShowAlert(true);
+                getLastId(); //trigger to update setId state hook variable
 
             } else {
                 const responseData = await response.json();
@@ -145,8 +150,15 @@ function NewAccounting() {
 
     //gettign the last id from users collection in mongodb and adding 1 to new user
     const getLastId = async () => {
+
+        const token = sessionStorage.getItem('token');
+
         try {
-            const response = await axios.get('http://localhost:5000/accountings');
+            const response = await axios.get('http://localhost:5000/accountings', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const accountings = response.data;
 
             const lastId = accountings.length > 0 ? accountings[accountings.length - 1].id : 0;

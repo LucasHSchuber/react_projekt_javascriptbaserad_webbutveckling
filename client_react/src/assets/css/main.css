@@ -568,6 +568,16 @@ footer .menu-link:hover {
   background-color: rgb(250, 135, 135);
   border: none;
 }
+.allaccountingstable #filter-date-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 0.5em;
+  border: 0.1px solid hsla(209, 100%, 91%, 0.2);
+}
+.allaccountingstable #filter-date-button:hover {
+  border: 0.1px solid #01172C;
+}
 
 @media screen and (max-width: 992px) {
   .allaccountingstable {
