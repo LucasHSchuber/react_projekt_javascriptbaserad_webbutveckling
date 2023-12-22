@@ -29,13 +29,47 @@ body {
   margin-right: 2em;
 }
 
+@media screen and (max-width: 992px) {
+  header .menu-link {
+    margin-top: 1em;
+    list-style-type: none;
+    font-size: 1.1em;
+    font-weight: 700;
+    color: white !important;
+    text-decoration: none;
+  }
+  header .menu-link .dropdown-item {
+    color: black !important;
+  }
+  header .dropdown-box {
+    text-align: center;
+    margin: auto;
+    width: 20em;
+  }
+  header .dropdown-box .dropdown-link {
+    color: #01172C !important;
+    padding: 0.6em 0;
+    font-weight: 600;
+  }
+  header .menulinks {
+    text-align: center;
+    margin: 2em 0 4em 0;
+  }
+  header .menu-visible {
+    display: block;
+  }
+  header a {
+    color: white;
+    text-decoration: none;
+  }
+}
 @media screen and (min-width: 992px) {
   header .header {
     padding: 2em 7em;
   }
   header .menu-link {
     padding: 0 1em;
-    margin-top: 2.3em;
+    margin: 2.35em 2em 0 2em;
     list-style-type: none;
     font-size: 1.1em;
     font-weight: 700;
@@ -44,7 +78,6 @@ body {
   }
   header .menu-link .dropdown-item {
     color: white !important;
-    /* Set your desired text color for dropdown items */
   }
   header .menu-visible {
     display: block;
@@ -427,7 +460,6 @@ footer .menu-link:hover {
   width: 100px;
   height: 100px;
   border: 1px solid #78BEFF;
-  /* Use your preferred background color */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -810,7 +842,6 @@ footer .menu-link:hover {
 }
 .chatbot .footer-chatbot {
   margin-top: auto;
-  /* Push the footer to the bottom */
   padding: 0.8em 1.2em;
   font-size: 0.8em;
   height: 2.5em;
@@ -889,7 +920,6 @@ footer .menu-link:hover {
   width: 100px;
   height: 100px;
   background-color: #3498db;
-  /* Use your preferred background color */
   border-radius: 50%;
   display: flex;
   align-items: center;

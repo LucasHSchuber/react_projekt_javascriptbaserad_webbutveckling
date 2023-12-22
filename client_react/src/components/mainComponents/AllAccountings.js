@@ -234,7 +234,7 @@ function AlAccountings() {
                             <tr>
                                 <th>Date<Button
                                     id="filter-date-button"
-                                    className='ml-1'
+                                    className='ml-2'
                                     onClick={handleDateOrder}
                                 >
                                     <i class="fa-solid fa-sm fa-arrow-down"></i>

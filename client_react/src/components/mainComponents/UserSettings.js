@@ -346,7 +346,7 @@ function UserSettings() {
                             </Button>
 
                             <Button id='' variant="danger" onClick={event => handleDeleteAccount(userData.id)}>
-                                Delete
+                                Delete account
                             </Button>
                         </Modal.Footer>
                     </Modal>

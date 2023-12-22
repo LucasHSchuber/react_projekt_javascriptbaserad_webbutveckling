@@ -46,7 +46,7 @@ function Header() {
     <header>
       <div className="header">
         <Navbar expand="lg">
-          <div className="logo">
+          {/* <div className="logo">
             {isLoggedIn ? (
               <Link to="/home" onMouseOver={handleMouseOver}>
                 <img src={mImage} alt='Logo button menu show' />
@@ -56,17 +56,28 @@ function Header() {
                 <img src={mImage} alt='Logo button menu show' />
               </Link>
             )}
+          </div> */}
+          <div className="logo">
+            {isLoggedIn ? (
+              <Link to="/home" >
+                <img src={mImage} alt='Logo button menu show' />
+              </Link>
+            ) : (
+              <Link to="/">
+                <img src={mImage} alt='Logo button menu show' />
+              </Link>
+            )}
           </div>
           <Navbar.Toggle aria-controls="navbarSupportedContent" />
           <Navbar.Collapse id="navbarSupportedContent">
 
 
-            <Nav className={`d-flex flex-row menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
+            <Nav className={`menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
               {/* Conditionally render other links based on authentication status */}
               {isLoggedIn ? (
                 <>
                   {/* Links to show when the user is logged in */}
-                  <Nav.Link as={Link} to="/home" className='menu-link mt-5 mr-5 ml-5'>
+                  <Nav.Link as={Link} to="/home" className='menu-link mt-lg-5 mr-lg-5 mr-sm-2'>
                     Home
                   </Nav.Link>
                   {/* dropdown */}
@@ -81,18 +92,20 @@ function Header() {
                       </span>
                     )}
                   >
-                    <NavDropdown.Item as={Link} to="/newaccounting" class="dropdown-link">
-                      New Accounting
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/allaccountings" class="dropdown-link">
-                      All Accountings
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/balancesheets" class="dropdown-link">
-                      Balance sheets
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/resultsheets" class="dropdown-link">
-                      Result sheets
-                    </NavDropdown.Item>
+                    <div className='dropdown-box'>
+                      <NavDropdown.Item as={Link} to="/newaccounting" className="dropdown-link">
+                        New Accounting
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/allaccountings" className="dropdown-link">
+                        All Accountings
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/balancesheets" className="dropdown-link">
+                        Balance sheets
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/resultsheets" className="dropdown-link">
+                        Result sheets
+                      </NavDropdown.Item>
+                    </div>
                   </NavDropdown>
 
 
@@ -108,15 +121,17 @@ function Header() {
                     onMouseEnter={handleDropdownToggle2}
                     onMouseLeave={handleDropdownToggle2}
                   >
-                    <NavDropdown.Item as={Link} to="/allinvoices">
-                      All invoices
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/managedinvoices">
-                      Managed invoices
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/unhandledinvoices">
-                      Unhandled invoices
-                    </NavDropdown.Item>
+                    <div className='dropdown-box'>
+                      <NavDropdown.Item as={Link} to="/allinvoices"  className="dropdown-link">
+                        All invoices
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/managedinvoices"  className="dropdown-link">
+                        Managed invoices
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/unhandledinvoices"  className="dropdown-link">
+                        Unhandled invoices
+                      </NavDropdown.Item>
+                    </div>
                   </NavDropdown>
 
                   {/* dropdown */}
@@ -131,12 +146,14 @@ function Header() {
                     onMouseEnter={handleDropdownToggle2}
                     onMouseLeave={handleDropdownToggle2}
                   >
-                    <NavDropdown.Item as={Link} to="/usersettings">
-                      User settings
-                    </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/" onClick={logoutUser}>
-                      Log out
-                    </NavDropdown.Item>
+                    <div className='dropdown-box'>
+                      <NavDropdown.Item as={Link} to="/usersettings"  className="dropdown-link">
+                        User settings
+                      </NavDropdown.Item>
+                      <NavDropdown.Item as={Link} to="/" onClick={logoutUser}  className="dropdown-link">
+                        Log out
+                      </NavDropdown.Item>
+                    </div>
                   </NavDropdown>
                 </>
               ) : (
