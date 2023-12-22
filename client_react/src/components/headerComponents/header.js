@@ -68,9 +68,8 @@ function Header() {
               </Link>
             )}
           </div>
-          <Navbar.Toggle aria-controls="navbarSupportedContent" />
+          <Navbar.Toggle className="toogle-icon" aria-controls="navbarSupportedContent" />
           <Navbar.Collapse id="navbarSupportedContent">
-
 
             <Nav className={`menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
               {/* Conditionally render other links based on authentication status */}

@@ -30,6 +30,12 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+  header {
+    padding: 1em;
+  }
+  header .toogle-icon {
+    background-color: #EDEDED !important;
+  }
   header .menu-link {
     margin-top: 1em;
     list-style-type: none;
@@ -38,18 +44,28 @@ body {
     color: white !important;
     text-decoration: none;
   }
-  header .menu-link .dropdown-item {
-    color: black !important;
-  }
   header .dropdown-box {
     text-align: center;
     margin: auto;
-    width: 20em;
+    width: 15em;
   }
   header .dropdown-box .dropdown-link {
-    color: #01172C !important;
+    color: #EDEDED !important;
     padding: 0.6em 0;
-    font-weight: 600;
+    font-weight: 500;
+    text-decoration: underline;
+    background-color: #034972 !important;
+    border-left: 0.5px solid white;
+    border-right: 0.5px solid white;
+  }
+  header .dropdown-box .dropdown-link:hover, header .dropdown-box .dropdown-link:focus, header .dropdown-box .dropdown-link:active {
+    color: #78BEFF !important;
+    background-color: #034972 !important;
+  }
+  header .dropdown-menu {
+    margin: 0 auto;
+    background-color: inherit;
+    border: none;
   }
   header .menulinks {
     text-align: center;
@@ -76,6 +92,19 @@ body {
     color: white !important;
     text-decoration: none;
   }
+  header .dropdown-box {
+    background-color: rgb(3, 79, 123);
+    padding-bottom: 1em;
+    padding-top: 0.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  header .dropdown-box .dropdown-link {
+    margin-top: 0.2em;
+  }
+  header .dropdown-box .dropdown-link:hover, header .dropdown-box .dropdown-link:focus, header .dropdown-box .dropdown-link:active {
+    color: #78BEFF !important;
+    background-color: #034972 !important;
+  }
   header .menu-link .dropdown-item {
     color: white !important;
   }
@@ -98,10 +127,9 @@ body {
     margin-left: 0.3em;
     width: fit-content;
     position: absolute;
-    top: 95%;
+    top: 75%;
     background-color: inherit;
     border: none;
-    border-bottom: 0.5px solid #78BEFF;
     z-index: 2;
   }
 }

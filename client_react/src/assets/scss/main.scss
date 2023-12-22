@@ -49,7 +49,11 @@ body {
 
     header {
 
-        .header {}
+        padding: 1em;
+
+        .toogle-icon {
+            background-color: $lightwhite !important;
+        }
 
         .menu-link {
             margin-top: 1em;
@@ -61,25 +65,37 @@ body {
             // transition: 0.1s;
         }
 
-        .menu-link .dropdown-item {
-            color: black !important;
-        }
-
-        .menu-link {
-            
-        }
-
         .dropdown-box {
-            // background-color: red ;
+            // background-color: #034972 ;
             text-align: center;
             margin: auto;
-            width: 20em;
+            width: 15em;
 
-            .dropdown-link{
-                color:$darkblue !important;
+            .dropdown-link {
+                color: $lightwhite !important;
                 padding: 0.6em 0;
-                font-weight: 600 ;
+                font-weight: 500;
+                text-decoration: underline;
+                background-color: #034972 !important;
+                border-left: 0.5px solid white;
+                border-right: 0.5px solid white;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $lightblue !important;
+                    background-color: #034972 !important;
+                    // text-decoration: none;
+                }
             }
+        }
+
+
+        .dropdown-menu {
+            margin: 0 auto;
+            background-color: inherit;
+            border: none;
+            // border-bottom: 0.5px solid $lightblue;
         }
 
         .menulinks {
@@ -122,6 +138,27 @@ body {
             // transition: 0.1s
         }
 
+        .dropdown-box {
+
+            background-color: rgb(3, 79, 123);
+            padding-bottom: 1em;
+            padding-top: 0.5em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+            .dropdown-link {
+                margin-top: 0.2em;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    color: $lightblue !important;
+                    background-color: #034972 !important;
+                    // text-decoration: none;
+                }
+            }
+        }
+
+
         .menu-link .dropdown-item {
             color: white !important;
 
@@ -154,11 +191,11 @@ body {
         margin-left: 0.3em;
         width: fit-content;
         position: absolute;
-        top: 95%;
+        top: 75%;
         // left: 0em;
         background-color: inherit;
         border: none;
-        border-bottom: 0.5px solid $lightblue;
+        // border-bottom: 0.5px solid $lightblue;
         z-index: 2;
     }
 
