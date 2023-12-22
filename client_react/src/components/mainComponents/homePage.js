@@ -5,9 +5,12 @@ import fetchUser from '../../assets/js/fetchUser';
 import chatbotImg from '../../assets/images/chatbot.png';
 import Chatbot from '../../assets/js/Chatbot';
 import Chart from '../../assets/js/Chart';
+import PageAuth from '../../assets/js/pageAuth';
 
 
 function HomePage() {
+
+    PageAuth();
 
     const [name, setUserName] = useState(null);
     const [company, setUserCompany] = useState(null);

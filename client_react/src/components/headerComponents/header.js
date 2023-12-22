@@ -149,7 +149,7 @@ function Header() {
                       <NavDropdown.Item as={Link} to="/usersettings"  className="dropdown-link">
                         User settings
                       </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/" onClick={logoutUser}  className="dropdown-link">
+                      <NavDropdown.Item as={Link} to="/" onClick={logoutUser}  className="dropdown-link logout-link">
                         Log out
                       </NavDropdown.Item>
                     </div>

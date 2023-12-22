@@ -50,7 +50,7 @@ body {
     width: 15em;
   }
   header .dropdown-box .dropdown-link {
-    color: #EDEDED !important;
+    color: #EDEDED;
     padding: 0.6em 0;
     font-weight: 500;
     text-decoration: underline;

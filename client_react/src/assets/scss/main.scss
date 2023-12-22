@@ -72,7 +72,7 @@ body {
             width: 15em;
 
             .dropdown-link {
-                color: $lightwhite !important;
+                color: $lightwhite;
                 padding: 0.6em 0;
                 font-weight: 500;
                 text-decoration: underline;
@@ -87,7 +87,9 @@ body {
                     background-color: #034972 !important;
                     // text-decoration: none;
                 }
+
             }
+
         }
 
 
@@ -156,8 +158,8 @@ body {
                     // text-decoration: none;
                 }
             }
+  
         }
-
 
         .menu-link .dropdown-item {
             color: white !important;

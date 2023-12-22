@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 function LogIn() {
 
     const navigate = useNavigate();
@@ -20,6 +21,7 @@ function LogIn() {
     })
 
     const loginUser = async (e) => {
+
         // e.preventDefault(); // Prevents the default form submission
 
         const data = {

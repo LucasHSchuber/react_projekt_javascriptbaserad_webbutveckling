@@ -3,10 +3,13 @@ import axios from 'axios';
 import { Form, Button } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import Chatbot from '../../assets/js/Chatbot';
+import PageAuth from '../../assets/js/pageAuth';
 
 
 
 function BalanceSheets() {
+
+    PageAuth();
 
     const [calculatedValues, setCalculatedValues] = useState({
         creditAssetsTotal: 0,

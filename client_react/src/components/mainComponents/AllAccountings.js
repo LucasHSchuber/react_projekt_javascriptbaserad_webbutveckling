@@ -4,10 +4,21 @@ import { Form, Button, Modal, Table } from 'react-bootstrap';
 import React, { useState, useEffect } from 'react';
 import Chatbot from '../../assets/js/Chatbot';
 import Alert from '../../assets/js/Alert';
+import { useNavigate } from 'react-router-dom';
+import PageAuth from '../../assets/js/pageAuth';
+
 
 
 
 function AlAccountings() {
+
+    // const navigate = useNavigate();
+    // //page display validation
+    // const token_check_auth = sessionStorage.getItem("token");
+    // if (!token_check_auth) {
+    //     navigate("/login");
+    // }
+    PageAuth();
 
     //alert
     const [showAlert, setShowAlert] = useState(false);
@@ -272,12 +283,12 @@ function AlAccountings() {
 
                                             {index === 0 && (
                                                 <td>
-                                                    <Button id="edit-button" onClick={() => editAccounting(accounting)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-trash-can"></i> : "Edit"}</Button>
+                                                    <Button id="edit-button" onClick={() => editAccounting(accounting)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-pen-to-square"></i> : "Edit"}</Button>
                                                 </td>
                                             )}
                                             {index === 0 && (
                                                 <td>
-                                                    <Button id="delete-button" onClick={event => deleteAccounting(accounting.id)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-pen-to-square"></i> : "Delete"}</Button>
+                                                    <Button id="delete-button" onClick={event => deleteAccounting(accounting.id)}>{isSmallScreen ? <i class="fa-solid fa-sm fa-trash-can"></i> : "Delete"}</Button>
                                                 </td>
                                             )}
                                         </tr>

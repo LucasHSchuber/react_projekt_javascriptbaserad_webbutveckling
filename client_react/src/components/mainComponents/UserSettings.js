@@ -5,9 +5,13 @@ import fetchUser from '../../assets/js/fetchUser';
 import Chatbot from '../../assets/js/Chatbot';
 import { useNavigate } from 'react-router-dom';
 import Alert from '../../assets/js/Alert';
+import PageAuth from '../../assets/js/pageAuth';
+
 
 
 function UserSettings() {
+
+    PageAuth();
 
     //alert
     const [showAlert, setShowAlert] = useState(false);

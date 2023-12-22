@@ -6,10 +6,14 @@ import fetchUser from '../../assets/js/fetchUser';
 import planOptions from '../../assets/js/planOptions';
 import Chatbot from '../../assets/js/Chatbot';
 import Alert from '../../assets/js/Alert';
+import PageAuth from '../../assets/js/pageAuth';
+
 
 
 
 function NewAccounting() {
+
+    PageAuth();
 
     //alert
     const [showAlert, setShowAlert] = useState(false);
