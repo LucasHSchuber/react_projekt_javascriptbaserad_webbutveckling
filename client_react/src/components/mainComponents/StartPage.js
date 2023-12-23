@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import backgroundImage from '../../assets/images/aiface.png';
 
 
-
+//start apge
 function StartPage() {
 
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 772);

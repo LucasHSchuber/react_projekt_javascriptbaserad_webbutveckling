@@ -42,7 +42,12 @@ function AlAccountings() {
 
 
 
-    //running when method is triggered
+    //load when mounted
+    useEffect(() => {
+        getAllAccountings();
+    }, [dateOrder]);
+
+    //get all accountings and store it in accountings useState (setAccountings)
     const getAllAccountings = async () => {
 
         const token = sessionStorage.getItem('token');
@@ -76,7 +81,7 @@ function AlAccountings() {
 
 
 
-
+    //When a field is changed in the edit-module
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setUserData((prevData) => ({ ...prevData, [name]: value }));
@@ -88,13 +93,6 @@ function AlAccountings() {
     const handleDateOrder = () => {
         setDateOrder((prevDateOrder) => (prevDateOrder === "asc" ? "desc" : "asc"));
     }
-
-
-
-    //load when mounted
-    useEffect(() => {
-        getAllAccountings();
-    }, [dateOrder]);
 
 
     useEffect(() => {
@@ -138,8 +136,7 @@ function AlAccountings() {
     }
 
 
-
-
+    // when save button in module is clicked - updating db
     const saveAccounting = async (accountId) => {
 
         const token = sessionStorage.getItem("token");

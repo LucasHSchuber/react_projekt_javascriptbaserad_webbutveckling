@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+//shows alert message whenever a post is made, deleted or other user interactions
 const Alert = ({ initialMessage, color, icon }) => {
 
     //alert

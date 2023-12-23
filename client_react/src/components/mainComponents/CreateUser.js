@@ -91,19 +91,14 @@ function CreateUser() {
             });
 
             if (!response.ok) {
-
                 const errorData = await response.json();
                 console.error('Registration failed:', errorData.message);
 
-                // Handle specific error scenarios
                 if (errorData.errors) {
-                    // Handle validation errors
                     console.error('Validation errors:', errorData.errors);
-
                     setValidationErrors(errorData.errors);
 
                 } else if (errorData.message === 'Email address is already in use') {
-                    // Handle duplicate email error
                     console.error('Email address is already in use');
                 }
 

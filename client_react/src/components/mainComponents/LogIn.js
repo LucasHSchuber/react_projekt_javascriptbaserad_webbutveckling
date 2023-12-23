@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 function LogIn() {
-
     const navigate = useNavigate();
+
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -59,7 +59,7 @@ function LogIn() {
                 console.log("user signed in");
                 console.log(responseData);
 
-                // Store the token in sessionStorage
+                // Store the token, username, userid in sessionStorage
                 const token = responseData.token;
                 const userid = responseData.userId;
                 const username = responseData.userName;

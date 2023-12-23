@@ -9,8 +9,6 @@ import Alert from '../../assets/js/Alert';
 import PageAuth from '../../assets/js/pageAuth';
 
 
-
-
 function NewAccounting() {
 
     PageAuth();
@@ -82,7 +80,6 @@ function NewAccounting() {
             // setUserId(userData.id);
         } catch (error) {
             console.error("Error in fetchData:", error.message);
-            // Handle error as needed
         }
     };
 
@@ -171,7 +168,6 @@ function NewAccounting() {
 
         } catch (error) {
             console.error('Error getting accountings:', error.message);
-            // Handle error more gracefully, e.g., display an error message to the user
         }
     };
 
@@ -311,7 +307,6 @@ function NewAccounting() {
                                     />
                                 </Form.Group>
 
-                                {/* Button to add more accountings */}
                                 <Button
                                     className='test'
                                     onClick={handleAddAccounting}

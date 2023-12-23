@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import chatbotImg from '../../assets/images/chatbot.png';
 
+//chatbot
 function Chatbot() {
 
 
@@ -30,18 +31,18 @@ function Chatbot() {
         }
     };
 
-
+    //triggers when chatbot ok button is pressed 
     const answerChatbot = () => {
 
         const userinput = document.getElementById("userinput");
         const selection = document.getElementById("selection");
-        // const spinner = document.getElementById("spinner");
+
         userinput.style.display = "block";
         selection.style.display = "none";
-        // spinner.style.display = "block";
 
         setShowSpinner(true);
 
+        //generates the different answers depending on users questions
         if (selectedOption === "What is accounting?") {
             let string = "Accounting is the process of recording, summarizing, analyzing, and reporting financial transactions of a business or organization. It involves the systematic and comprehensive recording of financial activities, ensuring that all financial information is accurate, complete, and in compliance with accounting standards and regulations";
             setAnswer(string);

@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-
 import mImage from '../../assets/images/menubtn.png';
-// import { useAuth } from '../../contexts/AuthContext';
 
+//header
 function Header() {
 
   const [isMenuVisible, setMenuVisible] = useState(false);
@@ -28,7 +27,6 @@ function Header() {
   }
 
   const logoutUser = () => {
-
 
     const token = sessionStorage.getItem('token');
     const user = sessionStorage.getItem('userid');
@@ -72,13 +70,13 @@ function Header() {
           <Navbar.Collapse id="navbarSupportedContent">
 
             <Nav className={`menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
-              {/* Conditionally render other links based on authentication status */}
+
               {isLoggedIn ? (
                 <>
-                  {/* Links to show when the user is logged in */}
                   <Nav.Link as={Link} to="/home" className='menu-link mt-lg-5 mr-lg-5 mr-sm-2'>
                     Home
                   </Nav.Link>
+
                   {/* dropdown */}
                   <NavDropdown
                     id="accounting-dropdown"
@@ -121,13 +119,13 @@ function Header() {
                     onMouseLeave={handleDropdownToggle2}
                   >
                     <div className='dropdown-box'>
-                      <NavDropdown.Item as={Link} to="/allinvoices"  className="dropdown-link">
+                      <NavDropdown.Item as={Link} to="/allinvoices" className="dropdown-link">
                         All invoices
                       </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/managedinvoices"  className="dropdown-link">
+                      <NavDropdown.Item as={Link} to="/managedinvoices" className="dropdown-link">
                         Managed invoices
                       </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/unhandledinvoices"  className="dropdown-link">
+                      <NavDropdown.Item as={Link} to="/unhandledinvoices" className="dropdown-link">
                         Unhandled invoices
                       </NavDropdown.Item>
                     </div>
@@ -146,10 +144,10 @@ function Header() {
                     onMouseLeave={handleDropdownToggle2}
                   >
                     <div className='dropdown-box'>
-                      <NavDropdown.Item as={Link} to="/usersettings"  className="dropdown-link">
+                      <NavDropdown.Item as={Link} to="/usersettings" className="dropdown-link">
                         User settings
                       </NavDropdown.Item>
-                      <NavDropdown.Item as={Link} to="/" onClick={logoutUser}  className="dropdown-link logout-link">
+                      <NavDropdown.Item as={Link} to="/" onClick={logoutUser} className="dropdown-link logout-link">
                         Log out
                       </NavDropdown.Item>
                     </div>
@@ -157,7 +155,7 @@ function Header() {
                 </>
               ) : (
                 <>
-                  {/* Links to show when the user is not logged in */}
+
                   <Nav.Link as={Link} to="/" className='menu-link mt-5 mr-5 ml-5'>
                     Start
                   </Nav.Link>

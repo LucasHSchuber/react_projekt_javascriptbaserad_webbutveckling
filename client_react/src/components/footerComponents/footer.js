@@ -2,11 +2,10 @@ import React, { createContext, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
 
+//footer
 function Footer() {
 
     const [isMenuVisible, setMenuVisible] = useState(false);
-    // const [isVisible, setIsVisible] = useState(false);
-    // const [isVisible2, setIsVisible2] = useState(false);
 
     const isLoggedIn = sessionStorage.getItem('token') !== null;
 
@@ -23,10 +22,10 @@ function Footer() {
                 <div className='footer-nav d-flex justify-content-center my-3'>
                     <Navbar>
                         <Nav className={`d-flex flex-row menulinks ${isMenuVisible ? 'menu-visible' : ''}`}>
-                            {/* Conditionally render other links based on authentication status */}
+
                             {isLoggedIn ? (
                                 <>
-                                    {/* Links to show when the user is logged in */}
+
                                     <Nav.Link as={Link} to="/home" className='menu-link '>
                                         Home
                                     </Nav.Link>
@@ -46,7 +45,7 @@ function Footer() {
                                 </>
                             ) : (
                                 <>
-                                    {/* Links to show when the user is not logged in */}
+
                                     <Nav.Link as={Link} to="/" className='menu-link'>
                                         Start
                                     </Nav.Link>

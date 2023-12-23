@@ -1,5 +1,7 @@
 //planOptions.js
 
+
+//all the options in the select in NewAccountings-component
 const planOptions = [
   { value: '', label: 'Plan' },
   { value: '1930 - bankkonto', label: '1930 - bankkonto' },
@@ -15,9 +17,6 @@ const planOptions = [
   { value: '8999 - årets resultat', label: '8999 - årets resultat' },
 
 
-
-
-  // ... add more options as needed
 ];
 
 export default planOptions;

@@ -8,7 +8,7 @@ import Alert from '../../assets/js/Alert';
 import PageAuth from '../../assets/js/pageAuth';
 
 
-
+//user settings
 function UserSettings() {
 
     PageAuth();
@@ -52,7 +52,6 @@ function UserSettings() {
 
             } catch (error) {
                 console.error("Error in fetchData:", error.message);
-                // Handle error as needed
             }
         };
 
@@ -153,15 +152,17 @@ function UserSettings() {
 
 
 
-    //delete user 
+    //modal opens when user presses delete account button
     const openDeleteModal = () => {
         setShowModal(true);
     }
 
+    //closes the modal if user presses close
     const handleCloseModal = () => {
         setShowModal(false);
     }
 
+    //delete account method
     const handleDeleteAccount = async (accountId) => {
 
         const token = sessionStorage.getItem("token");
@@ -197,8 +198,8 @@ function UserSettings() {
 
                 handleCloseModal();
 
-                 //send user to main page
-                 navigate('/');
+                //send user to main page
+                navigate('/');
 
 
             } else {

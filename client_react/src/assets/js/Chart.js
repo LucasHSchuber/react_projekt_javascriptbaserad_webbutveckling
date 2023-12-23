@@ -3,13 +3,14 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import axios from 'axios';
 import { useMediaQuery } from '@react-hook/media-query';
 
-
+//charts
 const ChartComponent = () => {
 
     const isSmallScreen = useMediaQuery('(max-width: 772px)');
 
     const [accountingsData, setAccountingsData] = useState([]);
 
+    //get the accountings from db
     useEffect(() => {
         const fetchData = async () => {
             const token = sessionStorage.getItem('token');

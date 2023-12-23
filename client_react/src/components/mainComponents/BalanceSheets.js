@@ -31,7 +31,7 @@ function BalanceSheets() {
 
     const [accountings, setAccountings] = useState([]);
 
-
+    //get ala accoutings
     const getAllAccountings = async () => {
 
         const token = sessionStorage.getItem('token');
@@ -65,6 +65,7 @@ function BalanceSheets() {
     }
 
 
+    //genereates sheet when generate button is clicked by user
     const generateSheet = () => {
 
         console.log("sheet genereated");
@@ -166,7 +167,7 @@ function BalanceSheets() {
                 return sum + entry.entries.filter(e => e.plan.startsWith('1930')).reduce((subSum, e) => subSum + e.credit, 0);
             }, 0);
 
-            set1930Credit(Credit1930); 
+            set1930Credit(Credit1930);
             return Credit1930;
         };
         const calcDebit1930 = () => {
@@ -175,12 +176,12 @@ function BalanceSheets() {
                 return sum + entry.entries.filter(e => e.plan.startsWith('1930')).reduce((subSum, e) => subSum + e.debit, 0);
             }, 0);
 
-            set1930Debit(Debit1930); 
+            set1930Debit(Debit1930);
             return Debit1930;
         };
 
 
-
+        //sets the variabels in state hook 
         setCalculatedValues({
             creditAssetsTotal: sumAssetsCredit,
             debitAssetsTotal: sumAssetsDebit,
@@ -190,10 +191,8 @@ function BalanceSheets() {
             debitCostsTotal: sumDebitCosts,
         });
 
-
         calcCredit1930();
         calcDebit1930();
-
 
     }
 
@@ -207,9 +206,11 @@ function BalanceSheets() {
         // console.log('Credit Income Total:', calculatedValues.creditIncomeTotal);
         // console.log('Debit Costs Total:', calculatedValues.debitCostsTotal);
 
+        //triggers method
         calcTotal()
     };
 
+    //calc for the result sheet
     const calcTotal = () => {
 
         //calculate netto-assets
@@ -235,6 +236,7 @@ function BalanceSheets() {
     useEffect(() => {
         getAllAccountings();
     }, []);
+
 
 
     return (
