@@ -85,7 +85,7 @@ function Header() {
                     onMouseLeave={handleDropdownToggle}
                     title={(
                       <span style={{ color: 'white' }}>
-                        Accounting
+                        Accounting 
                       </span>
                     )}
                   >

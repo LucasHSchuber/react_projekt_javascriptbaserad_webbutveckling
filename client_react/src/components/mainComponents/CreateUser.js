@@ -10,7 +10,6 @@ function CreateUser() {
     //alert
     const [showAlert, setShowAlert] = useState(false);
 
-
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -26,6 +25,15 @@ function CreateUser() {
         getLastId();
     }, []); // Fetch the last ID when the component mounts
 
+
+    const resetForm = () => {
+
+        setName("");
+        setEmail("");
+        setCompany("");
+        setPassword("");
+        setVerifyPassword("");
+    }
 
     const createUser = async (e) => {
         // e.preventDefault(); // Prevents the default form submission
@@ -105,6 +113,7 @@ function CreateUser() {
             } else {
                 console.log("Data stored in mongodb");
                 setShowAlert(true);
+                resetForm();
             }
 
         } catch (error) {

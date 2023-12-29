@@ -35,11 +35,6 @@ function NewAccounting() {
     }, []); // Fetch the last ID when the component mounts
 
 
-
-    console.log(id);
-
-
-
     const handleAddAccounting = () => {
         setAccountingsCount(accountingsCount + 1);
         // Initialize a new entry with default values
@@ -82,6 +77,19 @@ function NewAccounting() {
             console.error("Error in fetchData:", error.message);
         }
     };
+
+    const resetForm = () => {
+
+        setDate("");
+        setCompanyName("");
+        setComment("");
+        setInvoiceNmbr("");
+        setEntries([{ plan: "", debit: 0, credit: 0 }]);
+        setSumDebit(0);
+        setSumCredit(0);
+        setAccountingsCount(1);
+    };
+
 
     const createAccounting = async () => {
 
@@ -135,6 +143,7 @@ function NewAccounting() {
                 console.log("Data stored in mongodb");
                 setShowAlert(true);
                 getLastId(); //trigger to update setId state hook variable
+                resetForm();
 
             } else {
                 const responseData = await response.json();
@@ -215,6 +224,7 @@ function NewAccounting() {
                                 type="date"
                                 placeholder="Date"
                                 name="date"
+                                value={date}
                                 onChange={(e) => setDate(e.target.value)}
                                 // onChange={(e) => setName(e.target.value)}
                                 required
@@ -228,7 +238,7 @@ function NewAccounting() {
                                 type="text"
                                 placeholder="Company name"
                                 name="company"
-                                // value={email}
+                                value={companyName}
                                 onChange={(e) => setCompanyName(e.target.value)}
                                 required
                             />
@@ -241,7 +251,7 @@ function NewAccounting() {
                                 type="text"
                                 placeholder="Invoice number"
                                 name="invoice"
-                                // value={company}
+                                value={invoiceNmbr}
                                 onChange={(e) => setInvoiceNmbr(e.target.value)}
                                 required
                             />
@@ -254,7 +264,7 @@ function NewAccounting() {
                                 type="text"
                                 placeholder="Comment"
                                 name="comment"
-                                // value={company}
+                                value={comment}
                                 onChange={(e) => setComment(e.target.value)}
                                 required
                             />
@@ -351,6 +361,8 @@ function NewAccounting() {
                 {showAlert && (
                     <Alert initialMessage="Accounting has been registered" color="#038815" icon="" />
                 )}
+
+                {/* import chatbot */}
                 <Chatbot />
             </div>
         </main>

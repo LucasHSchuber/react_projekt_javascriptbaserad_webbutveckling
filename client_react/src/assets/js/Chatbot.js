@@ -109,7 +109,7 @@ function Chatbot() {
                         </div>
                         {showSpinner && (
                             <div class="spinner-border" role="status" id="spinner">
-                                <span class="visually-hidden">Loading...</span>
+                                <span class="visually-hidden"></span>
                             </div>
                         )}
 
