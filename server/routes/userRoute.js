@@ -283,12 +283,7 @@ router.delete('/deleteuser', async (req, res) => {
         } catch (err) {
             res.status(500).json({ message: err.message })
         }
-
-
     }
-
-
-
 })
 
 

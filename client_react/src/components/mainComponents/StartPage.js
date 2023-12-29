@@ -35,7 +35,7 @@ function StartPage() {
         <main className='pt-5' style={startPageStyle}>
             <div className='startpage'>
 
-                <h1>Artificial Intellegence <br></br><span>Accounting System</span></h1>
+                <h1>Artificial Intelligence <br></br><span>Accounting System</span></h1>
 
                 <div className='my-5'>
                     <button className='button'>

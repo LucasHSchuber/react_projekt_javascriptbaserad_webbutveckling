@@ -114,6 +114,7 @@ function CreateUser() {
                 console.log("Data stored in mongodb");
                 setShowAlert(true);
                 resetForm();
+                setValidationErrors([]);
             }
 
         } catch (error) {

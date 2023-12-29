@@ -5,11 +5,6 @@ const cors = require('cors');
 const app = express()
 const mongoose = require('mongoose')
 
-// const bodyParser = require("body-parser");
-// const { Configuration, OpenAIApi } = require("openai");
-// const config = new Configuration({
-//     apiKey: "",
-// })
 
 // Use cors middleware
 app.use(cors());
@@ -23,8 +18,6 @@ app.use('/accountings', AccountingRouter)
 const UserRouter = require('./routes/userRoute')
 app.use('/users', UserRouter)
 
-// const SearchRouter = require("./routes/searchRoute")
-// app.use("/search", SearchRouter)
 
 
 //connect to mongodb

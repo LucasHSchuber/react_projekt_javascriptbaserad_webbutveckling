@@ -197,7 +197,7 @@ function UserSettings() {
                 sessionStorage.removeItem('userid');
 
                 handleCloseModal();
-
+                DeleteUserPosts(accountId);
                 //send user to main page
                 navigate('/');
 
@@ -210,6 +210,42 @@ function UserSettings() {
 
         } catch (error) {
             console.log("error deleting user:", error);
+        }
+    };
+
+
+    //delete all posts from users when account is deleted - method
+    const DeleteUserPosts = async (accountId) => {
+
+        const id = accountId.toString();
+
+        console.log(id);
+
+        // const data = {
+        //     userId: id
+        // }
+
+        // console.log(data);
+
+        try {
+            const response = await fetch(`http://localhost:5000/accountings/deleteallaccountings/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+                // body: JSON.stringify(data),
+            })
+            if (response.ok) {
+                console.log("Posts deleted from mongodb");
+
+            } else {
+                const responseData = await response.json();
+                console.log("Error when deleting user posts from MongoDB:", responseData.message);
+                console.log("Error details:", responseData.details);
+            }
+
+        } catch (error) {
+            console.log("error deleting user posts:", error);
         }
     };
 

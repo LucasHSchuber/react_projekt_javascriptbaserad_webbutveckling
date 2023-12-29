@@ -138,6 +138,27 @@ router.delete('/:id', async (req, res) => {
 
 
 
+// //----------------------
+// //DELETING ALL POST FROM USER (when account is deleted)
+// //----------------------
+
+router.delete('/deleteallaccountings/:userId', async (req, res) => {
+
+    const userId = req.params.userId;
+
+    try {
+        await Accounting.deleteMany({ userId: userId });
+        res.json({ message: "User posts deleted" });
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+
+});
+
+
+
+
+
 // Search route
 router.get('/search', async (req, res) => {
     const searchString = req.query.searchString;
