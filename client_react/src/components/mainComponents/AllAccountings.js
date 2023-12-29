@@ -98,8 +98,11 @@ function AlAccountings() {
     useEffect(() => {
 
         const fetchSearchResults = async () => {
+
+            const userId = sessionStorage.getItem('userid');
+
             try {
-                const response = await axios.get(`http://localhost:5000/accountings/search?searchString=${searchString}&order=${dateOrder}`);
+                const response = await axios.get(`http://localhost:5000/accountings/search?userId=${userId}&searchString=${searchString}&order=${dateOrder}`);
                 console.log(response.data);
                 setSearchResponse(response.data);
             } catch (error) {

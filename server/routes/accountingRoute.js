@@ -163,6 +163,8 @@ router.delete('/deleteallaccountings/:userId', async (req, res) => {
 router.get('/search', async (req, res) => {
     const searchString = req.query.searchString;
     const order = req.query.order || 'asc';
+    const userId = req.query.userId;
+
 
     try {
         let searchResults;
@@ -171,6 +173,7 @@ router.get('/search', async (req, res) => {
             const sortOrder = order === 'asc' ? 1 : -1;
 
             searchResults = await Accounting.find({
+                userId: userId,
                 $or: [
                     { companyName: { $regex: new RegExp(searchString, 'i') } },
                     { invoiceNmbr: { $regex: new RegExp(searchString, 'i') } },
