@@ -41,7 +41,7 @@ The API stores following fieds:
 > cd server
 > npm install
 > npm init
-> npm run devstart
+> npm run devStart
  - 1. The server has started running on port 5000 
  - 2. enter localhost/5000/enpoint to see REST API
 
